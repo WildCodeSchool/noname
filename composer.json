@@ -1,0 +1,32 @@
+{
+    "name": "wildcodeschool/simple-mvc",
+    "description": "Simple from scratch PHP MVC for WildCodeSchool students",
+    "authors": [
+        {
+            "name": "Aurelien",
+            "email": "aurelien.barbier@wildcodeschool.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "twig/twig": "^3.1",
+        "ext-pdo": "*"
+    },
+    "require-dev": {
+        "filp/whoops": "^2.14",
+        "phpmd/phpmd": "^2.12",
+        "phpro/grumphp": "^1.9",
+        "phpstan/phpstan": "^1.5",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp": true
+        }
+    }
+}
