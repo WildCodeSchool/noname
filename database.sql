@@ -3,7 +3,7 @@ CREATE TABLE user (
   pseudo VARCHAR(20) NOT NULL,
   adress VARCHAR(80) NOT NULL,
   email VARCHAR(50) NOT NULL,
-  photo LONGBLOB NOT NULL,
+  photo VARCHAR(255) NOT NULL,
   rating INT DEFAULT 5
 );
 
@@ -13,7 +13,7 @@ CREATE TABLE product (
   title VARCHAR(20) NOT NULL,
   price INT NOT NULL,
   description TEXT NOT NULL,
-  photo LONGBLOB NOT NULL,
+  photo VARCHAR(255) NOT NULL,
   status VARCHAR(50) DEFAULT 'en vente',
   material VARCHAR(50),
   category_item VARCHAR(50),
@@ -25,6 +25,8 @@ CREATE TABLE product (
   CONSTRAINT fk_product_user
         FOREIGN KEY (user_id)
         REFERENCES user(id)
+        ON DELETE CASCADE
+        ON UPDATE NO ACTION
 );
 
 
@@ -35,9 +37,13 @@ CREATE TABLE cart (
   user_id INT NOT NULL,
   CONSTRAINT fk_cart_user
         FOREIGN KEY (user_id)
-        REFERENCES user(id),
+        REFERENCES user(id)
+        ON DELETE CASCADE
+        ON UPDATE NO ACTION,
   product_id INT NOT NULL,
   CONSTRAINT fk_cart_product
         FOREIGN KEY (product_id)
         REFERENCES product(id)
+        ON DELETE CASCADE
+        ON UPDATE NO ACTION
 );
