@@ -8,6 +8,18 @@ CREATE TABLE user (
 );
 
 
+CREATE TABLE cart (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  status_validation BOOL DEFAULT false,
+  `date` DATETIME DEFAULT NOW(),
+  user_id INT NOT NULL,
+  CONSTRAINT fk_cart_user
+        FOREIGN KEY (user_id)
+        REFERENCES user(id)
+        ON DELETE CASCADE
+        ON UPDATE NO ACTION
+);
+
 CREATE TABLE product (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   title VARCHAR(20) NOT NULL,
@@ -26,24 +38,11 @@ CREATE TABLE product (
         FOREIGN KEY (user_id)
         REFERENCES user(id)
         ON DELETE CASCADE
-        ON UPDATE NO ACTION
-);
-
-
-CREATE TABLE cart (
-  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  status_validation BOOL DEFAULT false,
-  `date` DATETIME DEFAULT NOW(),
-  user_id INT NOT NULL,
-  CONSTRAINT fk_cart_user
-        FOREIGN KEY (user_id)
-        REFERENCES user(id)
-        ON DELETE CASCADE
         ON UPDATE NO ACTION,
-  product_id INT NOT NULL,
-  CONSTRAINT fk_cart_product
-        FOREIGN KEY (product_id)
-        REFERENCES product(id)
-        ON DELETE CASCADE
+  cart_id int DEFAULT NULL,
+  CONSTRAINT fk_product_cart
+        FOREIGN KEY (cart_id)
+        REFERENCES cart(id)
+        ON DELETE NO ACTION
         ON UPDATE NO ACTION
 );
