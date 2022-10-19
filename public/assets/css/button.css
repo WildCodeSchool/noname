@@ -1,0 +1,16 @@
+.btn-primary-banner {
+  position: relative;
+  background-color: #000000;
+  color: white;
+  margin-bottom: 12%;
+  margin-left: 75%;
+  width: 25%;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.btn-primary-banner:hover {
+  background-color: white;
+  color: #000000;
+}
