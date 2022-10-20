@@ -15,6 +15,7 @@ class ProductController extends AbstractController
             $user = (new UserManager())->selectOneById($product["user_id"]);
             $product["user_pseudo"] = $user["pseudo"];
             $product["user_rating"] = $user["rating"];
+            $product["user_photo"] = $user["photo"];
         }
 
         return $this->twig->render("Product/index.html.twig", ["products" => $products]);
