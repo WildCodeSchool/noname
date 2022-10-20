@@ -14,6 +14,7 @@ class ProductController extends AbstractController
         foreach ($products as &$product) {
             $user = (new UserManager())->selectOneById($product["user_id"]);
             $product["user_pseudo"] = $user["pseudo"];
+            $product["user_rating"] = $user["rating"];
         }
 
         return $this->twig->render("Product/index.html.twig", ["products" => $products]);

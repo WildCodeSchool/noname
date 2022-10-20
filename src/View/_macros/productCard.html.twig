@@ -1,20 +1,35 @@
 {% macro productCardContainer(products) %}
 	<div class="productCardContainer">
 		{% for product in products %}
-			{{ _self.productCard(product.id, product.title, product.photo, product.user_pseudo) }}
+			{{ _self.productCard(product.id, product.title, product.photo, product.price, product.user_pseudo, product.user_rating) }}
 		{% endfor %}
 	</div>
 {% endmacro %}
 
-{% macro productCard(id, title, photo, userName) %}
+{% macro productCard(id, title, photo, price, userName, userRating) %}
+	{% from "_macros/ratingStars.html.twig" import ratingStars %}
+
 	<a href="/product?id={{id}}" class="productCard">
 		<div class="image" style="background-image: url({{photo}});"></div>
 		<div class="content">
-			<h2>{{ title }}</h2>
-			<p>
-				Vendu par
-				{{ userName }}
-			</p>
+			<div>
+				<div>
+					<p>Vendu par</p>
+					<p>
+						{{ userName }}
+					</p>
+				</div>
+				<div>
+					{{ ratingStars(userRating) }}
+				</div>
+			</div>
+
+			<div>
+				<h2>{{ title }}</h2>
+				<p>
+					{{ price ~ " €" }}
+				</p>
+			</div>
 		</div>
 	</a>
 {% endmacro %}

@@ -2,7 +2,9 @@
 .productCardContainer {
     display: flex;
     flex-flow: row wrap;
-    gap: 4rem;
+    gap: 2rem 4rem;
+    justify-content: center;
+    padding: 1rem;
 }
 
 /* Product Card */
@@ -16,7 +18,7 @@
     display: flex;
     flex-flow: column nowrap;
     overflow: clip;
-    width: 15rem;
+    width: 20rem;
     z-index: 1;
 }
 
@@ -27,7 +29,7 @@
 
 .productCard > .image {
     background-size: cover;
-    height: 10rem;
+    height: 15rem;
     width: 100%;
 }
 
@@ -35,7 +37,7 @@
     background-color: black;
     content: "";
     display: inline-block;
-    height: 10rem;
+    height: 15rem;
     position: relative;
     width: 100%;
     z-index: -1;
@@ -45,6 +47,18 @@
     padding: 1rem;
 }
 
-.productCard > .content > h2 {
+.productCard > .content > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.productCard > .content > div:nth-child(2) {
+    text-align: right;
+}
+
+.productCard > .content h2 {
     font-size: 1rem;
+    font-weight: normal;
 }

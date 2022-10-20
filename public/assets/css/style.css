@@ -1,4 +1,5 @@
 @import url("productCard.css");
+@import url("ratingStars.css");
 
 :root {
     --productCardBackgroundColor: #d9d9d9;
