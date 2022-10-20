@@ -1,0 +1,36 @@
+/* Product Card Container */
+.productCardContainer {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 4rem;
+}
+
+/* Product Card */
+.productCard {
+    background-color: var(--productCardBackgroundColor);
+    border-radius: 3px;
+    box-shadow: var(--productCardShadowColor) 4px 4px 4px;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: clip;
+    width: 15rem;
+}
+
+.productCard:hover {
+    box-shadow: var(--productCardShadowColor) 6px 6px 6px;
+    cursor: pointer;
+}
+
+.productCard > .image {
+    background-size: cover;
+    height: 10rem;
+    width: 100%;
+}
+
+.productCard > .content {
+    padding: 1rem;
+}
+
+.productCard > .content > h2 {
+    font-size: 1rem;
+}
