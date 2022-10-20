@@ -15,6 +15,7 @@
     color: black;
     display: block;
     text-decoration: none;
+    transition: ease-out 250ms;
     display: flex;
     flex-flow: column nowrap;
     overflow: clip;
@@ -23,8 +24,16 @@
 }
 
 .productCard:hover {
-    box-shadow: var(--productCardShadowColor) 6px 6px 6px;
+    box-shadow: var(--productCardShadowColor) 8px 8px 10px;
     cursor: pointer;
+    transform: scale(1.025);
+    transition: ease-out 250ms;
+}
+
+.productCard:active {
+    box-shadow: var(--productCardShadowColor) 2px 2px 2px;
+    transform: scale(0.975);
+    transition: ease-out 250ms;
 }
 
 .productCard > .image {
