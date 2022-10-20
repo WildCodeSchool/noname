@@ -15,8 +15,8 @@
 					<a href="">
 						<button type="button" class="btn btn-primary-banner">Créer un compte</button>
 					</a>
-					<h2>First slide label</h2>
-					<p>Some representative placeholder content for the first slide.</p>
+					<h2>Ameublement</h2>
+					<p>Votre meuble n'a plus son utilité , Vendez le.</p>
 				</div>
 			</div>
 			<div class="carousel-item">
@@ -25,8 +25,8 @@
 					<a href="">
 						<button type="button" class="btn btn-primary-banner">Créer un compte</button>
 					</a>
-					<h2>Second slide label</h2>
-					<p>Some representative placeholder content for the second slide.</p>
+					<h2>Décoration</h2>
+					<p>Vous recherchez une décoration unique. Retrouvez des objets exclusitifs vendus par notre communauté .</p>
 				</div>
 			</div>
 			<div class="carousel-item">
@@ -35,8 +35,8 @@
 					<a href="">
 						<button type="button" class="btn btn-primary-banner">Créer un compte</button>
 					</a>
-					<h2>Third slide label</h2>
-					<p>Some representative placeholder content for the third slide.</p>
+					<h2>Luminaires</h2>
+					<p>Eclairez votre habitation pour mettre en valeur votre décoration.</p>
 				</div>
 			</div>
 			<div class="carousel-item">
@@ -45,8 +45,8 @@
 					<a href="">
 						<button type="button" class="btn btn-primary-banner">Créer un compte</button>
 					</a>
-					<h2>fourth slide label</h2>
-					<p>Some representative placeholder content for the third slide.</p>
+					<h2>Electromenager</h2>
+					<p>Un soucis de four. Changez le !</p>
 				</div>
 			</div>
 		</div>
@@ -59,8 +59,16 @@
 			<span class="visually-hidden">Next</span>
 		</button>
 	</div>
-	<h1>Hello Wilder !</h1>
-	<p>Find a complete CRUD example on
-		<a href="/items">/items</a>
-		page.</p>
+	<div class="container home">
+		<h1 class="text-center">Les Derniers Articles Ajoutés</h1>
+		{# {% for item in items| %}
+		      <li><a href="/items/show?id={{ item.id }}">{{ item.id }}. {{ item.title }}</a></li>
+		    {% else %}
+		      <li>Nothing to display</li>
+		    {% endfor %} #}
+
+		{# <p>Find a complete CRUD example on
+					<a href="/items">/items</a>
+					page.</p> #}
+	</div>
 {% endblock %}
