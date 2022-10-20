@@ -1,13 +1,13 @@
 {% macro productCardContainer(products) %}
 	<div class="productCardContainer">
 		{% for product in products %}
-			{{ _self.productCard(product.title, product.photo, product.user_pseudo) }}
+			{{ _self.productCard(product.id, product.title, product.photo, product.user_pseudo) }}
 		{% endfor %}
 	</div>
 {% endmacro %}
 
-{% macro productCard(title, photo, userName) %}
-	<div class="productCard">
+{% macro productCard(id, title, photo, userName) %}
+	<a href="/product?id={{id}}" class="productCard">
 		<div class="image" style="background-image: url({{photo}});"></div>
 		<div class="content">
 			<h2>{{ title }}</h2>
@@ -16,5 +16,5 @@
 				{{ userName }}
 			</p>
 		</div>
-	</div>
+	</a>
 {% endmacro %}
