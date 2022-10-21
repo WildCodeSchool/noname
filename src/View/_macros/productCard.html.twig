@@ -1,8 +1,10 @@
 {% macro productCardContainer(products) %}
 	<div class="productCardContainer">
-		{% for product in products %}
-			{{ _self.productCard(product) }}
-		{% endfor %}
+		<div class="products">
+			{% for product in products %}
+				{{ _self.productCard(product) }}
+			{% endfor %}
+		</div>
 	</div>
 {% endmacro %}
 

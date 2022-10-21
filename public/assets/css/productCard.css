@@ -1,9 +1,10 @@
 /* Product Card Container */
-.productCardContainer {
+.productCardContainer > .products {
     display: flex;
     flex-flow: row wrap;
-    gap: 2rem 4rem;
     justify-content: center;
+    margin: auto;
+    max-width: 1110px;
     padding: 1rem;
 }
 
@@ -13,10 +14,10 @@
     border-radius: 3px;
     box-shadow: var(--productCardShadowColor) 4px 4px 4px;
     color: black;
-    display: block;
+    display: flex;
+    margin: 1rem;
     text-decoration: none;
     transition: ease-out 250ms;
-    display: flex;
     flex-flow: column nowrap;
     overflow: clip;
     width: 20rem;
