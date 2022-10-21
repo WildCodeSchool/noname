@@ -16,19 +16,21 @@
 		<div class="content">
 			<div>
 				<div>
-					<p>Vendu par</p>
 					<div class="seller">
-						<div class="avatar" style="background-image: url({{product.user_photo}});"></div>
-						<p>
-							{{ product.user_pseudo }}
-						</p>
+						<p class="label">Vendu par</p>
+						<div class="user">
+							<div class="avatar" style="background-image: url({{product.user_photo}});"></div>
+							<p class="pseudo">
+								{{ product.user_pseudo }}
+							</p>
+						</div>
 					</div>
 				</div>
 				<div>{{ ratingStars(product.user_rating) }}</div>
 			</div>
 			<div>
-				<h2>{{ product.title }}</h2>
-				<p>{{ product.price ~ " €" }}</p>
+				<h2 class="title">{{ product.title }}</h2>
+				<p class="price">{{ product.price ~ " €" }}</p>
 			</div>
 		</div>
 	</a>

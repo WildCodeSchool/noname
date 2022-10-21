@@ -1,2 +1,8 @@
 .ratingStars {
+    display: flex;
+}
+
+.ratingStars > .star {
+    display: block;
+    width: calc(100% / 5);
 }
