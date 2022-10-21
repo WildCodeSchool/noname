@@ -1,4 +1,4 @@
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1400px) {
   .carousel-item h2 {
     font-size: 64px;
   }
@@ -11,4 +11,24 @@
     font-size: 64px;
     margin-top: 1.5rem;
   }
+}
+
+@media screen and (max-width: 767px) {
+  .home h1 {
+    font-size: 20px
+  }
+
+  .carouselContainer a {
+    font-size: 10px;
+  }
+}
+
+
+.carouselContainer {
+  position: relative;
+
+}
+
+ul {
+  padding: 0;
 }
