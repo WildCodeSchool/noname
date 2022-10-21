@@ -18,7 +18,7 @@
 .productCard {
     background-color: var(--productCardBackgroundColor);
     border-radius: 3px;
-    box-shadow: var(--productCardShadowColor) 4px 4px 4px;
+    box-shadow: var(--productCardShadowColor) 0 5px 5px;
     color: black;
     display: flex;
     margin: 1rem;
@@ -31,27 +31,34 @@
 }
 
 .productCard:hover {
-    box-shadow: var(--productCardShadowColor) 8px 8px 10px;
+    box-shadow: var(--productCardShadowColor) 0 8px 10px;
     cursor: pointer;
     transform: scale(1.025);
     transition: ease-out 250ms;
 }
 
 .productCard:active {
-    box-shadow: var(--productCardShadowColor) 2px 2px 2px;
+    box-shadow: var(--productCardShadowColor) 0 2px 2px;
     transform: scale(0.975);
     transition: ease-out 250ms;
 }
 
 .productCard > .image {
-    background-size: cover;
+    background-size: 100%;
     background-position: center;
+    background-repeat: no-repeat;
     height: 15rem;
+    transition: ease-out 250ms;
     width: 100%;
 }
 
+.productCard:hover > .image {
+    background-size: 110%;
+    transition: ease-out 250ms;
+}
+
 .productCard > .image::before {
-    background-color: black;
+    background-color: #eeeeee;
     content: "";
     display: inline-block;
     height: 15rem;

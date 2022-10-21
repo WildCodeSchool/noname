@@ -2,7 +2,7 @@
 @import url("ratingStars.css");
 
 :root {
-    --productCardBackgroundColor: #d9d9d9;
+    --productCardBackgroundColor: white;
     --productCardShadowColor: rgba(0, 0, 0, 0.25);
 }
 
