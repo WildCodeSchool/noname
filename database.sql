@@ -48,7 +48,8 @@ CREATE TABLE
         description VARCHAR(100) NOT NULL,
         photo VARCHAR(255) NOT NULL,
         logo VARCHAR(255) NOT NULL,
-    )
+    );
+
 INSERT INTO
     `product` (
         `title`,
