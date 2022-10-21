@@ -1,3 +1,10 @@
+@import url("button.css");
+@import url("home.css");
 body {
-    color: #f76c6c;
+    color: #000000;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
