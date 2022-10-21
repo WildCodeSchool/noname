@@ -1,7 +1,9 @@
 {% extends "layout.html.twig" %}
 {% from "_macros/productCard.html.twig" import productCardContainer %}
+{% from "_macros/pageSwitcher.html.twig" import pageSwitcher %}
 
 {% block content %}
 	<h1>Page produit</h1>
 	{{ productCardContainer(products) }}
+	{{ pageSwitcher(currentPage, pagesCount) }}
 {% endblock %}

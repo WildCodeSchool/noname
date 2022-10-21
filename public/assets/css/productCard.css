@@ -18,8 +18,8 @@
 .productCard {
     background-color: var(--productCardBackgroundColor);
     border-radius: 3px;
-    box-shadow: var(--productCardShadowColor) 0 5px 5px;
-    color: black;
+    box-shadow: var(--shadowColor) 0 5px 5px;
+    color: var(--textColor);
     display: flex;
     margin: 1rem;
     text-decoration: none;
@@ -31,14 +31,14 @@
 }
 
 .productCard:hover {
-    box-shadow: var(--productCardShadowColor) 0 8px 10px;
+    box-shadow: var(--shadowColor) 0 8px 10px;
     cursor: pointer;
     transform: scale(1.025);
     transition: ease-out 250ms;
 }
 
 .productCard:active {
-    box-shadow: var(--productCardShadowColor) 0 2px 2px;
+    box-shadow: var(--shadowColor) 0 2px 2px;
     transform: scale(0.975);
     transition: ease-out 250ms;
 }
@@ -58,7 +58,7 @@
 }
 
 .productCard > .image::before {
-    background-color: #eeeeee;
+    background-color: var(--lightGreyContrastColor);
     content: "";
     display: inline-block;
     height: 15rem;
@@ -110,7 +110,7 @@
 }
 
 .productCard > .content .seller > .user > .avatar::before {
-    background-color: black;
+    background-color: var(--lightGreyContrastColor);
     border-radius: 100%;
     content: "";
     display: inline-block;

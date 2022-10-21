@@ -1,0 +1,27 @@
+{% macro pageSwitcher(currentPage, pagesCount, pagesOffset = 5) %}
+	{% set clickablePages = range(currentPage - pagesOffset, currentPage + pagesOffset) %}
+
+	<div class="pageSwitcherContainer">
+		<div class="pageSwitcher">
+			{% if currentPage > 1 %}
+				<a href="/products?page={{ currentPage - 1 }}">Prec.</a>
+			{% endif %}
+
+			{% for page in clickablePages %}
+				{% if page > 0 and page <= pagesCount %}
+					{% if page == currentPage %}
+						<div class="selected">
+							<p>{{ currentPage }}</p>
+						</div>
+					{% else %}
+						<a href="/products?page={{ page }}">{{ page }}</a>
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+
+			{% if currentPage < pagesCount %}
+				<a href="/products?page={{ pagesCount }}">Suiv.</a>
+			{% endif %}
+		</div>
+	</div>
+{% endmacro %}

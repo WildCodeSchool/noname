@@ -1,9 +1,12 @@
+@import url("pageSwitcher.css");
 @import url("productCard.css");
 @import url("ratingStars.css");
 
 :root {
+    --lightGreyContrastColor: #eeeeee;
     --productCardBackgroundColor: white;
-    --productCardShadowColor: rgba(0, 0, 0, 0.25);
+    --shadowColor: rgba(0, 0, 0, 0.25);
+    --textColor: black;
 }
 
 * {
