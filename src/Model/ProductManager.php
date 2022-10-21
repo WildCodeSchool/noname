@@ -6,7 +6,7 @@ class ProductManager extends AbstractManager
 {
     public const TABLE = "product";
 
-    public function selectPageWithUser($page = 1, $limit = 20, $orderBy = 'date', $direction = "DESC"): array
+    public function selectPageWithUser($page = 1, $limit = 12, $orderBy = 'date', $direction = "DESC"): array
     {
         $offset = ($page - 1) * $limit;
 
