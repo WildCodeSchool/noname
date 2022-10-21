@@ -5,5 +5,5 @@
 {% block content %}
 	<h1>Page produit</h1>
 	{{ productCardContainer(products) }}
-	{{ pageSwitcher(currentPage, pagesCount) }}
+	{{ pageSwitcher("/products?page=%page%", currentPage, pagesCount) }}
 {% endblock %}
