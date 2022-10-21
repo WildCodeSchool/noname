@@ -3,19 +3,58 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/images/favicon.png">
 
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/nav.css">
+
     {% block stylesheet %}{% endblock %}
 </head>
+
+<nav role='navigation'>
+    <div class="main">
+        <img src="../assets/images/logook.png" class="logo" alt="logo">
+            <div class="search-box" id="search">
+        <img src="../assets/images/magglass.png">
+    <input type="text" class="input-search" placeholder="Type to Search...">
+</div>
+    <div class="menu" id="icons" onclick="searchHide();">
+        <a href="" {# Enter link here #} ><img src="../assets/images/Vector.png"></a>
+        <a href="" {# Enter link here #} ><img src="../assets/images/carnet.png"></a>
+        <a href="" {# Enter link here #} ><img src="../assets/images/panier.png"></a>
+        <a href="" {# Enter link here #} ><img src="../assets/images/compte.png"></a>
+    </div>
+<!-- Burger button -->
+    <button class="container" onclick="myFunction(this);searchHide();">
+        <div class ="bar1"></div>
+        <div class ="bar2"></div>
+        <div class ="bar3"></div>
+    </button>
+    
+    </div>
+    <div class="quick-access">
+        <ul>
+            <li><a href="" {# Enter link here #} ><img src="../assets/images/drawer.png"><p>Meubles</p></li></a>
+            <li><a href="" {# Enter link here #} ><img src="../assets/images/lights.png"><p>Luminaires</p> </li></a>
+            <li><a href="" {# Enter link here #} ><img src="../assets/images/decorations.png"><p>Décorations</p></li></a>
+            <li><a href="" {# Enter link here #} ><img src="../assets/images/appliances.png"><p>Électroménager</p></li></a>
+        </ul>
+    </div>
+
+
+
+</nav>
 
 <body>
     {% block content %}{% endblock %}
     {% block javascript %}{% endblock %}
 </body>
+    <script src="../assets/javascript/nav.js"></script>
+
+
 </html>
 
 
