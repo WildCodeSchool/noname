@@ -8,7 +8,8 @@ CREATE TABLE
         email VARCHAR(50) NOT NULL,
         phone_number VARCHAR(20) NOT NULL,
         photo VARCHAR(255) NOT NULL,
-        rating INT DEFAULT 5
+        rating INT DEFAULT 5,
+        is_admin BOOL DEFAULT FALSE
     );
 
 CREATE TABLE
@@ -40,6 +41,14 @@ CREATE TABLE
         CONSTRAINT fk_product_cart FOREIGN KEY (cart_id) REFERENCES cart(id) ON DELETE NO ACTION ON UPDATE NO ACTION
     );
 
+CREATE TABLE
+    category_item (
+        id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+        title VARCHAR(20) NOT NULL,
+        description VARCHAR(100) NOT NULL,
+        photo VARCHAR(255) NOT NULL,
+        logo VARCHAR(255) NOT NULL,
+    )
 INSERT INTO
     `product` (
         `title`,
