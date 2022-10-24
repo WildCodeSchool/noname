@@ -1,10 +1,10 @@
 {##
     Macro for making a page switcher
 
-    @param url Url to go (replace '%page%' with the page to go)
-    @param currentPage The currently selected page
-    @param pageCount The total amount of pages
-    @param pageOffset Number of pages to show around the currently selected
+    url: Url to go (replace '%page%' with the page to go)
+    currentPage: The currently selected page
+    pageCount: The total amount of pages
+    pageOffset: Number of pages to show around the currently selected
 #}
 {% macro pageSwitcher(url, currentPage, pagesCount, pagesOffset = 2) %}
 	{# Array of page number in the offset #}

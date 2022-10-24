@@ -1,3 +1,8 @@
+{#
+    Macro for create a container of product cards
+
+    products: Array of products data
+#}
 {% macro productCardContainer(products) %}
 	<div class="productCardContainer">
 		<div class="products">
@@ -8,30 +13,37 @@
 	</div>
 {% endmacro %}
 
+{#
+    Macro to create a product card
+
+    product: Product data
+#}
 {% macro productCard(product) %}
 	{% from "_macros/ratingStars.html.twig" import ratingStars %}
 
-	<a href="/product?id={{id}}" class="productCard">
-		<div class="image" style="background-image: url({{product.photo}});"></div>
-		<div class="content">
-			<div>
+	<article class="productCard">
+		<a href="/product?id={{product.id}}">
+			<div class="image" style="background-image: url({{product.photo}});"></div>
+			<div class="content">
 				<div>
-					<div class="seller">
-						<p class="label">Vendu par</p>
-						<div class="user">
-							<div class="avatar" style="background-image: url({{product.user_photo}});"></div>
-							<p class="pseudo">
-								{{ product.user_pseudo }}
-							</p>
+					<div>
+						<div class="seller">
+							<p class="label">Vendu par</p>
+							<div class="user">
+								<div class="avatar" style="background-image: url({{product.user_photo}});"></div>
+								<p class="pseudo">
+									{{ product.user_pseudo }}
+								</p>
+							</div>
 						</div>
 					</div>
+					<div>{{ ratingStars(product.user_rating) }}</div>
 				</div>
-				<div>{{ ratingStars(product.user_rating) }}</div>
+				<div>
+					<h2 class="title">{{ product.title }}</h2>
+					<p class="price">{{ product.price ~ " €" }}</p>
+				</div>
 			</div>
-			<div>
-				<h2 class="title">{{ product.title }}</h2>
-				<p class="price">{{ product.price ~ " €" }}</p>
-			</div>
-		</div>
-	</a>
+		</a>
+	</article>
 {% endmacro %}
