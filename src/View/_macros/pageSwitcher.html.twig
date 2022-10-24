@@ -17,8 +17,7 @@
 	{% set pagesToLast = pagesCount - pagesInOffset[(pagesInOffset|length) - 1] - 1 %}
 
 	<div class="pageSwitcherContainer">
-		<div
-			class="pageSwitcher">
+		<nav class="pageSwitcher">
 			{# Previous page #}
 			{% if currentPage > 1 %}
 				<a href="{{ url|replace({"%page%": currentPage - 1}) }}">Prec.</a>
@@ -65,6 +64,6 @@
 			{% if currentPage < pagesCount %}
 				<a href="{{ url|replace({ "%page%": currentPage + 1 }) }}">Suiv.</a>
 			{% endif %}
-		</div>
+		</nav>
 	</div>
 {% endmacro %}
