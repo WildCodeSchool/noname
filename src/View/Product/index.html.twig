@@ -2,8 +2,12 @@
 {% from "_macros/productCard.html.twig" import productCardContainer %}
 {% from "_macros/pageSwitcher.html.twig" import pageSwitcher %}
 
+{% block title %}
+    Page produits - {{ parent() }}
+{% endblock %}
+
 {% block content %}
-	<h1>Page produit</h1>
+	<h1>Page produits</h1>
 	{{ productCardContainer(products) }}
 	{{ pageSwitcher("/products?page=%page%", currentPage, pagesCount) }}
 {% endblock %}
