@@ -46,9 +46,9 @@
     .pageSwitcher > a,
     .pageSwitcher > div {
         font-size: calc(100vw / 40);
-        margin: calc(100vw / 75);
+        margin: calc(100vw / 75) 3px;
         max-width: calc(100vw / 5);
-        padding: calc(100vw / 75);
+        padding: calc(100vw / 75) 0;
         width: 100%;
     }
 }
