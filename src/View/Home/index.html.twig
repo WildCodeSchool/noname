@@ -1,5 +1,8 @@
 {% extends 'layout.html.twig' %}
 
+{# {% from "_macros/productCard.html.twig" import productCardContainer %} #}
+
+
 {% block content %}
 	<main>
 		<section class="carouselContainer">
@@ -64,15 +67,17 @@
 		<article>
 			<div class="container home">
 				<h1 class="text-center">Les Derniers Articles Ajoutés</h1>
-				{# {% for item in items| %}
-				        <li><a href="/items/show?id={{ item.id }}">{{ item.id }}. {{ item.title }}</a></li>
-				      {% else %}
-				        <li>Nothing to display</li>
-				      {% endfor %} #}
 
-				{# <p>Find a complete CRUD example on
-				      <a href="/items">/items</a>
-				      page.</p> #}
+
+				{% for item in items %}
+					<li>
+						<a href="/items/show?id={{ item.id }}">{{ item.id }}.
+							{{ item.title }}</a>
+					</li>
+				{% else %}
+					<li>Il n'y a rien a afficher ou la connection à votre Base de donnée à échouée</li>
+				{% endfor %}
+
 			</div>
 		</article>
 	</main>
