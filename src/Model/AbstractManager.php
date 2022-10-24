@@ -35,15 +35,15 @@ abstract class AbstractManager
 
   // Get last row from database.
 
-  public function selectlast(int $limit = 1): array
-  {
-    $query = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC ';
-    if ($limit) {
-      $query .= ' LIMIT ' . $limit;
-    }
+  // public function selectlast(int $limit = 1): array
+  // {
+  //   $query = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC ';
+  //   if ($limit) {
+  //     $query .= ' LIMIT ' . $limit;
+  //   }
 
-    return $this->pdo->query($query)->fetchAll();
-  }
+  //   return $this->pdo->query($query)->fetchAll();
+  // }
 
   /**
    * Get one row from database by ID.

@@ -1,0 +1,70 @@
+{##
+    Macro for making a page switcher
+
+    url: Url to go (replace '%page%' with the page to go)
+    currentPage: The currently selected page
+    pageCount: The total amount of pages
+    pageOffset: Number of pages to show around the currently selected
+#}
+{% macro pageSwitcher(url, currentPage, pagesCount, pagesOffset = 2) %}
+	{# Array of page number in the offset #}
+	{% set pagesInOffset = range(currentPage - pagesOffset, currentPage + pagesOffset) %}
+
+	{# Count of pages beetween the first and the begining of the offset #}
+	{% set pagesToFirst = pagesInOffset[0] - 2 %}
+
+	{# Count of pages beetween the last page and the end of the offset #}
+	{% set pagesToLast = pagesCount - pagesInOffset[(pagesInOffset|length) - 1] - 1 %}
+
+	<div class="pageSwitcherContainer">
+		<nav
+			class="pageSwitcher">
+			{# Previous page #}
+			{% if currentPage > 1 %}
+				<a href="{{ url|replace({"%page%": currentPage - 1}) }}">Prec.</a>
+			{% endif %}
+
+			{# Go to first page #}
+			{% if pagesToFirst >= 0 %}
+				<a href="{{ url|replace({"%page%": 1}) }}">1</a>
+			{% endif %}
+
+			{# Indicator for pages between first and current #}
+			{% if pagesToFirst > 0 %}
+				<div>
+					<p>---</p>
+				</div>
+			{% endif %}
+
+			{# Current and around pages #}
+			{% for page in pagesInOffset %}
+				{% if page > 0 and page <= pagesCount %}
+					{% if page == currentPage %}
+						<div class="selected">
+							<p>{{ currentPage }}</p>
+						</div>
+					{% else %}
+						<a href="{{ url|replace({ "%page%": page }) }}">{{ page }}</a>
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+
+			{# Indicator for pages between last and current #}
+			{% if pagesToLast > 0 %}
+				<div>
+					<p>---</p>
+				</div>
+			{% endif %}
+
+			{# Go to the last page #}
+			{% if pagesToLast >= 0 %}
+				<a href="{{ url|replace({ "%page%": pagesCount}) }}">{{ pagesCount }}</a>
+			{% endif %}
+
+			{# Next page #}
+			{% if currentPage < pagesCount %}
+				<a href="{{ url|replace({ "%page%": currentPage + 1 }) }}">Suiv.</a>
+			{% endif %}
+		</nav>
+	</div>
+{% endmacro %}

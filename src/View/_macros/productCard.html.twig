@@ -1,0 +1,65 @@
+{#
+    Macro for create a container of product cards
+
+    products: Array of products data
+#}
+{% macro productCardContainer(products) %}
+	<div class="productCardContainer">
+		<div class="products">
+			{% for product in products %}
+				{{ _self.productCard(product) }}
+			{% endfor %}
+		</div>
+	</div>
+{% endmacro %}
+
+{#
+    Macro to create a product card
+
+    product: Product data
+#}
+{% macro productCard(product) %}
+	{% from "_macros/ratingStars.html.twig" import ratingStars %}
+
+	<article class="productCard">
+		<a href="/product?id={{product.id}}">
+			<div class="image" style="background-image: url({{ product.photo[0] }});"></div>
+			<div class="content">
+				<div>
+					<div>
+						<div class="seller">
+							<p class="label">Vendu par</p>
+							<div class="user">
+								<div class="avatar" style="background-image: url({{ product.user_photo }});"></div>
+								<p class="pseudo">
+									{{ product.user_pseudo }}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div>{{ ratingStars(product.user_rating) }}</div>
+				</div>
+				<div>
+					<h2 class="title">{{ product.title }}</h2>
+					<p class="price">{{ product.price ~ " €" }}</p>
+				</div>
+			</div>
+		</a>
+	</article>
+{% endmacro %}
+
+{#
+    Create a bigger class card for the home page
+
+    Change Name Class
+ #}
+
+{% macro productCardHome(products) %}
+	<div class="productCardHome">
+		<div class="products-home">
+			{% for product in products %}
+				{{ _self.productCard(product) }}
+			{% endfor %}
+		</div>
+	</div>
+{% endmacro %}

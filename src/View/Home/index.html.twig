@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{# {% from "_macros/productCard.html.twig" import productCardContainer %} #}
+{% from "_macros/productCard.html.twig" import productCardHome %}
 
 
 {% block content %}
@@ -65,18 +65,15 @@
 			</div>
 		</section>
 		<article>
-			<div class="container home">
+			<div class="home w-80">
 				<h1 class="text-center">Les Derniers Articles Ajoutés</h1>
 
 
-				{% for item in items %}
-					<li>
-						<a href="/items/show?id={{ item.id }}">{{ item.id }}.
-							{{ item.title }}</a>
-					</li>
+				{% if not (products is empty) %}
+					{{ productCardHome(products) }}
 				{% else %}
 					<li>Il n'y a rien a afficher ou la connection à votre Base de donnée à échouée</li>
-				{% endfor %}
+				{% endif %}
 
 			</div>
 		</article>
