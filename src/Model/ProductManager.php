@@ -5,6 +5,10 @@ namespace App\Model;
 class ProductManager extends AbstractManager
 {
     public const TABLE = "product";
+
+    /**
+     * Default amount of products per pages
+     */
     public const PER_PAGE = 12;
 
     /**
@@ -34,9 +38,11 @@ class ProductManager extends AbstractManager
         $orderBy = 'date',
         $direction = "DESC"
     ): array {
+        // Get the offset & count pages
         $offset = ($page - 1) * $limit;
         $pagesCount = ceil($this->pdo->query("SELECT COUNT(*) as count FROM product")->fetch()["count"] / $limit);
 
+        // Select products
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
         if ($orderBy) {
