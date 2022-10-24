@@ -21,7 +21,7 @@
     box-shadow: var(--shadowColor) 0 5px 5px;
     display: flex;
     margin: 1rem;
-    transition: ease-out 250ms;
+    transition: box-shadow ease-out 250ms, transform ease-out 250ms;
     flex-flow: column nowrap;
     overflow: clip;
     width: 20rem;
@@ -32,13 +32,11 @@
     box-shadow: var(--shadowColor) 0 8px 10px;
     cursor: pointer;
     transform: scale(1.025);
-    transition: ease-out 250ms;
 }
 
 .productCard:active {
     box-shadow: var(--shadowColor) 0 2px 2px;
     transform: scale(0.975);
-    transition: ease-out 250ms;
 }
 
 .productCard a {
@@ -51,13 +49,12 @@
     background-position: center;
     background-repeat: no-repeat;
     height: 15rem;
-    transition: ease-out 250ms;
+    transition: background-size ease-out 250ms;
     width: 100%;
 }
 
 .productCard:hover .image {
     background-size: 110%;
-    transition: ease-out 250ms;
 }
 
 .productCard .image::before {
