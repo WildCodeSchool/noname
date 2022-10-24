@@ -50,8 +50,14 @@ class ProductManager extends AbstractManager
         }
         $query .= " LIMIT " . $offset . ", " . $limit;
 
+        $products = $this->pdo->query($query)->fetchAll();
+
+        foreach ($products as &$product) {
+            $product["photo"] = json_decode($product["photo"], false);
+        }
+
         return [
-            "products" => $this->pdo->query($query)->fetchAll(),
+            "products" => $products,
             "currentPage" => $page,
             "pagesCount" => $pagesCount
         ];

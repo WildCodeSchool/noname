@@ -1,0 +1,45 @@
+.btn-primary-banner {
+  display: block;
+  position: absolute;
+  bottom: 30%;
+  right: 12%;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  padding: 8px;
+  color: #fff;
+  text-align: center;
+  background: 0 0;
+  border: 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background-color: #000000;
+}
+
+
+.btn-primary-banner:hover {
+  background-color: white;
+  color: #000000;
+}
+
+
+
+.carousel-control-next, .carousel-control-prev {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  height: 10%;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  background: 0 0;
+  border: 0;
+  opacity: .5;
+  transition: opacity .15s ease;
+}

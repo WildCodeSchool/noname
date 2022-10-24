@@ -23,14 +23,14 @@
 
 	<article class="productCard">
 		<a href="/product?id={{product.id}}">
-			<div class="image" style="background-image: url({{product.photo}});"></div>
+			<div class="image" style="background-image: url({{ product.photo[0] }});"></div>
 			<div class="content">
 				<div>
 					<div>
 						<div class="seller">
 							<p class="label">Vendu par</p>
 							<div class="user">
-								<div class="avatar" style="background-image: url({{product.user_photo}});"></div>
+								<div class="avatar" style="background-image: url({{ product.user_photo }});"></div>
 								<p class="pseudo">
 									{{ product.user_pseudo }}
 								</p>

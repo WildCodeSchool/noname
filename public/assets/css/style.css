@@ -1,3 +1,5 @@
+@import url("button.css");
+@import url("home.css");
 @import url("pageSwitcher.css");
 @import url("productCard.css");
 @import url("ratingStars.css");
@@ -13,4 +15,18 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    color: #000000;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
 }

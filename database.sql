@@ -1,3 +1,5 @@
+-- Active: 1665583164957@@127.0.0.1@3306@wildsupply
+
 CREATE TABLE
     user (
         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -22,17 +24,27 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    category_item (
+        id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+        title VARCHAR(20) NOT NULL,
+        description VARCHAR(100) NOT NULL,
+        photo VARCHAR(255),
+        logo VARCHAR(255)
+    );
+
+CREATE TABLE
     product (
         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
         title VARCHAR(20) NOT NULL,
         price INT NOT NULL,
         description TEXT NOT NULL,
-        photo VARCHAR(255) NOT NULL,
+        photo JSON NOT NULL,
         status VARCHAR(50) DEFAULT 'en vente',
-        material VARCHAR(50),
-        category_item VARCHAR(50),
-        category_room VARCHAR(50),
-        color VARCHAR(50),
+        material JSON NOT NULL,
+        category_item_id INT NOT NULL,
+        CONSTRAINT fk_product_category_item FOREIGN KEY (category_item_id) REFERENCES category_item(id),
+        category_room JSON NOT NULL,
+        color JSON NOT NULL,
         `date` DATETIME DEFAULT NOW(),
         `condition` VARCHAR(20),
         user_id INT NOT NULL,
@@ -41,14 +53,7 @@ CREATE TABLE
         CONSTRAINT fk_product_cart FOREIGN KEY (cart_id) REFERENCES cart(id) ON DELETE NO ACTION ON UPDATE NO ACTION
     );
 
-CREATE TABLE
-    category_item (
-        id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-        title VARCHAR(20) NOT NULL,
-        description VARCHAR(100) NOT NULL,
-        photo VARCHAR(255) NOT NULL,
-        logo VARCHAR(255) NOT NULL
-    );
+
 
 INSERT INTO
     `user`(
@@ -95,12 +100,41 @@ VALUES (
     );
 
 INSERT INTO
+    `category_item` (
+        `title`,
+        `description`,
+        `photo`,
+        `logo`
+    )
+VALUES (
+        "Ameublement",
+        "Votre meuble n'a plus son utilité , Vendez le",
+        "../public/assets/images/ameublement1.jpg",
+        "../public/assets/images/ameublement2.png"
+    ), (
+        "Décoration",
+        "Vous recherchez une décoration unique .",
+        "../public/assets/images/deco1.jpg",
+        "../public/assets/images/deco2.png"
+    ), (
+        "Luminaires",
+        "Eclairez votre habitation pour mettre en valeur votre décoration.",
+        "../public/assets/images/luminaire1.jpg",
+        "../public/assets/images/luminaire2.png"
+    ), (
+        "Electromenager",
+        "Un soucis de four. Changez le !",
+        "../public/assets/images/electromenager1.jpg",
+        "../public/assets/images/electromenager2.png"
+    );
+
+INSERT INTO
     `product` (
         `title`,
         `price`,
         `photo`,
         `material`,
-        `category_item`,
+        `category_item_id`,
         `category_room`,
         `color`,
         `condition`,
@@ -110,20 +144,20 @@ INSERT INTO
 VALUES (
         'chaise en bois',
         50,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         1,
         "super objet qui a gardé tout son charme"
     ), (
         'lustre cristal',
         200,
-        'https://cdn.pixabay.com/photo/2015/11/20/15/20/crystal-chandelier-from-the-czech-republic-1053325_960_720.jpg',
-        'verre',
-        'luminaire',
+        '["https://cdn.pixabay.com/photo/2015/11/20/15/20/crystal-chandelier-from-the-czech-republic-1053325_960_720.jpg"]',
+        '["verre"]',
+        3,
         '["salon","salle à manger"]',
         '["#B09676","#FFFFFF"]',
         'neuf',
@@ -132,53 +166,53 @@ VALUES (
     ), (
         'chaise en bois',
         100,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         2,
         "super objet qui a gardé tout son charme"
     ), (
         'chaise en bois',
         100,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         3,
         "super objet qui a gardé tout son charme"
     ), (
         'chaise en bois',
         100,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         4,
         "super objet qui a gardé tout son charme"
     ), (
         'chaise en bois',
         100,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         1,
         "super objet qui a gardé tout son charme"
     ), (
         'lustre cristal',
         110,
-        'https://cdn.pixabay.com/photo/2015/11/20/15/20/crystal-chandelier-from-the-czech-republic-1053325_960_720.jpg',
+        '["https://cdn.pixabay.com/photo/2015/11/20/15/20/crystal-chandelier-from-the-czech-republic-1053325_960_720.jpg"]',
         '["verre","métal"]',
-        'luminaire',
+        3,
         '["salon","salle à manger"]',
         '["#B09676","#FFFFFF"]',
         'neuf',
@@ -187,75 +221,75 @@ VALUES (
     ), (
         'chaise en tissus',
         60,
-        'https://cdn.pixabay.com/photo/2017/09/27/02/47/throne-2790789_960_720.png',
-        'tissus',
-        'ameublement',
+        '["https://cdn.pixabay.com/photo/2017/09/27/02/47/throne-2790789_960_720.png"]',
+        '["tissu"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         3,
         "super objet qui a gardé tout son charme"
     ), (
         'chaise en bois',
         50,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         2,
         "super objet qui a gardé tout son charme"
     ), (
         'chaise en bois',
         50,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         1,
         "super objet qui a gardé tout son charme"
     ), (
         'chaise en bois',
         50,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         4,
         "super objet qui a gardé tout son charme"
     ), (
         'chaise en bois',
         50,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         2,
         "super objet qui a gardé tout son charme"
     ), (
         'chaise en bois',
         50,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         4,
         "super objet qui a gardé tout son charme"
     ), (
         'lustre cristal',
         180,
-        'https://cdn.pixabay.com/photo/2015/11/20/15/20/crystal-chandelier-from-the-czech-republic-1053325_960_720.jpg',
+        '["https://cdn.pixabay.com/photo/2015/11/20/15/20/crystal-chandelier-from-the-czech-republic-1053325_960_720.jpg"]',
         '["verre","métal"]',
-        'luminaire',
+        3,
         '["salon","salle à manger"]',
         '["#B09676","#FFFFFF"]',
         'neuf',
@@ -264,22 +298,22 @@ VALUES (
     ), (
         'chaise en bois',
         50,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         4,
         "super objet qui a gardé tout son charme"
     ), (
         'chaise en bois',
         50,
-        'https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'bois',
-        'ameublement',
+        '["https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]',
+        '["bois"]',
+        1,
         '["bureau","salle à manger"]',
-        '#5E370B',
+        '["#5E370B"]',
         'correct',
         2,
         "super objet qui a gardé tout son charme"
