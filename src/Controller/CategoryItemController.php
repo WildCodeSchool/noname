@@ -8,11 +8,30 @@ class CategoryItemController extends AbstractController
 {
 
 
-  public function index(): string
+  public function index(): string|null
   {
     $categoryItemManager = new CategoryItemManager();
-    $categoriesItems = $categoryItemManager->selectAll('title');
+    $categoriesItems = $categoryItemManager->selectAll('id');
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $_POST['title'] =  ucfirst($_POST['title']);
+      $_POST['description'] = ucfirst($_POST['description']);
+      // clean $_POST data
+      $categoryItem = array_map('trim', $_POST);
 
+      // TODO validations (length, format...)
+      $errors = $this->checkdata($categoryItem);
+
+
+      // if validation is ok, insert and redirection
+      if (!empty($errors)) {
+        return $this->twig->render('CategoryItem/index.html.twig', ["errors" => $errors, "categoriesItems" => $categoriesItems]);
+      } else {
+        $categoryItemManager = new CategoryItemManager();
+        $categoryItemManager->insert($categoryItem);
+        header('Location:/categories_items');
+        return null;
+      }
+    }
     return $this->twig->render('CategoryItem/index.html.twig', ['categoriesItems' => $categoriesItems]);
   }
 
@@ -29,31 +48,5 @@ class CategoryItemController extends AbstractController
       $errors['description'] .= "La description doit comporter un minimum de 4 caractères et ne pas dépasser 100 caractères";
 
     return $errors;
-  }
-
-  public function add(): ?string
-  {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $_POST['title'] =  ucfirst($_POST['title']);
-      $_POST['description'] = ucfirst($_POST['description']);
-
-      // clean $_POST data
-      $categoryItem = array_map('trim', $_POST);
-
-      // TODO validations (length, format...)
-      $errors = $this->checkdata($categoryItem);
-
-
-      // if validation is ok, insert and redirection
-      if (!empty($errors)) {
-        return $this->twig->render('CategoryItem/add.html.twig', ["errors" => $errors]);
-      } else {
-        $categoryItemManager = new CategoryItemManager();
-        $categoryItemManager->insert($categoryItem);
-        header('Location:/categories_items');
-        return null;
-      }
-    }
-    return $this->twig->render('CategoryItem/add.html.twig');
   }
 }

@@ -1,0 +1,24 @@
+.card-category{
+  height: 281px;
+  width: 100%;
+  background: center/cover;
+  color: #fff;
+  position: relative;
+  margin: auto;
+}
+
+.text-card{
+  position: absolute;
+  bottom: 8%;
+  width: 100%;
+}
+
+.text-card >*{
+  text-align: center;
+}
+
+.cardsCarousel {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  gap: 10px;
+}

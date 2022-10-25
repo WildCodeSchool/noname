@@ -1,20 +1,30 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<div class="container">
 	<h1 class="text-center">Toutes les Catégories</h1>
-	<ul>
-		{% for categoryItem in categoriesItems %}
-			{# <div class="card-category" style="background-image: url('{{categoryItem.photo}}');"> #}
-			<li>
-				{{ categoryItem.id }}.
-				{{ categoryItem.title }}
-			</li>
-			Description:
-			{{ categoryItem.description}}
-			{# </div> #}
-		{% else %}
-			<li>Nothing to display</li>
-		{% endfor %}
-	</ul>
-	<a href="/categories_items/add">Ajouter</a>
+
+      <form action="" class="cardsCarousel">
+        {% for categoryItem in categoriesItems %}
+        <label class="label">
+        <input class="checkbox" type="checkbox" name="category" value="{{categoryItem.id}}">
+        <span class="label">
+
+          <div class="card-category" style="background-image: url('{{categoryItem.photo}}');">
+            <p>{{ categoryItem.id }}.</p>
+            <div class="text-card">
+              <h3>{{ categoryItem.title }}</h3>
+              <p>{{ categoryItem.description}}</p>
+            </div>
+          </div>
+
+        </span>
+        </label>
+        {% else %}
+          <li>Nothing to display</li>
+        {% endfor %}
+      </form>
+
+    {% include 'CategoryItem/add.html.twig' %}
+</div>
 {% endblock %}
