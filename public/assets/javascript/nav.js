@@ -1,3 +1,5 @@
+/*
+
 // Burger button
 function myFunction(x) {
     x.classList.toggle("change");
@@ -8,7 +10,7 @@ const searchBox = document.querySelector("search-box");
 const burgerClick = document.querySelector("container");
 
 
-//window.onload = function () {
+/* //window.onload = function () {
 burgerClick.onclick = function myFunction() {
     if (searchBox.style.visibility !== "none") {
         searchBox.style.visibility = "none";
@@ -16,7 +18,7 @@ burgerClick.onclick = function myFunction() {
         searchBox.style.visibility = "hidden";
     }
 };
-//}; */
+//}; 
 
 function searchHide() {
 
@@ -34,4 +36,14 @@ function searchHide() {
         x.style.visibility = "visible";
     }
 
-}
+} */
+
+/*2nd burger attempt */
+
+const menu_btn = document.querySelector('.hamburger');
+const mobile_menu = document.querySelector('.mobile-nav');
+
+menu_btn.addEventListener('click', function () {
+    menu_btn.classList.toggle('is-active');
+    mobile_menu.classList.toggle('is-active');
+});

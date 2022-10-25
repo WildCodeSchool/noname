@@ -22,7 +22,7 @@
 			<div class="search-box" id="search">
 				<img src="../assets/images/magglass.png">
 				<input type="text" class="input-search" placeholder="Type to Search...">
-				<button>Submit</button>
+				<button class="submit">Submit</button>
 			</div>
 			<div class="menu" id="icons" onclick="searchHide();">
 				<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
@@ -30,12 +30,22 @@
 				<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
 				<a href="" {# Enter link here #}><img src="../assets/images/compte.png"></a>
 			</div>
-			<!-- Burger button -->
-			<button class="container" onclick="myFunction(this);searchHide();">
-				<div class="bar1"></div>
-				<div class="bar2"></div>
-				<div class="bar3"></div>
+			<!-- Burger button <button class="container" onclick="myFunction(this);searchHide();">
+																														<div class="bar1"></div>
+																														<div class="bar2"></div>
+																														<div class="bar3"></div></button>-->
+
+
+			<!-- Second try -->
+			<button class="hamburger">
+				<div class="bar"></div>
 			</button>
+		</nav>
+		<nav class="mobile-nav">
+			<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
+			<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
+			<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
+			<a href="" {# Enter link here #}><img src="../assets/images/compte.png"></a>
 		</nav>
 
 		<div class="quick-access">
@@ -48,8 +58,7 @@
 		</div>
 
 		<body>
-			{% block content %}{% endblock %}
-			{% block javascript %}{% endblock %}
+			{# {% block content %}{% endblock %} {% block javascript %}{% endblock %} #}
 		</body>
 		<script src="../assets/javascript/nav.js"></script>
 	</html>
