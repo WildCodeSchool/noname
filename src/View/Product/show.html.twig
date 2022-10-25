@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}<link rel="stylesheet" href="../assets/css/show.css">{% endblock %}
+
+{% block content %}
+
+<section id="product_page">
+        <article class="product_carousel">
+            <div class="product_image" id="product_imgs">
+            </div>
+                <button id="right" class="product_btn">></button>
+                <button id="left" class="product_btn"><</button>
+        </article>
+
+        <article class="product_description">
+            <div>
+                <h1>Nom du produit</h1>
+                <p>couleur, matiere</p>
+                <p>type, piece</p>
+                <p>etat</p>
+                <p>description</p>
+            </div>
+                <button>Ajouter au panier</button>
+        </article>
+
+        <article class="product_seller">
+            <div>
+                <p></p>
+                <button></button>
+            </div>
+        </article>
+
+        <article class="product_map">
+            <div>
+                comment on insère une map?
+            </div>
+        </article>
+    </section>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="assets/js/show.js"></script>
+{% endblock %}
