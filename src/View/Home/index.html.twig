@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% from "_macros/productCard.html.twig" import productCardHome %}
+{% from "_macros/productCard.html.twig" import productCardContainer %}
 
 
 {% block content %}
@@ -70,7 +70,7 @@
 
 
 				{% if not (products is empty) %}
-					{{ productCardHome(products) }}
+					{{ productCardContainer(products) }}
 				{% else %}
 					<li>Il n'y a rien a afficher ou la connection à votre Base de donnée à échouée</li>
 				{% endif %}

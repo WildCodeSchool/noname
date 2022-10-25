@@ -47,19 +47,3 @@
 		</a>
 	</article>
 {% endmacro %}
-
-{#
-    Create a bigger class card for the home page
-
-    Change Name Class
- #}
-
-{% macro productCardHome(products) %}
-	<div class="productCardHome">
-		<div class="products-home">
-			{% for product in products %}
-				{{ _self.productCard(product) }}
-			{% endfor %}
-		</div>
-	</div>
-{% endmacro %}

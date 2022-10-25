@@ -34,29 +34,3 @@
 ul {
   padding: 0;
 }
-
-.productCardHome>.products-home {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  margin: auto;
-  padding: 1rem;
-}
-
-.products-home>.productCard .image {
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 25rem;
-  transition: background-size ease-out 250ms;
-  width: 100%;
-}
-
-.products-home>.productCard {
-  width: 31rem;
-}
-
-.home {
-  margin: auto;
-  width: 75%;
-}
