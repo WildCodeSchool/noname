@@ -10,62 +10,62 @@ use PDO;
  */
 abstract class AbstractManager
 {
-  protected PDO $pdo;
+    protected PDO $pdo;
 
-  public const TABLE = '';
+    public const TABLE = '';
 
-  public function __construct()
-  {
-    $connection = new Connection();
-    $this->pdo = $connection->getConnection();
-  }
-
-  /**
-   * Get all row from database.
-   */
-  public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
-  {
-    $query = 'SELECT * FROM ' . static::TABLE;
-    if ($orderBy) {
-      $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+    public function __construct()
+    {
+        $connection = new Connection();
+        $this->pdo = $connection->getConnection();
     }
 
-    return $this->pdo->query($query)->fetchAll();
-  }
+    /**
+     * Get all row from database.
+     */
+    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE;
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
 
-  // Get last row from database.
+        return $this->pdo->query($query)->fetchAll();
+    }
 
-  // public function selectlast(int $limit = 1): array
-  // {
-  //   $query = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC ';
-  //   if ($limit) {
-  //     $query .= ' LIMIT ' . $limit;
-  //   }
+    // Get last row from database.
 
-  //   return $this->pdo->query($query)->fetchAll();
-  // }
+    // public function selectlast(int $limit = 1): array
+    // {
+    //   $query = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC ';
+    //   if ($limit) {
+    //     $query .= ' LIMIT ' . $limit;
+    //   }
 
-  /**
-   * Get one row from database by ID.
-   */
-  public function selectOneById(int $id): array|false
-  {
-    // prepared request
-    $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE id=:id");
-    $statement->bindValue('id', $id, \PDO::PARAM_INT);
-    $statement->execute();
+    //   return $this->pdo->query($query)->fetchAll();
+    // }
 
-    return $statement->fetch();
-  }
+    /**
+     * Get one row from database by ID.
+     */
+    public function selectOneById(int $id): array|false
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
 
-  /**
-   * Delete row form an ID
-   */
-  public function delete(int $id): void
-  {
-    // prepared request
-    $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
-    $statement->bindValue('id', $id, \PDO::PARAM_INT);
-    $statement->execute();
-  }
+        return $statement->fetch();
+    }
+
+    /**
+     * Delete row form an ID
+     */
+    public function delete(int $id): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
