@@ -1,0 +1,120 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<form action="" method="post">
+            <h3>Titre</h3>
+            <div class="title-offer">
+                <label for="title"></label>
+                <input id="title" name="title" type="text">
+            </div>
+            <h3>Prix</h3>
+            <div class="price-offer">
+                <label for="price"></label>
+                <input id="price" name="price" type="number">
+            </div>
+            <h3>Description</h3>
+            <div class="description-offer">
+                <label for="description"></label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+            <h3>Matière</h3>
+            <div class="icone-matter">
+                <img src="images\icone_bois.png" alt="icone bois">
+                <img src="images\icone_metal.png" alt="icone metal">
+                <img src="images\icone_pvc.png" alt="icone pvc">
+                <img src="images\icone_tissu.png" alt="icone tissu">
+                <img src="images\icone_verre.png" alt="icone verre">
+            </div>
+            <div class="icone-name matter">
+                <p> Bois </p>
+                <p> Metal</p>
+                <p> PVC</p>
+                <p> Tissu</p>
+                <p> Verre</p>
+            </div>
+            <div class="checkbox-matter">
+                <label for="wood"><input id="wood" type="checkbox" name="wood" value="wood"></label>
+                <label for="metal"><input id="metal" type="checkbox" name="metal" value="metal"></label>
+                <label for="PVC"><input id="PVC" type="checkbox" name="PVC" value="PVC"></label>
+                <label for="fabric"><input id="fabric" type="checkbox" name="fabric" value="fabric"></label>
+                <label for="glass"><input id="glass" type="checkbox" name="glass" value="glass"></label>
+                <!-- <label for="other"><input id="other" type="checkbox" name="other" value="other"></label> -->
+            </div>
+
+            <h3>Couleur</h3>
+            <div class="checkbox-color">
+                <label for="green"><input id="green" type="checkbox" name="green" value="green">Vert</label>
+                <label for="red"><input id="red" type="checkbox" name="red" value="red">Rouge</label>
+                <label for="orange"><input id="orange" type="checkbox" name="orange" value="orange">Orange</label>
+                <label for="pink"><input id="pink" type="checkbox" name="pink" value="pink">Rose</label>
+                <label for="blue"><input id="blue" type="checkbox" name="blue" value="blue">Bleu</label>
+                <label for="yellow"><input id="yellow" type="checkbox" name="yellow" value="yellow">Jaune</label>
+                <label for="purple"><input id="purple" type="checkbox" name="purple" value="purple">Violet</label>
+                <label for="black"><input id="black" type="checkbox" name="black" value="black">Noir</label>
+                <label for="white"><input id="white" type="checkbox" name="white" value="white">Blanc</label>
+            </div>
+            <h3>Catégorie</h3>
+            <div class="icone-category">
+                <img src="images\icone_meuble.png" alt="icone meuble">
+                <img src="images\icone_liminaire.png" alt="icone luminaire">
+                <img src="images\icone_decoration.png" alt="icone decoration">
+                <img src="images\icone_electromenager.png" alt="icone electromenager">
+            </div>
+            <div class="icone-name category">
+                <p> Meuble </p>
+                <p> Luminaire</p>
+                <p> Décoration</p>
+                <p> Electroméger</p>
+            </div>
+            <div class="category">
+                <input type="radio" name="category" value="furniture">
+                <input type="radio" name="category" value="lamp">
+                <input type="radio" name="category" value="decoration">
+                <input type="radio" name="category" value="home_appliance">
+            </div>
+
+            <h3>Catégorie de pièce</h3>
+            <div class="icone-room">
+                <img src="images\icone_bureau.png" alt="icone bureau">
+                <img src="images\icone_cuisine.png" alt="icone cuisine">
+                <img src="images\icone_chambre.png" alt="icone chambre">
+                <img src="images\icone_salle_a_manger.png" alt="icone salle a manger">
+                <img src="images\icone_salon.png" alt="icone salon">
+                <img src="images\icone_salle_de_bain.png" alt="icone salle de bain">
+            </div>
+            <div class="icone-name room">
+                <p> bureau </p>
+                <p> cuisine</p>
+                <p> chambre</p>
+                <p> salle à manger</p>
+                <p> salon</p>
+                <p> salle de bain</p>
+            </div>
+            <div class="checkbox-categoryroom">
+                <label for="desk"><input id="desk" type="checkbox" name="desk" value="desk"></label>
+                <label for="kitchen"><input id="kitchen" type="checkbox" name="kitchen" value="kitchen"></label>
+                <label for="bedroom"><input id="bedroom" type="checkbox" name="bedroom" value="bedroom"></label>
+                <label for="dining-room"><input id="dining-room" type="checkbox" name="dining-room" value="dining-room"></label>
+                <label for="living_room"><input id="living_room" type="checkbox" name="living_room" value="living_room"></label>
+                <label for="bathroom"><input id="bathroom" type="checkbox" name="bathroom" value="bathroom"></label>
+            </div>
+            <h3>Etat</h3>
+            <div class="icone-name state">
+                <p> Neuf </p>
+                <p> Correct</p>
+                <p> Usagé</p>
+            </div>
+            <div class="state">
+                <input type="radio" name="state" value="new">
+                <input type="radio" name="state" value="correct">
+                <input type="radio" name="state" value="used">
+            </div>
+            <h3>Photo</h3>
+            <div class="img">
+                <label for="file">Ajoutez votre photo</label>
+                <input type="file" id="file">
+            </div>
+            <button>Valider</button>
+        </form>
+
+{% endblock content %}
