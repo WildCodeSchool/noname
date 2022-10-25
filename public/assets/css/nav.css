@@ -3,13 +3,14 @@
 * {
     box-sizing: border-box;
     margin: 0 auto;
-    width: auto;
 }
 
 img {
     height: 30px;
     width: 30px;
 }
+
+
 
 
 /* Main bar */
@@ -42,7 +43,7 @@ img {
 .quick-access {
     background-color: #F1F1F1;
     position: relative;
-    width: auto;
+    width: 100%;
     margin: auto;
     box-sizing: border-box;
 }
@@ -88,6 +89,7 @@ ul {
     display: flex;
     justify-content: space-around;
     box-sizing: border-box;
+    margin: auto;
 }
 
 li {
@@ -117,16 +119,23 @@ li:last-child {
     position: relative;
     outline: none;
     border: none;
+    color: #fff;
     background-color: #4981A6;
     border-bottom: black solid 1px;
     height: 30px;
-
 }
+
+.search-box input::placeholder {
+    color: #fff;
+}
+
 
 .search-box img {
     background-color: #4981A6;
     height: 20px;
     width: 20px;
+    margin-top: 8px;
+    margin-right: 5px;
 }
 
 /* Burger button */
