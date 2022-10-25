@@ -1,0 +1,16 @@
+{#
+    Macro for create a rating display with 5 stars
+
+    rating: a number between 1 and 5 who represent the rating
+#}
+{% macro ratingStars(rating) %}
+	<div class="ratingStars">
+		{% for i in range(1, 5) %}
+			{% if rating < i %}
+				<img class="star" src="/assets/svg/star.svg"/>
+			{% else %}
+				<img class="star" src="/assets/svg/starChecked.svg"/>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endmacro %}
