@@ -20,7 +20,8 @@
 
 .btn-primary-banner:hover {
   background-color: white;
-  color: #000000;
+  color: var(--blueColor);
+  box-shadow: var(--blueColor) 0 8px 10px;
 }
 
 
