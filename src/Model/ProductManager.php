@@ -65,6 +65,7 @@ class ProductManager extends AbstractManager
 
     public function selectlast(int $limit = 1): array
     {
+        // Select last products
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id ORDER BY p.id DESC";
         if ($limit) {

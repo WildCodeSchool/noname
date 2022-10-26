@@ -34,3 +34,8 @@
 ul {
   padding: 0;
 }
+
+.img-home {
+  max-height: 799px;
+  width: 100%;
+}

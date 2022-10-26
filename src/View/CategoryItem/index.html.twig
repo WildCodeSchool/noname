@@ -1,30 +1,33 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<div class="container">
-	<h1 class="text-center">Toutes les Catégories</h1>
+	<div class="container">
+		<h1 class="text-center">Toutes les Catégories</h1>
 
-      <form action="" class="cardsCarousel">
-        {% for categoryItem in categoriesItems %}
-        <label class="label">
-        <input class="checkbox" type="checkbox" name="category" value="{{categoryItem.id}}">
-        <span class="label">
-
-          <div class="card-category" style="background-image: url('{{categoryItem.photo}}');">
-            <p>{{ categoryItem.id }}.</p>
-            <div class="text-card">
-              <h3>{{ categoryItem.title }}</h3>
-              <p>{{ categoryItem.description}}</p>
-            </div>
-          </div>
-
-        </span>
-        </label>
-        {% else %}
-          <li>Nothing to display</li>
-        {% endfor %}
-      </form>
-
-    {% include 'CategoryItem/add.html.twig' %}
-</div>
+		<form method="post" class="bg-light border rounded p-5">
+			<input type="hidden" name="type" value="select">
+			<div class="cardsCarousel">
+				{% for categoryItem in categoriesItems %}
+					<label class="label-category">
+						<input class="checkbox-category" type="checkbox" name="category[]" value="{{categoryItem.title}}">
+						<div class="label-category">
+							<div class="card-category" style="background-image: url('{{categoryItem.photo}}');">
+								<div class="text-card">
+									<h3>{{ categoryItem.title }}</h3>
+									<p>{{ categoryItem.description}}</p>
+								</div>
+							</div>
+						</div>
+					</label>
+				{% else %}
+					<li>Nothing to display</li>
+				{% endfor %}
+			</div>
+			<section class="buttons-form">
+				<button type="submit" class="btn">Valider</button>
+			</section>
+      <p class="errors text-center">{{errors2[0]}}</p>
+		</form>
+		{% include 'CategoryItem/add.html.twig' %}
+	</div>
 {% endblock %}

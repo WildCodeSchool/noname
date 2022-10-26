@@ -23,4 +23,30 @@ class CategoryItemManager extends AbstractManager
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
+
+    // Select all categories in carousel from home page
+    public function selectAllInCarousel(): array
+    {
+        $query = "SELECT * FROM " . self::TABLE . " WHERE in_carousel = TRUE";
+        $categories = $this->pdo->query($query)->fetchAll();
+        return $categories;
+    }
+
+    // Clean categories in carousel from home page
+    public function updateNotIncarousel(): void
+    {
+        $query = "UPDATE " . self::TABLE . " SET in_carousel = FALSE";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+    }
+
+    // Insert new categories in carousel from home page
+    public function updateIncarousel(array $array): void
+    {
+        foreach ($array as $item) {
+            $query = "UPDATE " . self::TABLE . " SET in_carousel = TRUE where id= " . $item['id'];
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+        }
+    }
 }

@@ -26,31 +26,31 @@
 				</ul>
 				<ul class="carousel-inner">
 					<li class="carousel-item active w-100">
-						<img src="/assets/images/ameublement1.jpg" class="d-block w-100" alt="...">
+						<img src={{categories[0]['photo']}} class="d-block w-100 img-home" alt="...">
 						<div class="carousel-caption d-none d-md-block">
-							<h2>Ameublement</h2>
-							<p>Votre meuble n'a plus son utilité , Vendez le.</p>
+							<h2>{{categories[0]['title']}}</h2>
+							<p>{{categories[0]['description']}}</p>
 						</div>
 					</li>
 					<li class="carousel-item">
-						<img src="/assets/images/deco1.jpg" class="d-block w-100" alt="...">
+						<img src={{categories[1]['photo']}} class="d-block w-100 img-home" alt="...">
 						<div class="carousel-caption d-none d-md-block">
-							<h2>Décoration</h2>
-							<p>Vous recherchez une décoration unique. Retrouvez des objets exclusitifs vendus par notre communauté .</p>
+							<h2>{{categories[1]['title']}}</h2>
+							<p>{{categories[1]['description']}}</p>
 						</div>
 					</li>
 					<li class="carousel-item">
-						<img src="/assets/images/luminaire1.jpg" class="d-block w-100" alt="...">
+						<img src={{categories[2]['photo']}} class="d-block w-100 img-home" alt="...">
 						<div class="carousel-caption d-none d-md-block">
-							<h2>Luminaires</h2>
-							<p>Eclairez votre habitation pour mettre en valeur votre décoration.</p>
+							<h2>{{categories[2]['title']}}</h2>
+							<p>{{categories[2]['description']}}</p>
 						</div>
 					</li>
 					<li class="carousel-item">
-						<img src="/assets/images/electromenager1.jpg" class="d-block w-100" alt="...">
+						<img src={{categories[3]['photo']}} class="d-block w-100 img-home" alt="...">
 						<div class="carousel-caption d-none d-md-block">
-							<h2>Electromenager</h2>
-							<p>Un soucis de four. Changez le !</p>
+							<h2>{{categories[3]['title']}}</h2>
+							<p>{{categories[3]['description']}}</p>
 						</div>
 					</li>
 				</ul>
@@ -64,10 +64,13 @@
 				</button>
 			</div>
 		</section>
+
+    <a href="/categories_items" class="btn btn-primary-categorie">
+				Modifiez vos catégories
+		</a>
 		<article>
 			<div class="home w-80">
 				<h1 class="text-center">Les Derniers Articles Ajoutés</h1>
-
 
 				{% if not (products is empty) %}
 					{{ productCardContainer(products) }}

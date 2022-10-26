@@ -7,6 +7,10 @@
   margin: auto;
 }
 
+.card-category:hover {
+  box-shadow: black 4px 4px 4px;
+}
+
 .text-card{
   position: absolute;
   bottom: 8%;
@@ -20,5 +24,16 @@
 .cardsCarousel {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr;
-  gap: 10px;
+  gap: 15px;
+}
+
+/* formulaire check */
+
+.checkbox-category:checked + .label-category{
+  box-shadow: var(--blueColor) 8px 8px 8px;
+  /* display: block; */
+}
+
+.checkbox-category {
+  display: none;
 }

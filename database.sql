@@ -29,7 +29,7 @@ CREATE TABLE
         title VARCHAR(20) NOT NULL,
         description VARCHAR(100) NOT NULL,
         photo VARCHAR(255),
-        logo VARCHAR(255)
+        logo VARCHAR(255),
     );
 
 CREATE TABLE
@@ -317,3 +317,23 @@ VALUES (
         2,
         "super objet qui a gardé tout son charme"
     );
+
+    ALTER TABLE `category_item` ADD in_carousel BOOL DEFAULT FALSE;
+
+    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 1;
+    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 2;
+    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 3;
+    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 4;
+    INSERT INTO
+    `category_item` (
+        `title`,
+        `description`,
+        `photo`,
+        `logo`
+    )
+    VALUES (
+        "New Catégorie",
+        "Votre meuble n'a plus son utilité , Vendez le",
+        "https://cdn.pixabay.com/photo/2015/04/10/17/03/pots-716579_960_720.jpg",
+        "../public/assets/images/ameublement2.png"
+    )

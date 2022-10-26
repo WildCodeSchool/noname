@@ -27,6 +27,7 @@
 .buttons-form .btn{
   background-color: var(--blueColor);
   color: #fff;
+  margin-top: 32px;
 }
 
 .buttons-form .btn:hover{
@@ -34,6 +35,6 @@
   color: var(--blueColor);
   border: solid 1px var(--blueColor);
 }
-.border {
-  border: solid 0.5px var(--lessblueColor)!important;
+.border-new {
+  border: solid 0.5px var(--lessblueColor);
 }
