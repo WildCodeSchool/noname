@@ -7,32 +7,41 @@
 <section id="product_page">
         <article class="product_carousel">
             <div class="product_image" id="product_imgs">
+                {% for photo in product.photo %}
+                    <div class="photo" style="background-image:url({{photo}});"></div>
+                {% endfor %}
             </div>
                 <button id="right" class="product_btn">></button>
                 <button id="left" class="product_btn"><</button>
         </article>
 
-        <article class="product_description">
+        <article class="product_Info">
             <div>
                 <h1>Nom du produit</h1>
-                <p>couleur, matiere</p>
-                <p>type, piece</p>
-                <p>etat</p>
-                <p>description</p>
+                <div class="product_ColorMatter"><span>Couleur:</span> <p class="pastilleColor"></p><span>Matière:</span> Bois </br><img src="planche.png" alt=""></div>
+                <div class="product_state"><span>État:</span> quasi neuf</div>
+                <div class="product_description">   blablablablabla blablabla blablablabla blablabla blablabla blabla blablablabla blablabla blablablabla blabla blaElleEstBelleLaChaisebla blabla blabla blabla blablablabla blablabla</div>
+                <div class="product_price"><span>Prix:</span> 8000€</div>
             </div>
-                <button>Ajouter au panier</button>
+        </article>
+
+        <article class="product_description2">
+                <div class="product_type"><span>Type: </span>meuble</br> <img src="meuble.png" alt=""></div>
+                <div class="product_room"><span>Piece:</span> Salle à manger</br> <img src="livingRoom.png" alt=""></div>
+        </article>
+
+        <article class="product_pricAaddButton">
+                <button class="product_addButton">Ajouter au panier</button>
         </article>
 
         <article class="product_seller">
-            <div>
-                <p></p>
-                <button></button>
-            </div>
+            <div class="product_seller_name"><span>Vendu par: </span>Michel</div>
+            <div class="product_seller_location"><span>Habite:</span> FortFortLointain</div>
         </article>
 
         <article class="product_map">
             <div>
-                comment on insère une map?
+                <img src="map.jpg" alt="map">
             </div>
         </article>
     </section>

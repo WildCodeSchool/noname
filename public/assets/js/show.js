@@ -1,20 +1,11 @@
-let nbrImage = 3;
-positionImage = 0;
-
-showHidden();
-
-container = document.getElementById("product_imgs");
-left = document.getElementById("left");
-right = document.getElementById("right");
+let container = document.getElementById("product_imgs");
+let nbrImage = container.querySelectorAll('div').length;
+let positionImage = 0;
+let left = document.getElementById("left");
+let right = document.getElementById("right");
 container.style.width = (500 * nbrImage) + "px";
 
-for (i = 1; i <= nbrImage; i++) {
-    div = document.createElement("div");
-    div.className = "photo";
-    div.style.backgroundImage = "url('image" + i + ".jpg')";//images avec le même nom mais numérotées
-    container.appendChild(div);
-}
-
+showHidden();
 
 left.onclick = function () {
     if (positionImage > 0)
@@ -31,11 +22,11 @@ right.onclick = function () {
 }
 
 function showHidden() {
-    if (positionImage == 0)
+    if (positionImage == 0) {
         left.style.visibility = "hidden";
-    else left.style.visibility = "visible";
+    } else left.style.visibility = "visible";
 
-    if (positionImage == (nbrImage - 1))
+    if (positionImage == (nbrImage - 1)) {
         right.style.visibility = "hidden";
-    else right.style.visibility = "visible";
+    } else right.style.visibility = "visible";
 }

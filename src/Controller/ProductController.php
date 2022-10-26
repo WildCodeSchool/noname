@@ -39,4 +39,14 @@ class ProductController extends AbstractController
             "pagesCount" => $pageData["pagesCount"]
         ]);
     }
+
+    public function show(int $id): string
+    {
+        $productManager = new productManager();
+        $product = $productManager->selectOneById($id);
+
+        $product['photo'] = json_decode($product['photo'], false);
+
+        return $this->twig->render('Product/show.html.twig', ['product' => $product]);
+    }
 }
