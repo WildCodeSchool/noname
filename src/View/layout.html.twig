@@ -14,51 +14,10 @@
 		<link rel="stylesheet" href="/assets/css/nav.css"> {% block stylesheet %}{% endblock %}
 		</head>
 
-		<nav role='navigation'>
-			<div
-				class="main">
-				<!-- <a href="" {# Enter link here #} > -->
-				<img src="../assets/images/logook.png" class="logo" alt="logo"></a>
-			<div class="search-box" id="search">
-				<img src="../assets/images/magglass.png">
-				<input type="text" class="input-search" placeholder="Type to Search...">
-				<button class="submit">Submit</button>
-			</div>
-			<div class="menu" id="icons" onclick="searchHide();">
-				<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
-				<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
-				<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
-				<a href="" {# Enter link here #}><img src="../assets/images/compte.png"></a>
-			</div>
-			<!-- Burger button <button class="container" onclick="myFunction(this);searchHide();">
-																														<div class="bar1"></div>
-																														<div class="bar2"></div>
-																														<div class="bar3"></div></button>-->
-
-
-			<!-- Second try -->
-			<button class="hamburger">
-				<div class="bar"></div>
-			</button>
-		</nav>
-		<nav class="mobile-nav">
-			<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
-			<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
-			<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
-			<a href="" {# Enter link here #}><img src="../assets/images/compte.png"></a>
-		</nav>
-
-		<div class="quick-access">
-			<ul>
-				<li><a href=""{# Enter link here #}><img src="../assets/images/drawer.png"><p>Meubles</p></a></li>
-				<li><a href=""{# Enter link here #}><img src="../assets/images/lights.png"><p>Luminaires</p></a></li>
-				<li><a href=""{# Enter link here #}><img src="../assets/images/decorations.png"><p>Décorations</p></a></li>
-				<li><a href=""{# Enter link here #}><img src="../assets/images/appliances.png"><p>Électroménager</p></a></li>
-			</ul>
-		</div>
-
 		<body>
-			{# {% block content %}{% endblock %} {% block javascript %}{% endblock %} #}
+			{% include "nav.html.twig" %}
+			{% block content %}{% endblock %}
+			{% block javascript %}{% endblock %}
+			<script src="../assets/javascript/nav.js"></script>
 		</body>
-		<script src="../assets/javascript/nav.js"></script>
 	</html>
