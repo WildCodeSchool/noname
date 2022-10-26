@@ -1,3 +1,32 @@
+@import url("button.css");
+@import url("home.css");
+@import url("pageSwitcher.css");
+@import url("productCard.css");
+@import url("ratingStars.css");
+
+:root {
+    --lightGreyContrastColor: #eeeeee;
+    --productCardBackgroundColor: white;
+    --shadowColor: rgba(0, 0, 0, 0.25);
+    --textColor: black;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    color: rgb(0, 0, 0);
+    color: #000000;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
 }

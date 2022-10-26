@@ -1,18 +1,3 @@
-/*////// Global //////*/
-
-* {
-    box-sizing: border-box;
-}
-
-img {
-    height: 30px;
-    width: 30px;
-}
-
-body {
-    margin: 0 auto;
-}
-
 /*////// Main bar //////*/
 
 .menu {
@@ -20,11 +5,12 @@ body {
     right: 0;
     justify-content: end;
     padding: 5px;
-    margin-top: 5px;
 }
 
 .menu img {
     margin: 0 10px;
+    height: 30px;
+    width: 30px;
 }
 
 .main {
@@ -44,7 +30,6 @@ img .main {
 }
 
 .logo {
-    /*margin-left: -90px;*/
     height: 40px;
     width: 40px;
 }
@@ -68,18 +53,23 @@ img .main {
     width: 1px;
 }
 
-p {
+.quick-access p {
     margin-left: 10px;
     box-sizing: border-box;
 }
 
-ul li {
+.quick-access img {
+    height: 30px;
+    width: 30px;
+}
+
+.quick-access ul li {
     list-style: none;
     text-decoration: none;
     margin: auto;
 }
 
-ul li a {
+.quick-access ul li a {
     color: black;
     text-decoration: none;
     margin-left: auto;
@@ -90,13 +80,13 @@ ul li a {
     box-sizing: border-box;
 }
 
-a:hover {
+.quick-access a:hover {
     color: #4981A6;
     transition: 1s;
 }
 
 
-ul {
+.quick-access ul {
     display: flex;
     justify-content: space-around;
     box-sizing: border-box;
@@ -104,12 +94,12 @@ ul {
     padding-left: 0;
 }
 
-li {
+.quick-access li {
     box-sizing: border-box;
 
 }
 
-li:last-child {
+.quick-access li:last-child {
     border: none;
 }
 
@@ -121,6 +111,9 @@ li:last-child {
     visibility: visible;
 }
 
+div#search.search-box {
+    display: flex;
+}
 
 .search-box input {
     box-sizing: border-box;
@@ -148,12 +141,13 @@ li:last-child {
     margin-left: 5px;
 }
 
-.submit {
+.submit-search {
     margin: auto;
     background-color: white;
     border-radius: 5px;
     margin-left: 5px;
     width: auto;
+    padding: 2px
 }
 
 /*////// Burger Button and actions //////*/
@@ -168,6 +162,7 @@ li:last-child {
     outline: none;
     border: none;
     margin-right: 0;
+    margin-left: 5px;
 }
 
 .hamburger .bar,
@@ -208,6 +203,11 @@ li:last-child {
     transition: 0.4s;
     border: solid 1px white;
     border-radius: 15px;
+}
+
+.mobile-nav img {
+    height: 30px;
+    width: 30px;
 }
 
 .mobile-nav.is-active {
