@@ -247,4 +247,8 @@ div#search.search-box {
     button.hamburger {
         visibility: hidden;
     }
+
+    .mobile-nav {
+        visibility: hidden;
+    }
 }
