@@ -16,6 +16,9 @@ class ProductController extends AbstractController
         // Get page number from the URL
         $page = $_GET["page"] ?? 1;
 
+        // Get search term
+        $search = $_GET["search"] ?? null;
+
         // Check if its an int superior to 1
         if (filter_var($page, FILTER_VALIDATE_INT) !== false) {
             $page = max(1, $page);
@@ -24,12 +27,12 @@ class ProductController extends AbstractController
         }
 
         // Get the data from the page
-        $pageData = (new ProductManager())->selectPageWithUser($page);
+        $pageData = (new ProductManager())->selectPageWithUser($page, search: $search);
 
         // If the requested page is superior to the amount of pages,
         // get the last page available.
         if ($page > $pageData["pagesCount"]) {
-            $pageData = (new ProductManager())->selectPageWithUser($pageData["pagesCount"]);
+            $pageData = (new ProductManager())->selectPageWithUser($pageData["pagesCount"], search: $search);
         }
 
         // Render the view

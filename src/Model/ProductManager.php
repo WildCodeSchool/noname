@@ -30,28 +30,41 @@ class ProductManager extends AbstractManager
      * @param integer $limit
      * @param string $orderBy
      * @param string $direction
+     * @param string $search
      * @return array
      */
     public function selectPageWithUser(
-        $page = 1,
-        $limit = self::PER_PAGE,
-        $orderBy = 'date',
-        $direction = "DESC"
+        int $page = 1,
+        int $limit = self::PER_PAGE,
+        string $orderBy = 'date',
+        string $direction = "DESC",
+        string $search = null
     ): array {
         // Get the offset & count pages
         $offset = ($page - 1) * $limit;
-        $pagesCount = ceil($this->pdo->query("SELECT COUNT(*) as count FROM product")->fetch()["count"] / $limit);
+        $pagesCount = $this->countPages($limit, $search);
 
-        // Select products
+        // Make the query
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
+        if ($search) {
+            $query .= " WHERE title LIKE :search OR description LIKE :search";
+        }
         if ($orderBy) {
             $query .= " ORDER BY " . $orderBy . " " . $direction;
         }
         $query .= " LIMIT " . $offset . ", " . $limit;
 
-        $products = $this->pdo->query($query)->fetchAll();
+        // Prepare the query
+        $statement = $this->pdo->prepare($query);
+        if ($search) {
+            $searchPlaceholder = "%" . $search . "%";
+            $statement->bindParam(":search", $searchPlaceholder, \PDO::PARAM_STR);
+        }
+        $statement->execute();
+        $products = $statement->fetchAll();
 
+        // Decode JSON
         foreach ($products as &$product) {
             $product["photo"] = json_decode($product["photo"], false);
         }
@@ -61,6 +74,30 @@ class ProductManager extends AbstractManager
             "currentPage" => $page,
             "pagesCount" => $pagesCount
         ];
+    }
+
+    /**
+     * Count the amount of pages
+     *
+     * @param integer $limit
+     * @param string|null $search
+     * @return integer
+     */
+    private function countPages(int $limit, ?string $search = null): int
+    {
+        $query = "SELECT COUNT(*) as count FROM product";
+        if ($search) {
+            $query .= " WHERE title LIKE :search OR description LIKE :search";
+        }
+
+        $statement = $this->pdo->prepare($query);
+        if ($search) {
+            $searchPlaceholder = "%" . $search . "%";
+            $statement->bindParam(":search", $searchPlaceholder, \PDO::PARAM_STR);
+        }
+        $statement->execute();
+
+        return (int) ceil($statement->fetch()["count"] / $limit);
     }
 
     public function selectlast(int $limit = 1): array
