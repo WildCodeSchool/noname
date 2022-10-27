@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\ProductManager;
+use App\Model\CategoryItemManager;
+
 class HomeController extends AbstractController
 {
     /**
@@ -9,6 +12,10 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig');
+        $productManager = new ProductManager();
+        $products = $productManager->selectlast(3);
+        $categoryItemManager = new CategoryItemManager();
+        $categories = $categoryItemManager->selectAllInCarousel();
+        return $this->twig->render('Home/index.html.twig', ['products' => $products, 'categories' => $categories]);
     }
 }

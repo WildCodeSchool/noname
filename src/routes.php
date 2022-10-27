@@ -13,6 +13,8 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
+    'categories_items' => ['CategoryItemController', 'index',],
+    'categories_items/add' => ['CategoryItemController', 'add',],
     'login' => ['UserController', 'login'],
     'logout' => ['UserController', 'logout'],
     'products' => ['ProductController', 'index'],
