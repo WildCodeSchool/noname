@@ -4,45 +4,45 @@
 
 {% block content %}
 
-<section id="product_page">
-        <article class="product_carousel">
-            <div class="product_image" id="product_imgs">
+<section id="productPage">
+        <article class="productCarousel">
+            <ul class="productImages" id="productImgs">
                 {% for photo in product.photo %}
-                    <div class="photo" style="background-image:url({{photo}});"></div>
+                    <li class="photo" style="background-image:url({{photo}});"></li>
                 {% endfor %}
-            </div>
-                <button id="right" class="product_btn">></button>
-                <button id="left" class="product_btn"><</button>
+            </ul>
+                <button id="right" class="productBtn">></button>
+                <button id="left" class="productBtn"><</button>
         </article>
 
-        <article class="product_Info">
-            <div>
+        <article class="productInfo">
                 <h1>Nom du produit</h1>
-                <div class="product_ColorMatter"><span>Couleur:</span> <p class="pastilleColor"></p><span>Matière:</span> Bois </br><img src="planche.png" alt=""></div>
-                <div class="product_state"><span>État:</span> quasi neuf</div>
-                <div class="product_description">   blablablablabla blablabla blablablabla blablabla blablabla blabla blablablabla blablabla blablablabla blabla blaElleEstBelleLaChaisebla blabla blabla blabla blablablabla blablabla</div>
-                <div class="product_price"><span>Prix:</span> 8000€</div>
-            </div>
+                <ul>
+                    <li class="productColorMatter"><span class="ImportanText">Couleur:</span> <p class="pastilleColor"></p><span>Matière:</span> Bois </br><img src="assets/images/deco2.png" alt=""></li>
+                    <li class="productState"><span class="ImportanText">État:</span> quasi neuf</li>
+                    <li class="productDescription">   blablablablabla blablabla blablablabla blablabla blablabla blabla blablablabla blablabla blablablabla blabla blaElleEstBelleLaChaisebla blabla blabla blabla blablablabla blablabla</li>
+                    <li class="productPrice"><span class="ImportanText">Prix:</span> 8000€</li>
+                </ul>
         </article>
 
-        <article class="product_description2">
-                <div class="product_type"><span>Type: </span>meuble</br> <img src="meuble.png" alt=""></div>
-                <div class="product_room"><span>Piece:</span> Salle à manger</br> <img src="livingRoom.png" alt=""></div>
+        <article class="productInfo2">
+            <ul>
+                <li class="productType"><span class="ImportanText">Type: </span>meuble</br> <img src="assets/images/ameublement2.png" alt=""></li>
+                <li class="productRoom"><span class="ImportanText">Piece:</span> Salle à manger</br> <img src="assets/images/deco2.png" alt=""></li>
+            </ul>
         </article>
 
-        <article class="product_pricAaddButton">
-                <button class="product_addButton">Ajouter au panier</button>
+        <article class="productPricAaddButton">
+                <button class="productAddButton">Ajouter au panier</button>
         </article>
 
-        <article class="product_seller">
-            <div class="product_seller_name"><span>Vendu par: </span>Michel</div>
-            <div class="product_seller_location"><span>Habite:</span> FortFortLointain</div>
+        <article class="productSeller">
+            <div class="productSellerName"><span class="ImportanText">Vendu par: </span>Michel</div>
+            <div class="productSellerLocation"><span class="ImportanText">Habite:</span> FortFortLointain</div>
         </article>
 
-        <article class="product_map">
-            <div>
-                <img src="map.jpg" alt="map">
-            </div>
+        <article class="productMap">
+                <img src="https://www.adslzone.net/app/uploads-adslzone.net/2017/06/google-maps.jpg" alt="map">
         </article>
     </section>
 

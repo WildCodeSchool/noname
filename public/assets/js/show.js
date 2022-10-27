@@ -1,5 +1,5 @@
-let container = document.getElementById("product_imgs");
-let nbrImage = container.querySelectorAll('div').length;
+let container = document.getElementById("productImgs");
+let nbrImage = container.querySelectorAll('li').length;
 let positionImage = 0;
 let left = document.getElementById("left");
 let right = document.getElementById("right");
@@ -20,6 +20,8 @@ right.onclick = function () {
     container.style.transform = "translateX(" + positionImage * -500 + "px)";
     showHidden();
 }
+
+console.log(right);
 
 function showHidden() {
     if (positionImage == 0) {
