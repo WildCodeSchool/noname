@@ -43,10 +43,14 @@ class CategoryItemManager extends AbstractManager
     // Insert new categories in carousel from home page
     public function updateIncarousel(array $array): void
     {
+        $value = [];
         foreach ($array as $item) {
-            $query = "UPDATE " . self::TABLE . " SET in_carousel = TRUE where id= " . $item['id'];
+            $value[] = $item['id'];
+        }
+
+            $query = "UPDATE " . self::TABLE .
+            " SET in_carousel = TRUE WHERE id IN ($value[0], $value[1], $value[2], $value[3])";
             $statement = $this->pdo->prepare($query);
             $statement->execute();
-        }
     }
 }

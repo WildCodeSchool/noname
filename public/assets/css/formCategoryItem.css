@@ -1,4 +1,5 @@
 .form-control{
+  margin: 1%;
   margin-bottom: 8px;
   border: solid 0.5px var(--lessblueColor);
 }
@@ -7,9 +8,7 @@
   box-shadow: var(--blueColor) 0 4px 4px;
   transition: box-shadow ease-out 0.3s;
 }
-.row >* {
-  padding-left: 0;
-}
+
 .form-label{
   font-weight:600;
 }

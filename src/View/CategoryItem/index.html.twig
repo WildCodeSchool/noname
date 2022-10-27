@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-	<div class="container">
+	<main class="container">
 		<h1 class="text-center">Toutes les Catégories</h1>
 
 		<form method="post" class="bg-light border rounded p-5">
@@ -30,5 +30,5 @@
       <p class="errors text-center">{{errors2[0]}}</p>
 		</form>
 		{% include 'CategoryItem/add.html.twig' %}
-	</div>
+	</main>
 {% endblock %}

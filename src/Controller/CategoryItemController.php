@@ -64,7 +64,7 @@ class CategoryItemController extends AbstractController
         return $this->twig->render('CategoryItem/index.html.twig', ['categoriesItems' => $categoriesItems]);
     }
 
-    public function checkdata($data): array
+    private function checkdata($data): array
     {
         $errors = [];
         foreach ($data as $key => $value) {
@@ -82,7 +82,7 @@ class CategoryItemController extends AbstractController
         return $errors;
     }
 
-    public function insertPostCategory(): array
+    private function insertPostCategory(): array
     {
         $categoriesSelect = [];
         $categoryItemManager = new CategoryItemManager();
