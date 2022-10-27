@@ -1,4 +1,4 @@
-.card-category{
+.card-category {
   height: 281px;
   width: 100%;
   background: center/cover;
@@ -11,13 +11,13 @@
   box-shadow: black 4px 4px 4px;
 }
 
-.text-card{
+.text-card {
   position: absolute;
   bottom: 8%;
   width: 100%;
 }
 
-.text-card >*{
+.text-card>* {
   text-align: center;
 }
 
@@ -29,9 +29,8 @@
 
 /* formulaire check */
 
-.checkbox-category:checked + .label-category{
-  box-shadow: var(--blueColor) 8px 8px 8px;
-  /* display: block; */
+.checkbox-category:checked+.label-category {
+  filter: grayscale(100%);
 }
 
 .checkbox-category {

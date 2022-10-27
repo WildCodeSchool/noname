@@ -29,7 +29,7 @@ CREATE TABLE
         title VARCHAR(20) NOT NULL,
         description VARCHAR(100) NOT NULL,
         photo VARCHAR(255),
-        logo VARCHAR(255),
+        logo VARCHAR(255)
     );
 
 CREATE TABLE
