@@ -4,7 +4,7 @@
 
 
 {% block content %}
-	<main>
+	<main class="home">
 		<section class="carouselContainer">
 			<a href="" class="btn btn-primary-banner">
 				Créer un compte
@@ -63,13 +63,13 @@
 					<div class="visually-hidden">Next</div>
 				</button>
 			</div>
-		</section>
-
     <a href="/categories_items" class="btn btn-primary-categorie">
 				Modifiez vos catégories
 		</a>
+		</section>
+
 		<article>
-			<div class="home w-80">
+			<div class="container">
 				<h1 class="text-center">Les Derniers Articles Ajoutés</h1>
 
 				{% if not (products is empty) %}
