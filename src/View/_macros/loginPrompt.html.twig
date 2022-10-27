@@ -1,0 +1,20 @@
+{% macro loginPrompt() %}
+	<div class="loginPrompt">
+		{% if user %}
+			<a href="/logout">Se déconnecter</a>
+		{% else %}
+			<h2>Connexion</h2>
+
+			<form action="/login" method="POST">
+				<div>
+					<input type="text" id="pseudo" name="pseudo" placeholder="Nom d'utilisateur" required/>
+				</div>
+				<div>
+					<button type="submit">Connexion</button>
+				</div>
+			</form>
+			<a href="/register">Je n'ai pas de compte.</a>
+		{% endif %}
+
+	</div>
+{% endmacro %}

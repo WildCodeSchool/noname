@@ -13,8 +13,16 @@
     width: 30px;
 }
 
+.menu a:hover {
+    cursor: pointer;
+}
+
+.menu .loginButton img {
+    border-radius: 50%;
+}
+
 .main {
-    background-color: #4981A6;
+    background-color: #4981a6;
     display: flex;
     box-sizing: border-box;
     justify-content: space-between;
@@ -37,7 +45,7 @@ img .main {
 /*////// Quick access bar //////*/
 
 .quick-access {
-    background-color: #F1F1F1;
+    background-color: #f1f1f1;
     position: relative;
     width: 100%;
     margin: auto;
@@ -81,10 +89,9 @@ img .main {
 }
 
 .quick-access a:hover {
-    color: #4981A6;
+    color: #4981a6;
     transition: 1s;
 }
-
 
 .quick-access ul {
     display: flex;
@@ -96,7 +103,6 @@ img .main {
 
 .quick-access li {
     box-sizing: border-box;
-
 }
 
 .quick-access li:last-child {
@@ -121,7 +127,7 @@ div#search.search-box {
     outline: none;
     border: none;
     color: #fff;
-    background-color: #4981A6;
+    background-color: #4981a6;
     border-bottom: black solid 1px;
     height: 30px;
     width: 100%;
@@ -131,9 +137,8 @@ div#search.search-box {
     color: #fff;
 }
 
-
 .search-box img {
-    background-color: #4981A6;
+    background-color: #4981a6;
     height: 20px;
     width: 20px;
     margin-top: 8px;
@@ -147,7 +152,7 @@ div#search.search-box {
     border-radius: 5px;
     margin-left: 5px;
     width: auto;
-    padding: 2px
+    padding: 2px;
 }
 
 /*////// Burger Button and actions //////*/
@@ -168,7 +173,7 @@ div#search.search-box {
 .hamburger .bar,
 .hamburger:after,
 .hamburger:before {
-    content: '';
+    content: "";
     display: block;
     width: 100%;
     height: 5px;
@@ -198,7 +203,7 @@ div#search.search-box {
     width: 192px;
     position: absolute;
     z-index: 98;
-    background-color: #4981A6;
+    background-color: #4981a6;
     margin-top: 10px;
     transition: 0.4s;
     border: solid 1px white;
@@ -226,7 +231,7 @@ div#search.search-box {
 
 /*////// Smartphone //////*/
 
-@media screen and (max-width:767.98px) {
+@media screen and (max-width: 767.98px) {
     .menu {
         visibility: hidden;
     }
@@ -243,7 +248,7 @@ div#search.search-box {
 
 /*////// Desktop //////*/
 
-@media screen and (min-width:767.98px) {
+@media screen and (min-width: 767.98px) {
     button.hamburger {
         visibility: hidden;
     }
