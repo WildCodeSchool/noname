@@ -1,5 +1,5 @@
 .card-category {
-  height: 281px;
+  height: 15vw;
   width: 100%;
   background: center/cover;
   color: #fff;
@@ -35,4 +35,31 @@
 
 .checkbox-category {
   display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .text-card h3 {
+    font-size: 2vw;
+  }
+
+  .text-card p {
+    font-size: 1.2vw;
+  }
+
+  .index-category h1 {
+    font-size: 4vw;
+  }
+
+  .index-category h2 {
+    font-size: 3.0vw;
+  }
+
+  .form-label {
+    font-size: 2vw;
+  }
+
+  .form-control {
+    font-size: 2vw;
+  }
+
 }
