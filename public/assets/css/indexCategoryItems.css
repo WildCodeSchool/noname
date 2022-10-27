@@ -62,4 +62,16 @@
     font-size: 2vw;
   }
 
+  .cardsCarousel {
+    grid-template-columns: 2fr 2fr;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .cardsCarousel {
+    grid-template-columns: 2fr;
+    width: 70%;
+    margin: auto;
+  }
 }
