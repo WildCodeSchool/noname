@@ -17,7 +17,8 @@ class UserController extends AbstractController
             }
         }
 
-        header("Location: /");
+        $redirectUri = $_GET["from"] ? $_GET["from"] : "/";
+        header("Location: " . $redirectUri);
         return "";
     }
 

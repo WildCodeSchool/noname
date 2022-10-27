@@ -32,5 +32,6 @@ abstract class AbstractController
         }
 
         $this->twig->addGlobal("user", $this->user);
+        $this->twig->addGlobal("requestUri", $_SERVER["REQUEST_URI"]);
     }
 }

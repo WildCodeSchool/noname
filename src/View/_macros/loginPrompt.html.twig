@@ -5,7 +5,7 @@
 		{% else %}
 			<h2>Connexion</h2>
 
-			<form action="/login" method="POST">
+			<form action="/login?from={{ requestUri }}" method="POST">
 				<div>
 					<input type="text" id="pseudo" name="pseudo" placeholder="Nom d'utilisateur" required/>
 				</div>
