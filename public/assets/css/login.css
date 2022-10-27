@@ -1,0 +1,21 @@
+.loginPrompt {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: var(--shadowColor) 0 5px 5px;
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+    padding: 10px;
+    width: 350px;
+}
+
+.loginPrompt form {
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+}
+
+.loginPrompt form * {
+    margin: 5px;
+    width: 100%;
+}
