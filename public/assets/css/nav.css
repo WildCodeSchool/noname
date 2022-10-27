@@ -1,0 +1,254 @@
+/*////// Main bar //////*/
+
+.menu {
+    position: absolute;
+    right: 0;
+    justify-content: end;
+    padding: 5px;
+}
+
+.menu img {
+    margin: 0 10px;
+    height: 30px;
+    width: 30px;
+}
+
+.main {
+    background-color: #4981A6;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+img .main {
+    margin: 0;
+}
+
+.search-box .main {
+    margin: 0;
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+}
+
+/*////// Quick access bar //////*/
+
+.quick-access {
+    background-color: #F1F1F1;
+    position: relative;
+    width: 100%;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.line {
+    position: relative;
+    display: block;
+    height: 45px;
+    background-color: black;
+    width: 1px;
+}
+
+.quick-access p {
+    margin-left: 10px;
+    box-sizing: border-box;
+}
+
+.quick-access img {
+    height: 30px;
+    width: 30px;
+}
+
+.quick-access ul li {
+    list-style: none;
+    text-decoration: none;
+    margin: auto;
+}
+
+.quick-access ul li a {
+    color: black;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.quick-access a:hover {
+    color: #4981A6;
+    transition: 1s;
+}
+
+
+.quick-access ul {
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    margin: auto;
+    padding-left: 0;
+}
+
+.quick-access li {
+    box-sizing: border-box;
+
+}
+
+.quick-access li:last-child {
+    border: none;
+}
+
+/*////// Search bar //////*/
+
+.search-box {
+    display: flex;
+    margin-top: 5px;
+    visibility: visible;
+}
+
+div#search.search-box {
+    display: flex;
+}
+
+.search-box input {
+    box-sizing: border-box;
+    position: relative;
+    outline: none;
+    border: none;
+    color: #fff;
+    background-color: #4981A6;
+    border-bottom: black solid 1px;
+    height: 30px;
+    width: 100%;
+}
+
+.search-box input::placeholder {
+    color: #fff;
+}
+
+
+.search-box img {
+    background-color: #4981A6;
+    height: 20px;
+    width: 20px;
+    margin-top: 8px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.submit-search {
+    margin: auto;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 5px;
+    width: auto;
+    padding: 2px
+}
+
+/*////// Burger Button and actions //////*/
+
+.hamburger {
+    position: relative;
+    display: block;
+    width: 45px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+.hamburger .bar,
+.hamburger:after,
+.hamburger:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #fff;
+    margin: 6px 0px;
+    transition: 0.4s;
+}
+
+.hamburger.is-active:before {
+    transform: translate(0px, 11px) rotate(-45deg);
+}
+
+.hamburger.is-active:after {
+    transform: translate(0px, -11px) rotate(45deg);
+}
+
+.hamburger.is-active .bar {
+    opacity: 0;
+}
+
+.mobile-nav {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    top: 130px;
+    right: 100%;
+    width: 192px;
+    position: absolute;
+    z-index: 98;
+    background-color: #4981A6;
+    margin-top: 10px;
+    transition: 0.4s;
+    border: solid 1px white;
+    border-radius: 15px;
+}
+
+.mobile-nav img {
+    height: 30px;
+    width: 30px;
+}
+
+.mobile-nav.is-active {
+    right: calc(50% - 96px);
+}
+
+.mobile-nav a {
+    display: block;
+    margin: 12px auto 12px auto;
+    text-align: center;
+    padding: 12px 16px;
+    width: fit-content;
+    border: solid 1px white;
+    border-radius: 20px;
+}
+
+/*////// Smartphone //////*/
+
+@media screen and (max-width:767.98px) {
+    .menu {
+        visibility: hidden;
+    }
+
+    .quick-access p {
+        display: none;
+    }
+
+    .quick-access li {
+        padding: 0;
+        width: calc(100% / 7);
+    }
+}
+
+/*////// Desktop //////*/
+
+@media screen and (min-width:767.98px) {
+    button.hamburger {
+        visibility: hidden;
+    }
+
+    .mobile-nav {
+        visibility: hidden;
+    }
+}
