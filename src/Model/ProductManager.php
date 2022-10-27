@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use PDO;
+
 class ProductManager extends AbstractManager
 {
     public const TABLE = "product";
@@ -61,5 +63,27 @@ class ProductManager extends AbstractManager
             "currentPage" => $page,
             "pagesCount" => $pagesCount
         ];
+    }
+
+    public function insert(array $product): int
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+            " (`title`, `description`, `material`, `color`, `category_item_id`, `category_room`, `condition`, `photo`, `user_id`, `price`)
+         VALUES (:title, :description, :material, :color, :category_item_id, :category_room, :condition, :photo, :user_id, :price)");
+        $statement->bindValue('title', $product['title'], PDO::PARAM_STR);
+        $statement->bindValue(`description`, $product['description'], PDO::PARAM_STR);
+        $statement->bindValue(`material`, $product['matter'], PDO::PARAM_STR);
+        $statement->bindValue(`color`, $product['palette'], PDO::PARAM_STR);
+        $statement->bindValue(`category_item_id`, $product['category'], PDO::PARAM_STR);
+        $statement->bindValue(`category_room`, $product['room'], PDO::PARAM_STR);
+        $statement->bindValue(`condition`, $product['state'], PDO::PARAM_STR);
+        $statement->bindValue(`photo`, $product['file'], PDO::PARAM_STR);
+        $statement->bindValue(`user_id`, $product['current_id'], PDO::PARAM_STR);
+        $statement->bindValue(`price`, $product['price'], PDO::PARAM_INT);
+
+
+
+        $statement->execute();
+        return (int)$this->pdo->lastInsertId();
     }
 }

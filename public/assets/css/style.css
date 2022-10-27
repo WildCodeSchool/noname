@@ -3,6 +3,7 @@
 @import url("pageSwitcher.css");
 @import url("productCard.css");
 @import url("ratingStars.css");
+@import url("form_products.css");
 
 :root {
     --lightGreyContrastColor: #eeeeee;

@@ -1,0 +1,117 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<form action="" method="POST">
+        <div class="title-form">
+            <h1>Ajoute ton offre</h1>
+        </div>
+        <h3 class="h3">Titre</h3>
+        <div class="title-offer">
+            <label for="title"></label>
+            <input id="title" name="title" type="text" placeholder="Choisis ton titre">
+        </div>
+        {% if errors %}
+            <p class="error">{{ errors.title }}</p>
+        {% endif %}
+        <h3 class="h3">Description</h3>
+        <div class="description-offer">
+            <label for="description"></label>
+            <textarea id="description" name="description" placeholder="Descris ton offre"></textarea>
+        </div>
+        {% if errors %}
+            <p class="error">{{ errors.description }}</p>
+        {% endif %}
+
+        <h3 class="h3">Sélectionne tes matières</h3>
+        <div class="matter_checkbox">
+            <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="wood"><span class="label"><img src="/assets/images/icone_bois.png" alt="icone bois"></span></label>
+            <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="metal"><span class="label"><img src="/assets/images/icone_metal.png" alt="icone metal"></span></label>
+            <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="pvc"><span class="label"><img src="/assets/images/icone_pvc.png" alt="icone pvc"></span></label>
+            <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="fabric"><span class="label"><img src="/assets/images/icone_tissu.png" alt="icone tissu"></span></label>
+            <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="glass"><span class="label"><img src="/assets/images/icone_verre.png" alt="icone verre"></span></label>
+        </div>
+        {% if errors %}
+            <p class="error">{{ errors.matter }}</p>
+        {% endif %}
+
+        <h3 class="h3">Sélectionne tes couleurs</h3>
+        <div class="checkbox_color" id="color">
+            <div class="palette"><input type="color" id="palette1" name="palette"></div>
+            <div id="palette2" onclick="delete_click()"><input type="button" value="+" id="add" onclick="fAddInput1()" /></div>
+            <div id="palette3" onclick="delete_click2()"><input type="button" value="+" id="add2" onclick="fAddInput2()" /></div>
+        </div>
+        {% if errors %}
+            <p class="error">{{ errors.palette }}</p>
+        {% endif %}
+        
+        <h3 class="h3">Choisis ta catégorie</h3>
+        <div class="category_checkbox">
+            <label class="label"><input class="radio" name="category" type="radio" value="furniture"><span class="label"><img src="/assets/images/icone_meuble.png" alt="icone meuble"></span></label>
+            <label class="label"><input class="radio" name="category" type="radio" value="lamp"><span class="label"><img src="/assets/images/icone_liminaire.png" alt="icone luminaire"></span></label>
+            <label class="label"><input class="radio" name="category" type="radio" value="decoration"><span class="label"><img src="/assets/images/icone_decoration.png" alt="icone decoration"></span></label>
+            <label class="label"><input class="radio" name="category" type="radio" value="home_appliance"><span class="label"><img src="/assets/images/icone_electromenager.png" alt="icone electromenager"></span></label>
+        </div>
+        {% if errors %}
+            <p class="error">{{ errors.category }}</p>
+        {% endif %}
+
+        <h3 class="h3">Idéale pour quelles pièces?</h3>
+        <div class="room_checkbox">
+            <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="desk"><span class="label"><img src="/assets/images/icone_bureau.png" alt="icone bureau"></span></label>
+            <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="kitchen"><span class="label"><img src="/assets/images/icone_cuisine.png" alt="icone cuisine"></span></label>
+            <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="bedroom"><span class="label"><img src="/assets/images/icone_chambre.png" alt="icone chambre"></span></label>
+            <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="dinig-room"><span class="label"><img src="/assets/images/icone_salle_a_manger.png" alt="icone salle a manger"></span></label>
+            <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="living-room"><span class="label"><img src="/assets/images/icone_salon.png" alt="icone salon"></span></label>
+            <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="bathroom"><span class="label"><img src="/assets/images/icone_salle_de_bain.png" alt="icone salle de bain"></span></label>
+        </div>
+        {% if errors %}
+            <p class="error">{{ errors.room }}</p>
+        {% endif %}
+
+        <h3 class="h3">Quel est son état?</h3>
+        <div class="state_checkbox">
+            <label class="label"><input class="radio" name="state" type="radio" value="new"><span class="label"><img src="/assets/images/etat_neuf.png" alt="icone état neuf"></span></label>
+            <label class="label"><input class="radio" name="state" type="radio" value="correct"><span class="label"><img src="/assets/images/etat_correct.png" alt="icone état correct"></span></label>
+            <label class="label"><input class="radio" name="state" type="radio" value="used"><span class="label"><img src="/assets/images/etat_usagé.png" alt="icone état usagé"></span></label>
+        </div>
+        <div class="state">
+            <p> Neuf </p>
+            <p> Correct</p>
+            <p> Usagé</p>
+        </div>
+        {% if errors %}
+            <p class="error">{{ errors.state }}</p>
+        {% endif %}
+
+        <h3 class="h3">Prends des photos et poste les</h3>
+        <div class="picture">
+            <label class="file" for="file">Ajoute tes photos</label>
+            <input type="file" name="file" id="file">
+        </div>
+        {% if errors %}
+            <p class="error">{{ errors.file }}</p>
+        {% endif %}
+
+        <h3 class="h3">Quelles infos souhaite-tu partager?</h3>
+        <div class="info_checkbox">
+            <label class="label"><input class="checkbox" type="checkbox" name="info[]" value="telephone"><span class="label"><img src="/assets/images/telephone.png" alt="icone telephone"></span></label>
+            <label class="label"><input class="checkbox" type="checkbox" name="info[]" value="email"><span class="label"><img src="/assets/images/email.png" alt="icone email"></span></label>
+        </div>
+        {% if errors %}
+            <p class="error">{{ errors.info }}</p>
+        {% endif %}
+
+        <h3 class="h3">Quel est ton prix ?</h3>
+        <div class="price-offer">
+            <label for="price"></label>
+            <input id="price" name="price" type="number">
+        </div>
+        {% if errors %}
+            <p class="error">{{ errors.price }}</p>
+        {% endif %}
+
+        <button>Valider</button>
+    </form>
+
+{% endblock content %}
+{% block javascript %}<script src="/assets/js/form_products.js"></script>{% endblock %}
