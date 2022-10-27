@@ -58,7 +58,8 @@
     font-size: 2vw;
   }
 
-  .form-control {
+  .form-control,
+  .errors {
     font-size: 2vw;
   }
 
