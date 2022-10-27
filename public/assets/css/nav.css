@@ -215,6 +215,14 @@ div#search.search-box {
     width: 30px;
 }
 
+.mobile-nav a:hover {
+    cursor: pointer;
+}
+
+.mobile-nav .loginButton img {
+    border-radius: 50%;
+}
+
 .mobile-nav.is-active {
     right: calc(50% - 96px);
 }

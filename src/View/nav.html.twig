@@ -1,4 +1,3 @@
-
 {% from "_macros/loginPrompt.html.twig" import loginPrompt %}
 
 <nav role='navigation'>
@@ -25,7 +24,7 @@
 			<div class="bar"></div>
 		</button>
 	</div>
-    {{ loginPrompt() }}
+	{{ loginPrompt() }}
 
 </nav>
 <!-- Quick access categories -->
@@ -57,5 +56,9 @@
 	<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
 	<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
 	<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
-	<a href="" {# Enter link here #}><img src="../assets/images/compte.png"></a>
+	{% if user %}
+		<a class="loginButton"><img src="{{ user.photo }}" alt="User avatar"></a>
+	{% else %}
+		<a class="loginButton"><img src="../assets/images/compte.png"></a>
+	{% endif %}
 </nav>

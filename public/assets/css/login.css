@@ -28,3 +28,13 @@
     margin: 5px;
     width: 100%;
 }
+
+@media screen and (max-width: 767.98px) {
+    .loginPrompt {
+        width: 100%;
+    }
+
+    .loginPrompt.showed {
+        top: 350px;
+    }
+}
