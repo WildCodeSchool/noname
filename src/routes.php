@@ -16,4 +16,5 @@ return [
   'categories_items' => ['CategoryItemController', 'index',],
   'categories_items/add' => ['CategoryItemController', 'add',],
   'products' => ['ProductController', 'index'],
+  'product' => ['ProductController', 'show', ['id']],
 ];
