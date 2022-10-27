@@ -48,9 +48,9 @@ class CategoryItemManager extends AbstractManager
             $value[] = $item['id'];
         }
 
-            $query = "UPDATE " . self::TABLE .
+        $query = "UPDATE " . self::TABLE .
             " SET in_carousel = TRUE WHERE id IN ($value[0], $value[1], $value[2], $value[3])";
-            $statement = $this->pdo->prepare($query);
-            $statement->execute();
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
     }
 }
