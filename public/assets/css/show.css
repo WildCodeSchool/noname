@@ -1,0 +1,106 @@
+#productPage {
+    padding: 70px;
+    display: grid;
+    grid-template: auto/1fr 1fr;
+    column-gap: 70px;
+    font-size: 1.8em;
+}
+
+.ImportanText {
+    font-weight: bold;
+}
+
+.pastilleColor {
+    height: 30px;
+    width: 30px;
+    background-color: aquamarine;
+    border-radius: 100%;
+}
+
+.productDescription {
+    max-width: 500px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.productCarousel {
+    height: 400px;
+    width: 500px;
+    box-shadow: 0 0 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+.productImages {
+    height: 400px;
+    width: 500px;
+    list-style-type: none;
+    transition: transform ease-in-out 0.5s;
+}
+
+.photo {
+    height: 400px;
+    width: 500px;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+}
+
+.productBtn {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    font-size: 1em;
+    color: antiquewhite;
+    background-color: rgba(0, 0, 0, 0.336);
+    border-radius: 100%;
+    cursor: pointer;
+    top: 175px;
+    transition: 0.3s ease;
+}
+
+#left {
+    left: 0%;
+    opacity: 0.4
+}
+
+#right {
+    right: 0%;
+    opacity: 0.4;
+}
+
+#left:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+#right:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+
+#productImgs {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.productAddButton {
+    height: 70px;
+    width: 500px;
+    font-size: 1em;
+    background-color: rgb(254, 174, 24);
+    border: 1px solid rgba(0, 202, 0, 0.769);
+    margin-top: 50px;
+}
+
+.productSeller {
+    margin-top: 100px;
+}
+
+.productMap img {
+    height: 100%;
+    width: 100%;
+}
