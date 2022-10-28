@@ -37,6 +37,12 @@
   margin: 4px;
 }
 
+#card-category-edit {
+  height: 28vw;
+  width: 70%;
+}
+
+
 /* formulaire check */
 
 .checkbox-category:checked+.label-category {
@@ -77,11 +83,14 @@
     grid-template-columns: 2fr 2fr;
   }
 
+  .categoryContainerEdit h1 {
+    font-size: 4vw;
+  }
 }
 
-@media screen and (min-width:768px) {
+@media screen and (max-width:768px) {
   .card-category {
-    height: 22vw;
+    height: 24vw;
   }
 
 }

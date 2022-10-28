@@ -29,6 +29,7 @@
   background-color: var(--blueColor);
   color: #fff;
   margin-top: 32px;
+  margin-bottom: 4px;
 }
 
 .buttons-form .btn:hover{
