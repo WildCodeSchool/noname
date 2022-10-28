@@ -35,3 +35,34 @@ ul {
 .home h1 {
   font-size: 4vw;
 }
+
+.carousel-item h2 {
+  font-size: 4vw;
+}
+
+.carousel-item p {
+  font-size: 2vw;
+  font-weight: bold;
+  color: #fbfbfb;
+}
+
+.productsHome > .products {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: auto;
+  width: 80%;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .productsHome > .products {
+      padding: 0.25rem;
+  }
+}
+
+@media screen and (max-width: 965px) {
+  .productsHome > .products {
+    width: 100%;
+  }
+}

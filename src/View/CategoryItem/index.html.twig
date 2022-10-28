@@ -5,7 +5,7 @@
 		<h1 class="text-center">Toutes les Catégories</h1>
 
 		<form method="post" class="bg-light border rounded p-4 mb-3">
-    <h2 class ="mb-2">Sélectionnes 4 Catégories à mettre en avant !</h2>
+			<h2 class="mb-2">Sélectionnes 4 Catégories à mettre en avant !</h2>
 			<input type="hidden" name="type" value="select">
 			<div class="cardsCarousel">
 				{% for categoryItem in categoriesItems %}
@@ -20,6 +20,9 @@
 							</div>
 						</div>
 					</label>
+					<a href="/categories_items/edit?id={{ categoryItem.id }}" class="btn btn-primary-categorie">
+						edit
+					</a>
 				{% else %}
 					<li>Nothing to display</li>
 				{% endfor %}
@@ -27,7 +30,7 @@
 			<section class="buttons-form">
 				<button type="submit" class="btn">Valider</button>
 			</section>
-      <p class="errors text-center">{{errors2[0]}}</p>
+			<p class="errors text-center">{{errors2[0]}}</p>
 		</form>
 		{% include 'CategoryItem/add.html.twig' %}
 	</main>

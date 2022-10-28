@@ -64,6 +64,40 @@ class CategoryItemController extends AbstractController
         return $this->twig->render('CategoryItem/index.html.twig', ['categoriesItems' => $categoriesItems]);
     }
 
+    public function edit(int $id): ?string
+    {
+        $categoryItemManager = new CategoryItemManager();
+        $categoriesItem = $categoryItemManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $_POST['title'] =  ucfirst($_POST['title']);
+            $_POST['description'] = ucfirst($_POST['description']);
+            // clean $_POST data
+            $categoryItem = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+            $errors = $this->checkdata($categoryItem);
+
+
+            // if validation is ok, insert and redirection
+            if (!empty($errors)) {
+                return $this->twig->render('CategoryItem/edit.html.twig', [
+                    "errors" => $errors,
+                    "categoriesItems" => $categoriesItem
+                ]);
+            } else {
+                $categoryItemManager = new CategoryItemManager();
+                $categoryItemManager->update($categoryItem);
+                header('Location:/categories_items');
+                return null;
+            }
+        }
+
+        return $this->twig->render('CategoryItem/edit.html.twig', [
+            "categoriesItem" => $categoriesItem
+        ]);
+    }
+
     private function checkdata($data): array
     {
         $errors = [];

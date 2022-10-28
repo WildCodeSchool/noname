@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+	<main class="container">
+		<h1>Modifies la catégorie
+			{{ categoriesItem.title }}</h1>
+		{% include 'CategoryItem/_form.html.twig' %}
+		<a href="/categories_items">Back</a>
+	</main>
+{% endblock %}
