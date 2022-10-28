@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block content %}
-	<h1>Page produits</h1>
 	{{ productCardContainer(products) }}
 	{{ pageSwitcher("/products?page=%page%", currentPage, pagesCount) }}
 {% endblock %}
