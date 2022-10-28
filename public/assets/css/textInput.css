@@ -1,0 +1,16 @@
+.textInput {
+    border: none;
+    border-bottom: solid black 1px;
+    padding: 0.4rem;
+    transition: all linear 100ms;
+}
+
+.textInput:focus {
+    border-radius: 0.375rem;
+    box-shadow: var(--blueColor) 0 3px 4px;
+    outline: none;
+}
+
+.textInput::placeholder {
+    color: var(--lessblueColor);
+}

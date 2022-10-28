@@ -1,3 +1,22 @@
+.btn-primary {
+  display: block;
+  width: 15%;
+  padding: 8px;
+  color: #fff;
+  text-align: center;
+  background: 0 0;
+  border: 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background-color: #000000;
+}
+
+.btn-primary:hover {
+  background-color: white;
+  color: var(--blueColor);
+  box-shadow: var(--blueColor) 0 8px 10px;
+}
+
 .btn-primary-banner {
   display: block;
   position: absolute;

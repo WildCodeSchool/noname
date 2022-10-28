@@ -1,9 +1,11 @@
 @import url("button.css");
 @import url("home.css");
+@import url("link.css");
 @import url("login.css");
 @import url("pageSwitcher.css");
 @import url("productCard.css");
 @import url("ratingStars.css");
+@import url("textInput.css");
 @import url("formCategoryItem.css");
 @import url("indexCategoryItems.css");
 

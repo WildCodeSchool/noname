@@ -1,19 +1,21 @@
 {% macro loginPrompt() %}
+	{% from "_macros/utils.html.twig" import button, link, textInput %}
+
 	<div class="loginPrompt">
 		{% if user %}
-			<a href="/logout">Se déconnecter</a>
+            {{ link("Se déconnecter", { href: "/logout" }) }}
 		{% else %}
 			<h2>Connexion</h2>
 
 			<form action="/login?from={{ requestUri }}" method="POST">
 				<div>
-					<input type="text" id="pseudo" name="pseudo" placeholder="Nom d'utilisateur" required/>
+					{{ textInput({ name: "pseudo", placeholder: "Nom d'utilisateur" }) }}
 				</div>
 				<div>
-					<button type="submit">Connexion</button>
+					{{ button("Connexion", { submit: true }) }}
 				</div>
 			</form>
-			<a href="/register">Je n'ai pas de compte.</a>
+			{{ link("Je n'ai pas de compte.", { href: "/register" }) }}
 		{% endif %}
 
 	</div>
