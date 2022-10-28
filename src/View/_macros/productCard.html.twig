@@ -21,9 +21,11 @@
 {% macro productCard(product) %}
 	{% from "_macros/ratingStars.html.twig" import ratingStars %}
 
-	<article class="productCard">
+	<article class="productCard" onload="productCard.onload(this)">
 		<a href="/product?id={{product.id}}">
-			<div class="image" style="background-image: url({{ product.photo[0] }});"></div>
+			<div class="imageContainer">
+				<div class="image" style="background-image: url({{ product.photo[0] }});"></div>
+			</div>
 			<div class="content">
 				<div>
 					<div>

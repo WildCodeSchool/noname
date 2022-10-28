@@ -44,27 +44,21 @@
     text-decoration: none;
 }
 
-.productCard .image {
-    background-size: 100%;
+.productCard .imageContainer {
+    overflow: clip;
+}
+
+.productCard .imageContainer > .image {
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 15rem;
-    transition: background-size ease-out 250ms;
+    transition: transform ease-out 250ms;
     width: 100%;
 }
 
-.productCard:hover .image {
-    background-size: 110%;
-}
-
-.productCard .image::before {
-    background-color: var(--lightGreyContrastColor);
-    content: "";
-    display: inline-block;
-    height: 15rem;
-    position: relative;
-    width: 100%;
-    z-index: -1;
+.productCard:hover .imageContainer > .image {
+    transform: scale(110%);
 }
 
 .productCard .content {
