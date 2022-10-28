@@ -1,21 +1,3 @@
-@media screen and (min-width: 1400px) {
-  .carousel-item h2 {
-    font-size: 64px;
-  }
-
-  .carousel-item p {
-    font-size: 32px;
-    font-weight: bold;
-    color: #fbfbfb;
-  }
-}
-
-@media screen and (max-width: 767px) {
-
-  .carouselContainer a {
-    font-size: 10px;
-  }
-}
 
 
 .carouselContainer {
@@ -55,14 +37,28 @@ ul {
   padding: 1rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 912px) {
   .productsHome > .products {
-      padding: 0.25rem;
+    padding: 0.25rem;
+  }
+  .productsHome > .products {
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 965px) {
-  .productsHome > .products {
-    width: 100%;
+@media screen and (min-width: 1400px) {
+  .carousel-item h2 {
+    font-size: 64px;
+  }
+
+  .carousel-item p {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .carouselContainer a {
+    font-size: 10px;
   }
 }

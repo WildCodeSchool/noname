@@ -27,6 +27,16 @@
   gap: 15px;
 }
 
+.penEditCategory {
+
+
+  height: 22px;
+  width: 22px;
+  background: center/cover;
+
+  margin: 4px;
+}
+
 /* formulaire check */
 
 .checkbox-category:checked+.label-category {
@@ -69,10 +79,25 @@
 
 }
 
+@media screen and (min-width:768px) {
+  .card-category {
+    height: 22vw;
+  }
+
+}
+
 @media screen and (max-width: 600px) {
   .cardsCarousel {
     grid-template-columns: 2fr;
     width: 70%;
     margin: auto;
+  }
+  .card-category {
+    height: 22vw;
+  }
+
+  .penEditCategory {
+    height: 15px;
+    width: 15px;
   }
 }

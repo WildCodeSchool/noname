@@ -9,7 +9,7 @@
 			<input type="hidden" name="type" value="select">
 			<div class="cardsCarousel">
 				{% for categoryItem in categoriesItems %}
-					<label class="label-category">
+					<label class="label-cat">
 						<input class="checkbox-category" type="checkbox" name="category[]" value="{{categoryItem.title}}">
 						<div class="label-category">
 							<div class="card-category" style="background-image: url('{{categoryItem.photo}}');">
@@ -19,10 +19,10 @@
 								</div>
 							</div>
 						</div>
-					</label>
-					<a href="/categories_items/edit?id={{ categoryItem.id }}" class="btn btn-primary-categorie">
-						edit
+					<a href="/categories_items/edit?id={{ categoryItem.id }}">
+						<div class="penEditCategory" style="background-image: url(assets/images/pen_icon.png);"></div>
 					</a>
+					</label>
 				{% else %}
 					<li>Nothing to display</li>
 				{% endfor %}

@@ -67,7 +67,7 @@ class CategoryItemController extends AbstractController
     public function edit(int $id): ?string
     {
         $categoryItemManager = new CategoryItemManager();
-        $categoriesItem = $categoryItemManager->selectOneById($id);
+        $categoryItem = $categoryItemManager->selectOneById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST['title'] =  ucfirst($_POST['title']);
@@ -83,7 +83,7 @@ class CategoryItemController extends AbstractController
             if (!empty($errors)) {
                 return $this->twig->render('CategoryItem/edit.html.twig', [
                     "errors" => $errors,
-                    "categoriesItems" => $categoriesItem
+                    "categoryItem" => $categoryItem
                 ]);
             } else {
                 $categoryItemManager = new CategoryItemManager();
@@ -94,7 +94,7 @@ class CategoryItemController extends AbstractController
         }
 
         return $this->twig->render('CategoryItem/edit.html.twig', [
-            "categoriesItem" => $categoriesItem
+            "categoryItem" => $categoryItem
         ]);
     }
 

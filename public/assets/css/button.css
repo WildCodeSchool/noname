@@ -67,7 +67,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .btn-primary-categorie, .btn-primary-banner{
+  .btn-primary-banner {
     display: none;
   }
 }
