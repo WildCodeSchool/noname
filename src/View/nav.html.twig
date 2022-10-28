@@ -1,4 +1,5 @@
 {% from "_macros/loginPrompt.html.twig" import loginPrompt %}
+{% from "_macros/utils.html.twig" import userAvatar %}
 
 <nav role='navigation'>
 	<div class="main">
@@ -9,12 +10,13 @@
 			<input type="text" class="input-search" placeholder="Type to Search...">
 			<button class="submit-search">Submit</button>
 		</div>
-		<div class="menu" id="icons">
+        {# FIXME The inline style is a temporary solution until Tyler finish is navbar  #}
+		<div class="menu" id="icons" style="display: flex">
 			<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
 			<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
 			<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
 			{% if user %}
-				<a class="loginButton"><img src="{{ user.photo }}" alt="User avatar"></a>
+				<a class="loginButton">{{ userAvatar(user.photo) }}</a>
 			{% else %}
 				<a class="loginButton"><img src="../assets/images/compte.png"></a>
 			{% endif %}
