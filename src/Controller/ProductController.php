@@ -40,12 +40,40 @@ class ProductController extends AbstractController
         ]);
     }
 
+    public function show(int $id): string
+    {
+        $productManager = new productManager();
+        $product = $productManager->selectOneById($id);
+
+        $product['photo'] = json_decode($product['photo'], false);
+
+        return $this->twig->render('Product/show.html.twig', ['product' => $product]);
+    }
+    
+    // check if a key of array is empty
+    private function checkArray(string $key): void
+    {
+        if(empty($_POST[$key])) {
+            $_POST[$key] = [];
+        }
+    }
+    
+    // check if a value of key is empty
+    private function checkArrayValue(string $key): string
+    {
+         $errors = "";
+        if (empty($_POST[$key])){
+            $errors = "Tu dois séléctionner une icône !";
+        }
+       
+        return $errors;
+    }
+
     public function add(): ?string
     {
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             if (empty($_POST["title"]) || htmlentities(trim($_POST["title"])) === "") {
                 $errors["title"] = "Tu as oublié de choisir un titre";
             } elseif (strlen($_POST["title"]) < 2) {
@@ -60,38 +88,34 @@ class ProductController extends AbstractController
             } elseif (strlen($_POST["description"]) > 250) {
                 $errors["description"] = "Ta description est bien longue (250 caractère max)";
             }
-            if (empty($_POST["matter"]) || htmlentities(array_map("trim", $_POST["matter"]) === "")) {
-                $errors["matter"] = "Séléctionne au moins une matière";
-            }
-            if (empty($_POST["palette"]) || htmlentities(trim($_POST["palette"])) === "") {
-                $errors["palette"] = "De quelle couleur est ton produit ?";
-            }
-            if (empty($_POST["category"]) || htmlentities(trim($_POST["category"])) === "") {
-                $errors["category"] = "Dans quelle catégorie ajouter ton offre?";
-            }
-            if (empty($_POST["room"]) || htmlentities(array_map("trim", $_POST["room"]) === "")) {
-                $errors["room"] = "Ton offre est idéale pour quelles pièces?";
-            }
-            if (empty($_POST["state"]) || htmlentities(trim($_POST["state"])) === "") {
-                $errors["state"] = "Dans quel état est ton produit?";
-            }
-            if (empty($_POST["file"]) || htmlentities(trim($_POST["file"])) === "") {
-                $errors["file"] = "Tu as oublié d'ajouter des photos (une photo min)";
-            }
-            if (empty($_POST["info"]) || htmlentities(array_map("trim", $_POST["info"]) === "")) {
-                $errors["info"] = "Quels infos souhaites-tu partager?";
-            }
-            if (empty($_POST["price"]) || (filter_var($_POST["price"], FILTER_VALIDATE_INT, ["options" => ["min_range" => 0]])) === "") {
+            if (
+                empty($_POST["price"]) ||
+                (!filter_var($_POST["price"], FILTER_VALIDATE_INT, ["options" => ["min_range" => 0]]))
+            ) {
                 $errors["price"] = "Ton objet ne peut pas être gratuit (entre un prix supérieur à 0€)";
             }
-        }
-
-
-        return $this->twig->render("Product/form.html.twig", [
+                
+                $this->checkArray("matter");
+                $this->checkArray("category");
+                $this->checkArray("room");
+                $this->checkArray("state");
+                $this->checkArray("file");
+                $this->checkArray("info");
+                $errors["matter"] = $this->checkArrayValue("matter");
+                $errors["category"] = $this->checkArrayValue("category");
+                $errors["room"] = $this->checkArrayValue("room");
+                $errors["state"] = $this->checkArrayValue("state");
+                $errors["file"] = $this->checkArrayValue("file");
+                $errors["info"] = $this->checkArrayValue("info");
+   
+            }
+            // var_dump($_POST);
+            return $this->twig->render("Product/form.html.twig", [
             "errors" => $errors,
             "post" => $_POST
-
-
-        ]);
+            
+            ]);
     }
-}
+}        
+    
+
