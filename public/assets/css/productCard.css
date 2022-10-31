@@ -8,6 +8,12 @@
     padding: 1rem;
 }
 
+.productCardContainer > .noProducts {
+    color: var(--blueColor);
+    padding: 1rem;
+    text-align: center;
+}
+
 @media screen and (max-width: 768px) {
     .productCardContainer > .products {
         padding: 0.25rem;

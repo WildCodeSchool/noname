@@ -5,11 +5,15 @@
 #}
 {% macro productCardContainer(products) %}
 	<div class="productCardContainer">
-		<div class="products">
-			{% for product in products %}
-				{{ _self.productCard(product) }}
-			{% endfor %}
-		</div>
+		{% if products|length > 0 %}
+			<div class="products">
+				{% for product in products %}
+					{{ _self.productCard(product) }}
+				{% endfor %}
+			</div>
+		{% else %}
+			<h3 class="noProducts">Aucun Produits trouvé</h3>
+		{% endif %}
 	</div>
 {% endmacro %}
 

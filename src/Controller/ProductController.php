@@ -34,9 +34,15 @@ class ProductController extends AbstractController
             search: $searchTerms->getSearch()
         );
 
-        // If the requested page is superior to the amount of pages,
+        // If there is no pages
+        if ($pageData["pagesCount"] <= 0) {
+            $pageData["products"] = [];
+            $pageData["currentPage"] = 0;
+            $pageData["pagesCount"] = 0;
+
+        // Else if the requested page is superior to the amount of pages,
         // get the last page available.
-        if ($page > $pageData["pagesCount"]) {
+        } elseif ($page > $pageData["pagesCount"]) {
             $pageData = (new ProductManager())->selectPageWithUser(
                 $pageData["pagesCount"],
                 search: $searchTerms->getSearch()
