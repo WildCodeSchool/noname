@@ -1,12 +1,31 @@
 {% extends "layout.html.twig" %}
 {% from "_macros/productCard.html.twig" import productCardContainer %}
 {% from "_macros/pageSwitcher.html.twig" import pageSwitcher %}
+{% from "_macros/utils.html.twig" import button, textInput, link %}
 
 {% block title %}
     Page produits - {{ parent() }}
 {% endblock %}
 
 {% block content %}
+    <div id="searchPanelButton">
+        <p>Recherche</p>
+    </div>
+    <div id="searchPanel">
+        {{ link("Fermer", { id: "closeSearchPanelLink" }) }}
+        <div>
+            <label for="search">Recherche</label>
+            {{ textInput({ name: "search" }) }}
+        </div>
+        <div>
+            {{ button("Rechercher un produit", { submit: true }) }}
+        </div>
+    </div>
+
 	{{ productCardContainer(products) }}
 	{{ pageSwitcher(pagesURL, currentPage, pagesCount) }}
+{% endblock %}
+
+{% block javascript %}
+    <script src="/assets/js/products.js"></script>
 {% endblock %}

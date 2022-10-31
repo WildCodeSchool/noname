@@ -1,0 +1,46 @@
+/* Search Panel Button*/
+#searchPanelButton {
+    background-color: #000000;
+    border-radius: 0 10px 10px 0;
+    box-shadow: var(--shadowColor) 0 5px 5px;
+    color: white;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 2;
+}
+
+#searchPanelButton:hover {
+    cursor: pointer;
+}
+
+/* Search Panel */
+#searchPanel {
+    background-color: white;
+    border-radius: 0 10px 10px 0;
+    box-shadow: var(--shadowColor) 0 5px 5px;
+    left: -25rem;
+    padding: 0.5rem;
+    position: absolute;
+    transition: left ease-out 200ms;
+    width: 20rem;
+    z-index: 2;
+}
+
+#searchPanel.isOpen {
+    left: 0;
+}
+
+#searchPanel label,
+#searchPanel input,
+#searchPanel button {
+    display: block;
+    margin: .5rem 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    #searchPanel {
+        left: -100%;
+        width: 95%;
+    }
+}
