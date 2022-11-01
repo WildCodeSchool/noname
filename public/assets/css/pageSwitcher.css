@@ -13,8 +13,8 @@
     width: auto;
 }
 
-.pageSwitcher > a,
-.pageSwitcher > div {
+.pageSwitcher>a,
+.pageSwitcher>div {
     color: var(--textColor);
     border-radius: 5px;
     margin: 0.2rem;
@@ -23,13 +23,13 @@
     text-decoration: none;
 }
 
-.pageSwitcher > .selected {
+.pageSwitcher>.selected {
     background-color: var(--lightGreyContrastColor);
     box-shadow: inset var(--shadowColor) 0 2px 2px;
     font-weight: bold;
 }
 
-.pageSwitcher > a:hover {
+.pageSwitcher>a:hover {
     background-color: var(--lightGreyContrastColor);
 }
 
@@ -43,8 +43,8 @@
         width: 100%;
     }
 
-    .pageSwitcher > a,
-    .pageSwitcher > div {
+    .pageSwitcher>a,
+    .pageSwitcher>div {
         font-size: calc(100vw / 40);
         margin: calc(100vw / 75) 3px;
         max-width: calc(100vw / 5);
