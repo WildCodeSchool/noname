@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\CategoryItemManager;
 use App\Model\ProductManager;
 use App\Utils\ProductSearchTerms;
 
@@ -29,9 +30,11 @@ class ProductController extends AbstractController
         }
 
         // Get the data from the page
-        $pageData = (new ProductManager())->selectPageWithUser(
+        $productManager = new ProductManager();
+        $pageData = $productManager->selectPageWithUser(
             $searchTerms->getPage(),
-            search: $searchTerms->getSearch()
+            search: $searchTerms->getSearch(),
+            categoryId: $searchTerms->getCategoryId()
         );
 
         // If there is no pages
@@ -43,9 +46,10 @@ class ProductController extends AbstractController
         // Else if the requested page is superior to the amount of pages,
         // get the last page available.
         } elseif ($page > $pageData["pagesCount"]) {
-            $pageData = (new ProductManager())->selectPageWithUser(
+            $pageData = $productManager->selectPageWithUser(
                 $pageData["pagesCount"],
-                search: $searchTerms->getSearch()
+                search: $searchTerms->getSearch(),
+                categoryId: $searchTerms->getCategoryId()
             );
         }
 
@@ -54,7 +58,8 @@ class ProductController extends AbstractController
             "products" => $pageData["products"],
             "currentPage" => $pageData["currentPage"],
             "pagesCount" => $pageData["pagesCount"],
-            "pagesURL" => "/products?" . $searchTerms->toURLParameters()
+            "pagesURL" => "/products?" . $searchTerms->toURLParameters(),
+            "categories" => (new CategoryItemManager())->selectAll()
         ]);
     }
 

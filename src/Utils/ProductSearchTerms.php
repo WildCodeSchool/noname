@@ -6,8 +6,7 @@ class ProductSearchTerms
 {
     private int $page = 1;
     private ?string $search = null;
-    private ?array $categoryIds = null;
-    private ?array $materials = null;
+    private ?int $categoryId = null;
 
     private bool $usedForURLTemplate = false;
 
@@ -26,14 +25,8 @@ class ProductSearchTerms
             $params[] = "search=$search";
         }
 
-        if (!is_null($this->categoryIds)) {
-            $ids = join(",", $this->categoryIds);
-            $params[] = "categories=$ids";
-        }
-
-        if (!is_null($this->materials)) {
-            $materials = join(",", $this->materials);
-            $params[] = "materials=$materials";
+        if (!is_null($this->categoryId)) {
+            $params[] = "category=$this->categoryId";
         }
 
         return join("&", $params);
@@ -43,10 +36,13 @@ class ProductSearchTerms
     {
         $terms = new self();
 
-        $terms->setPage($_GET["page"] ?? 1);
+        if (isset($_GET["page"]) && filter_var($_GET["page"], FILTER_VALIDATE_INT)) {
+            $terms->setPage($_GET["page"]);
+        }
         $terms->setSearch($_GET["search"] ?? null);
-        $terms->setCategoryIds($_GET["categories"] ?? null);
-        $terms->setMaterials($_GET["materials"] ?? null);
+        if (isset($_GET["category"]) && filter_var($_GET["category"], FILTER_VALIDATE_INT)) {
+            $terms->setCategoryId($_GET["category"]);
+        }
 
         return $terms;
     }
@@ -78,26 +74,14 @@ class ProductSearchTerms
         return $this;
     }
 
-    public function getCategoryIds(): ?array
+    public function getCategoryId(): ?int
     {
-        return $this->categoryIds;
+        return $this->categoryId;
     }
 
-    public function setCategoryIds(?array $categoryIds): self
+    public function setCategoryId(?int $categoryId): self
     {
-        $this->categoryIds = $categoryIds;
-
-        return $this;
-    }
-
-    public function getMaterials(): ?array
-    {
-        return $this->materials;
-    }
-
-    public function setMaterials(?array $materials): self
-    {
-        $this->materials = $materials;
+        $this->categoryId = $categoryId;
 
         return $this;
     }

@@ -4,28 +4,43 @@
 {% from "_macros/utils.html.twig" import button, textInput, link %}
 
 {% block title %}
-    Page produits - {{ parent() }}
+	Page produits -
+	{{ parent() }}
 {% endblock %}
 
 {% block content %}
-    <div id="searchPanelButton">
-        <p>Recherche</p>
-    </div>
-    <div id="searchPanel">
-        {{ link("Fermer", { id: "closeSearchPanelLink" }) }}
-        <div>
-            <label for="search">Recherche</label>
-            {{ textInput({ name: "search" }) }}
-        </div>
-        <div>
-            {{ button("Rechercher un produit", { submit: true }) }}
-        </div>
-    </div>
+	<div id="searchPanelButton">
+		<p>Recherche</p>
+	</div>
+	<div id="searchPanel">
+		{{ link("Fermer", { id: "closeSearchPanelLink" }) }}
+		<form action="/products" method="GET">
+			<div>
+				<label for="search">Recherche</label>
+				{{ textInput({ name: "search", required: false }) }}
+			</div>
+			<div>
+				<label for="category">Catégories</label>
+				{% if categories|length > 0 %}
+					<select name="category" id="category" name="category">
+						<option value="">-- AUCUNE --</option>
+						{% for category in categories %}
+							<option value="{{ category.id }}">{{ category.title }}</option>
+						{% endfor %}
+					</select>
+				{% endif %}
+
+			</div>
+			<div>
+				{{ button("Rechercher un produit", { submit: true }) }}
+			</div>
+		</form>
+	</div>
 
 	{{ productCardContainer(products) }}
 	{{ pageSwitcher(pagesURL, currentPage, pagesCount) }}
 {% endblock %}
 
 {% block javascript %}
-    <script src="/assets/js/products.js"></script>
+	<script src="/assets/js/products.js"></script>
 {% endblock %}

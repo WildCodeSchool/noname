@@ -30,7 +30,8 @@ class ProductManager extends AbstractManager
      * @param integer $limit
      * @param string $orderBy
      * @param string $direction
-     * @param string $search
+     * @param string|null $search
+     * @param int|null $categoryId
      * @return array
      */
     public function selectPageWithUser(
@@ -38,17 +39,25 @@ class ProductManager extends AbstractManager
         int $limit = self::PER_PAGE,
         string $orderBy = 'date',
         string $direction = "DESC",
-        string $search = null
+        ?string $search = null,
+        ?int $categoryId = null
     ): array {
         // Get the offset & count pages
         $offset = ($page - 1) * $limit;
-        $pagesCount = $this->countPages($limit, $search);
+        $pagesCount = $this->countPages($limit, $search, $categoryId);
 
         // Make the query
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
-        if ($search) {
-            $query .= " WHERE title LIKE :search OR description LIKE :search";
+        if ($search || $categoryId) {
+            $whereClause = [];
+            if ($search) {
+                $whereClause[] = "title LIKE :search OR description LIKE :search";
+            }
+            if ($categoryId) {
+                $whereClause[] = "category_item_id = :category_item_id";
+            }
+            $query .= " WHERE " . join(" AND ", $whereClause);
         }
         if ($orderBy) {
             $query .= " ORDER BY " . $orderBy . " " . $direction;
@@ -60,6 +69,9 @@ class ProductManager extends AbstractManager
         if ($search) {
             $searchPlaceholder = "%" . $search . "%";
             $statement->bindParam(":search", $searchPlaceholder, \PDO::PARAM_STR);
+        }
+        if ($categoryId) {
+            $statement->bindParam(":category_item_id", $categoryId, \PDO::PARAM_INT);
         }
         $statement->execute();
         $products = $statement->fetchAll();
@@ -81,19 +93,30 @@ class ProductManager extends AbstractManager
      *
      * @param integer $limit
      * @param string|null $search
+     * @param int|null $categoryId
      * @return integer
      */
-    private function countPages(int $limit, ?string $search = null): int
+    private function countPages(int $limit, ?string $search = null, ?int $categoryId = null): int
     {
         $query = "SELECT COUNT(*) as count FROM product";
-        if ($search) {
-            $query .= " WHERE title LIKE :search OR description LIKE :search";
+        if ($search || $categoryId) {
+            $whereClause = [];
+            if ($search) {
+                $whereClause[] = "title LIKE :search OR description LIKE :search";
+            }
+            if ($categoryId) {
+                $whereClause[] = "category_item_id = :category_item_id";
+            }
+            $query .= " WHERE " . join(" AND ", $whereClause);
         }
 
         $statement = $this->pdo->prepare($query);
         if ($search) {
             $searchPlaceholder = "%" . $search . "%";
             $statement->bindParam(":search", $searchPlaceholder, \PDO::PARAM_STR);
+        }
+        if ($categoryId) {
+            $statement->bindParam(":category_item_id", $categoryId, \PDO::PARAM_INT);
         }
         $statement->execute();
 
