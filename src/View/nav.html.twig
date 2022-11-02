@@ -1,37 +1,50 @@
 {% from "_macros/loginPrompt.html.twig" import loginPrompt %}
 {% from "_macros/utils.html.twig" import userAvatar %}
 
-<nav role='navigation'>
-	<div class="main">
-		<a href="" {# Enter link here #}>
-			<img src="../assets/images/logook.png" class="logo" alt="logo"></a>
-		<div class="search-box" id="search">
+<header class='top-bar'>
+	<ul class="main">
+		<li>
+			<a href="" {# Enter link here #}>
+				<img src="../assets/images/logook.png" class="logo" alt="logo"></a>
+		</li>
+		<li class="search-box" id="search">
 			<img src="../assets/images/magglass.png">
 			<input type="text" class="input-search" placeholder="Type to Search...">
-			<button class="submit-search">Submit</button>
-		</div>
-        {# FIXME The inline style is a temporary solution until Tyler finish is navbar  #}
-		<div class="menu" id="icons" style="display: flex">
+			<button class="submit-search">Go!</button>
+		</li>
+	</ul>
+	{# FIXME The inline style is a temporary solution until Tyler finish is navbar  #}
+	<ul class="menu" id="icons" onclick="searchHide();" style="display: flex">
+		<li>
 			<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
+		</li>
+		<li>
 			<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
+		</li>
+		<li>
 			<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
-			{% if user %}
+		</li>
+		{% if user %}
+			<li>
 				<a class="loginButton">{{ userAvatar(user.photo) }}</a>
-			{% else %}
+			</li>
+		{% else %}
+			<li>
 				<a class="loginButton"><img src="../assets/images/compte.png"></a>
-			{% endif %}
-		</div>
-		<!-- Burger Button -->
-		<button class="hamburger">
-			<div class="bar"></div>
-		</button>
-	</div>
-	{{ loginPrompt() }}
-
-</nav>
-<!-- Quick access categories -->
-<div class="quick-access">
-	<ul>
+			</li>
+		{% endif %}
+	</ul>
+	<!-- Burger Button -->
+	<ul class="burger-button">
+		<li>
+			<button class="hamburger">
+				<div class="bar"></div>
+			</button>
+		</li>
+	</ul>
+    {{ loginPrompt() }}
+</header>
+<nav><!-- Quick access categories --><ul class="quick-access">
 		<li>
 			<a href="" {# Enter link here #}><img src="../assets/images/drawer.png"><p>Meubles</p>
 			</a>
@@ -52,15 +65,20 @@
 			</a>
 		</li>
 	</ul>
-</div>
-<!-- Mobile nav menu box -->
-<nav class="mobile-nav">
-	<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
-	<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
-	<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
-	{% if user %}
-		<a class="loginButton"><img src="{{ user.photo }}" alt="User avatar"></a>
-	{% else %}
-		<a class="loginButton"><img src="../assets/images/compte.png"></a>
-	{% endif %}
+	<ul class="mobile-nav">
+		<li>
+			<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
+		</li>
+		<li>
+			<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
+		</li>
+		<li>
+			<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
+		</li>
+		{% if user %}
+			<a class="loginButton"><img src="{{ user.photo }}" alt="User avatar"></a>
+		{% else %}
+			<a class="loginButton"><img src="../assets/images/compte.png"></a>
+		{% endif %}
+	</ul>
 </nav>
