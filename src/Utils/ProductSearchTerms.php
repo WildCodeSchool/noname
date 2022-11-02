@@ -30,7 +30,8 @@ class ProductSearchTerms
         if ($this->usedForURLTemplate) {
             $params[] = "page=%page%";
         } elseif ($this->page !== 1) {
-            $params[] = "page=$this->page";
+            $page = max(1, $this->page);
+            $params[] = "page=$page";
         }
 
         if (!is_null($this->search)) {
@@ -81,7 +82,7 @@ class ProductSearchTerms
         $terms = new self();
 
         if (isset($_GET["page"]) && filter_var($_GET["page"], FILTER_VALIDATE_INT)) {
-            $terms->setPage($_GET["page"]);
+            $terms->setPage(max(1, $_GET["page"]));
         }
         $terms->setSearch($_GET["search"] ?? null);
         if (isset($_GET["category"]) && filter_var($_GET["category"], FILTER_VALIDATE_INT)) {

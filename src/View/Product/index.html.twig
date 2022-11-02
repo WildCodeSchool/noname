@@ -17,7 +17,7 @@
 		<form action="/products" method="GET">
 			<div>
 				<label for="search">Recherche</label>
-				{{ textInput({ name: "search", required: false, value: searchTerms.getSearch()  }) }}
+				{{ textInput({ name: "search", required: false, value: searchTerms.getSearch(), placeholder: "Nom du produit" }) }}
 			</div>
 			<div>
 				<label for="category">Catégories</label>

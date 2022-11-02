@@ -15,19 +15,9 @@ class ProductController extends AbstractController
      */
     public function index(): string
     {
-        // Get page number from the URL
-        $page = $_GET["page"] ?? 1;
-
         // Get search terms
         $searchTerms = ProductSearchTerms::fromURLParameters();
         $searchTerms->setUsedForURLTemplate(true);
-
-        // Check if its an int superior to 1
-        if (filter_var($page, FILTER_VALIDATE_INT) !== false) {
-            $page = max(1, $page);
-        } else {
-            $page = 1;
-        }
 
         // Get the data from the page
         $productManager = new ProductManager();
@@ -41,7 +31,8 @@ class ProductController extends AbstractController
 
         // Else if the requested page is superior to the amount of pages,
         // get the last page available.
-        } elseif ($page > $pageData["pagesCount"]) {
+        } elseif ($searchTerms->getPage() > $pageData["pagesCount"]) {
+            $searchTerms->setPage($pageData["pagesCount"]);
             $pageData = $productManager->selectPageWithUser($searchTerms);
         }
 
