@@ -25,7 +25,7 @@ ul {
 .carousel-item p {
   font-size: 2vw;
   font-weight: bold;
-  color: #fbfbfb;
+  color: var(--pCarousel);
 }
 
 .productsHome > .products {
