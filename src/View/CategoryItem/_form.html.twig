@@ -1,12 +1,12 @@
-<form method="post" class="bg-light border rounded p-5">
+<form method="post" class="bg-light border rounded p-4" enctype="multipart/form-data">
 	<div class="row">
 		<label for="title" class="form-label">Titre</label>
-		<input type="text" name="title" id="title" class="form-control" minlength="4" maxlength="20" placeholder="Choisi ton titre de catégorie">
+		<input type="text" name="title" id="title" class="form-control" value="{{categoryItem.title}}"minlength="4" maxlength="20" placeholder="Choisi ton titre de catégorie">
 		<p class="errors">{{errors.title}}</p>
 	</div>
 	<div class="row">
 		<label for="description" class="form-label">Description</label>
-		<input type="text" name="description" id="description" class="form-control" minlength="4" maxlength="100" placeholder="Donnes un Slogan qui claque">
+		<input type="text" name="description" id="description" class="form-control" value="{{categoryItem.description}}" minlength="4" maxlength="100" placeholder="Donnes un Slogan qui claque">
 		<p class="errors">{{errors.description}}</p>
 	</div>
 	<div class="row">
@@ -21,9 +21,6 @@
 	</div>
 
   <section class="buttons-form">
-    <div>
       <button type="submit" class="btn">Valider</button>
-    </div>
-    <a href="/categories_items">Retour</a>
   </section>
 </form>
