@@ -13,6 +13,7 @@
     --textColor: black;
     --blueColor: #4981A6;
     --lessblueColor:#4981a663;
+    --pCarousel:#fbfbfb;
 }
 
 * {
@@ -23,6 +24,7 @@
 
 body {
     color: #000000;
+    font-family: 'Roboto', sans-serif;
 }
 
 p,

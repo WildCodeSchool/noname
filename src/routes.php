@@ -15,6 +15,7 @@ return [
   'items/delete' => ['ItemController', 'delete',],
   'categories_items' => ['CategoryItemController', 'index',],
   'categories_items/add' => ['CategoryItemController', 'add',],
+  'categories_items/edit' => ['CategoryItemController', 'edit', ['id']],
   'products' => ['ProductController', 'index'],
   'product' => ['ProductController', 'show', ['id']],
 ];
