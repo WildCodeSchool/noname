@@ -79,6 +79,7 @@
 @media screen and (max-width: 768px) {
     #searchPanel {
         border-radius: 0;
+        height: 100vh;
         left: -100%;
         top: 0;
         width: 100%;

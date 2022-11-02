@@ -132,9 +132,12 @@
         width: calc(50% - 1rem);
     }
 
-    .productCard .image,
-    .productCard .image::before {
+    .productCard .imageContainer {
         height: calc(100vw / 3);
+    }
+
+    .productCard .imageContainer > .image {
+        height: 100%;
     }
 
     .productCard .content > div {
