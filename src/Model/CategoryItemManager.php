@@ -56,8 +56,8 @@ class CategoryItemManager extends AbstractManager
 
     public function update(array $categoryItem): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET (`title`, `description`, `photo`, `logo`)
-         = (:title, :description, :photo, :logo) WHERE id=:id");
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE
+        . " SET `title` = :title, `description` = :description, `photo` = :photo, `logo` = :logo WHERE id=:id");
         $statement->bindValue('id', $categoryItem['id'], PDO::PARAM_INT);
         $statement->bindValue('title', $categoryItem['title'], PDO::PARAM_STR);
         $statement->bindValue('description', $categoryItem['description'], PDO::PARAM_STR);
