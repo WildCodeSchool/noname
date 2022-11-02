@@ -22,11 +22,6 @@
     list-style: none;
 }
 
-.main li {
-    justify-content: space-between;
-}
-
-
 ul#icons.menu {
     justify-content: flex-end;
     align-items: center;
@@ -174,6 +169,7 @@ div#search.search-box {
     width: auto;
     padding: 2px;
     border-color: var(--secondaryColor);
+    margin-top: 7px;
 }
 
 /*////// Burger Button and actions //////*/
