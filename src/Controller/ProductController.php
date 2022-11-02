@@ -59,7 +59,8 @@ class ProductController extends AbstractController
             "currentPage" => $pageData["currentPage"],
             "pagesCount" => $pageData["pagesCount"],
             "pagesURL" => "/products?" . $searchTerms->toURLParameters(),
-            "categories" => (new CategoryItemManager())->selectAll()
+            "categories" => (new CategoryItemManager())->selectAll(),
+            "searchTerms" => $searchTerms
         ]);
     }
 

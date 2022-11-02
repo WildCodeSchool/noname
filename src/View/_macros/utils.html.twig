@@ -38,7 +38,8 @@
         class: "textInput",
         name: null,
         placeholder: null,
-        required: true
+        required: true,
+        value: null
     } %}
 	{% set options = defaults|merge(options) %}
 
@@ -47,8 +48,10 @@
 	{% set ph = options.placeholder ?? null %}
 	{% set nm = options.name ?? null %}
 	{% set req = options.required %}
+    {% set v = options.value %}
 
-	<input class="{{ cls }}" {% if ph is not null %} placeholder="{{ ph }}" {% endif %} type="text" {% if nm is not null %} name="{{ nm }}" id="{{ nm }}" {% endif %} {% if req %} required {% endif %}/>
+	<input class="{{ cls }}" {% if ph is not null %} placeholder="{{ ph }}" {% endif %} type="text" {% if nm is not null %} name="{{ nm }}" id="{{ nm }}" {% endif %} {% if req %} required {% endif %} {% if v is not null %}value="{{v}}"{% endif %}
+    />
 {% endmacro %}
 
 {#

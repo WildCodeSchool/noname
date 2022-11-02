@@ -17,7 +17,7 @@
 		<form action="/products" method="GET">
 			<div>
 				<label for="search">Recherche</label>
-				{{ textInput({ name: "search", required: false }) }}
+				{{ textInput({ name: "search", required: false, value: searchTerms.getSearch()  }) }}
 			</div>
 			<div>
 				<label for="category">Catégories</label>
@@ -25,7 +25,7 @@
 					<select name="category" id="category" name="category">
 						<option value="">-- AUCUNE --</option>
 						{% for category in categories %}
-							<option value="{{ category.id }}">{{ category.title }}</option>
+							<option value="{{ category.id }}" {% if searchTerms.getCategoryId() == category.id %} selected {% endif %}>{{ category.title }}</option>
 						{% endfor %}
 					</select>
 				{% endif %}
