@@ -29,7 +29,7 @@
 }
 
 .productCard:hover {
-    box-shadow: var(--shadowColor) 0 8px 10px;
+    box-shadow: var(--blueColor) 0 8px 10px;
     cursor: pointer;
     transform: scale(1.025);
 }

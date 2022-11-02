@@ -13,6 +13,7 @@ abstract class AbstractController
 {
     protected Environment $twig;
 
+
     public function __construct()
     {
         $loader = new FilesystemLoader(APP_VIEW_PATH);
