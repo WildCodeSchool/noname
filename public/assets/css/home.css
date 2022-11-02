@@ -2,21 +2,15 @@
   .carousel-item h2 {
     font-size: 64px;
   }
+
   .carousel-item p {
     font-size: 32px;
     font-weight: bold;
     color: #fbfbfb;
   }
-  .home h1{
-    font-size: 64px;
-    margin-top: 1.5rem;
-  }
 }
 
 @media screen and (max-width: 767px) {
-  .home h1 {
-    font-size: 20px
-  }
 
   .carouselContainer a {
     font-size: 10px;
@@ -31,4 +25,13 @@
 
 ul {
   padding: 0;
+}
+
+.img-home {
+  max-height: 43vw;
+  width: 100%;
+}
+
+.home h1 {
+  font-size: 4vw;
 }
