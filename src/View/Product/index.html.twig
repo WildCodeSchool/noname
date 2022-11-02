@@ -22,7 +22,7 @@
 			<div>
 				<label for="category">Catégories</label>
 				{% if categories|length > 0 %}
-					<select name="category" id="category" name="category">
+					<select class="selectInput" name="category" id="category" name="category">
 						<option value="">-- AUCUNE --</option>
 						{% for category in categories %}
 							<option value="{{ category.id }}" {% if searchTerms.getCategoryId() == category.id %} selected {% endif %}>{{ category.title }}</option>

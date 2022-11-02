@@ -52,7 +52,7 @@ class ProductManager extends AbstractManager
         if ($search || $categoryId) {
             $whereClause = [];
             if ($search) {
-                $whereClause[] = "title LIKE :search OR description LIKE :search";
+                $whereClause[] = "(title LIKE :search OR description LIKE :search)";
             }
             if ($categoryId) {
                 $whereClause[] = "category_item_id = :category_item_id";
@@ -102,7 +102,7 @@ class ProductManager extends AbstractManager
         if ($search || $categoryId) {
             $whereClause = [];
             if ($search) {
-                $whereClause[] = "title LIKE :search OR description LIKE :search";
+                $whereClause[] = "(title LIKE :search OR description LIKE :search)";
             }
             if ($categoryId) {
                 $whereClause[] = "category_item_id = :category_item_id";
