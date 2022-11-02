@@ -53,7 +53,6 @@ CREATE TABLE
         CONSTRAINT fk_product_cart FOREIGN KEY (cart_id) REFERENCES cart(id) ON DELETE NO ACTION ON UPDATE NO ACTION
     );
 
-
 INSERT INTO
     `user`(
         `adress`,
