@@ -36,8 +36,8 @@
     <h3 class="h3">Sélectionne tes couleurs</h3>
     <div class="checkbox_color" id="color">
         <div class="palette"><input type="color" id="palette1" name="palette"></div>
-        <div id="palette2" onclick="delete_click()"><input type="button" value="+" id="add" onclick="fAddInput1()" /></div>
-        <div id="palette3" onclick="delete_click2()"><input type="button" value="+" id="add2" onclick="fAddInput2()" /></div>
+        <div id="palette2"><input type="button" value="+" id="add"/></div>
+        <div id="palette3"><input type="button" value="+" id="add2"/></div>
     </div>
         <p class="error">{{ errors.palette }}</p>
     
@@ -76,11 +76,19 @@
 
     <h3 class="h3">Prends des photos et poste les</h3>
     <div class="picture">
-        {# <label class="file" for="file">Ajoute tes photos</label> #}
-        {# <input type="file" name="file" id="file"> #}
-        <label class="label"><input class="radio" name="file[]" type="file" value="file1"><span class="label"><img class="file" src="/assets/images/appareil-photo.png" alt="icone appareil photo"></span></label>
-        <label class="label"><input class="radio" name="file[]" type="file" value="file2"><span class="label"><img class="file" src="/assets/images/appareil-photo.png" alt="icone appareil photo"></span></label>
-        <label class="label"><input class="radio" name="file[]" type="file" value="file3"><span class="label"><img class="file" src="/assets/images/appareil-photo.png" alt="icone appareil photo"></span></label>
+        <label class="label" id="photo1">
+            <input type="file"  name="file[]" id="file1" accept="image/png, image/jpeg">
+            <img class="file" src="/assets/images/appareil-photo.png" alt="icone appareil photo">
+        </label>
+        <label class="label" id="photo2">
+            <input type="file"  name="file[]" id="file2" accept="image/png, image/jpeg">
+            <img class="file" src="/assets/images/appareil-photo.png" alt="icone appareil photo">
+        </label>
+        <label class="label" id="photo3">
+            <input type="file"  name="file[]" id="file3" accept="image/png, image/jpeg">
+            <img class="file" src="/assets/images/appareil-photo.png" alt="icone appareil photo">
+        </label>
+        
     </div>
         <p class="error">{{ errors.file }}</p>
 

@@ -49,23 +49,32 @@ class ProductController extends AbstractController
 
         return $this->twig->render('Product/show.html.twig', ['product' => $product]);
     }
-    
+
     // check if a key of array is empty
     private function checkArray(string $key): void
     {
-        if(empty($_POST[$key])) {
+        if (empty($_POST[$key])) {
             $_POST[$key] = [];
         }
     }
-    
+
     // check if a value of key is empty
     private function checkArrayValue(string $key): string
     {
-         $errors = "";
-        if (empty($_POST[$key])){
+        $errors = "";
+        if (empty($_POST[$key])) {
             $errors = "Tu dois séléctionner une icône !";
         }
-       
+
+        return $errors;
+    }
+
+    private function checkLenghtValue(string $key): string
+    {
+        $errors = "";
+        if (strlen($_POST[$key]) < 2 || htmlentities(trim($_POST[$key])) === "") {
+            $errors = "Le champ doit comporter 2 caractères minimum!";
+        }
         return $errors;
     }
 
@@ -74,19 +83,15 @@ class ProductController extends AbstractController
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (empty($_POST["title"]) || htmlentities(trim($_POST["title"])) === "") {
-                $errors["title"] = "Tu as oublié de choisir un titre";
-            } elseif (strlen($_POST["title"]) < 2) {
-                $errors["title"] = "Ton titre est bien court (2 caractère min)";
-            } elseif (strlen($_POST["title"]) > 20) {
+            $errors["title"] = $this->checkLenghtValue("title");
+
+            if (strlen($_POST["title"]) > 20) {
                 $errors["title"] = "Ton titre est bien long (20 caractère max)";
             }
-            if (empty($_POST["description"]) || htmlentities(trim($_POST["description"])) === "") {
-                $errors["description"] = "Tu as oublié de décrire ton offre";
-            } elseif (strlen($_POST["description"]) < 2) {
-                $errors["description"] = "Ta description est bien courte (2 caractère min).";
-            } elseif (strlen($_POST["description"]) > 250) {
-                $errors["description"] = "Ta description est bien longue (250 caractère max)";
+
+            $errors["description"] = $this->checkLenghtValue("description");
+            if (strlen($_POST["description"]) > 155) {
+                $errors["description"] = "Ton titre est bien long (20 caractère max)";
             }
             if (
                 empty($_POST["price"]) ||
@@ -94,7 +99,6 @@ class ProductController extends AbstractController
             ) {
                 $errors["price"] = "Ton objet ne peut pas être gratuit (entre un prix supérieur à 0€)";
             }
-                
                 $this->checkArray("matter");
                 $this->checkArray("category");
                 $this->checkArray("room");
@@ -107,15 +111,11 @@ class ProductController extends AbstractController
                 $errors["state"] = $this->checkArrayValue("state");
                 $errors["file"] = $this->checkArrayValue("file");
                 $errors["info"] = $this->checkArrayValue("info");
-   
-            }
-            // var_dump($_POST);
+        }
+
             return $this->twig->render("Product/form.html.twig", [
             "errors" => $errors,
             "post" => $_POST
-            
             ]);
     }
-}        
-    
-
+}

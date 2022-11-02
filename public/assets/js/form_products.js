@@ -1,33 +1,23 @@
-function fAddInput1() {
-    let contenu = document.getElementById('color');
-    let color_picker2 = document.createElement("input");
-    color_picker2.classList.add("palette");
-    color_picker2.setAttribute("type", "color");
-    color_picker2.setAttribute("name", "palette2");
-    contenu.appendChild(color_picker2);
-    let contenu2 = document.getElementById('add');
-    contenu2.parentNode.removeChild(contenu2);
-    // contenu2 = document.getElementById("add").style.display = "none";
 
+document.getElementById('add').onclick = remplace_click
+document.getElementById('add2').onclick = remplace_click
+
+
+function fAddInput(contenu, name) {
+    const color_picker = document.createElement("input");
+    color_picker.classList.add("palette");
+    color_picker.setAttribute("type", "color");
+    color_picker.setAttribute("name", name);
+    contenu.appendChild(color_picker);
 }
 
-function fAddInput2() {
-    let contenu = document.getElementById('color');
-    let color_picker2 = document.createElement("input");
-    color_picker2.classList.add("palette");
-    color_picker2.setAttribute("type", "color");
-    color_picker2.setAttribute("name", "palette3");
-    contenu.appendChild(color_picker2);
-    let contenu2 = document.getElementById('add2');
-    contenu2.parentNode.removeChild(contenu2);
+function delete_element(target) {
+    const parent = target.parentNode;
+    parent.removeChild(target);
 }
 
-function delete_click() {
-    let delete_click = document.getElementById("palette2");
-    delete_click.parentNode.removeChild(delete_click);
-}
-
-function delete_click2() {
-    let delete_click = document.getElementById("palette3");
-    delete_click.parentNode.removeChild(delete_click);
+function remplace_click(event) {
+    const parent = event.target.parentNode;
+    delete_element(event.target);
+    fAddInput(parent, parent.id);
 }
