@@ -2,14 +2,27 @@
 
 namespace App\Utils;
 
+/**
+ * Helper class who represent a search input for products.
+ */
 class ProductSearchTerms
 {
     private int $page = 1;
     private ?string $search = null;
     private ?int $categoryId = null;
 
+    /**
+     * Will use a template `%page%` during the export of URL parameters
+     *
+     * @var boolean
+     */
     private bool $usedForURLTemplate = false;
 
+    /**
+     * Convert the terms to parameters for the URL
+     *
+     * @return string
+     */
     public function toURLParameters(): string
     {
         $params = [];
@@ -32,6 +45,37 @@ class ProductSearchTerms
         return join("&", $params);
     }
 
+    /**
+     * Convert the terms to a SQL `WHERE` clause.
+     *
+     * @return string
+     */
+    public function toSQLWhereClause(): string
+    {
+        $query = "";
+
+        if ($this->search || $this->categoryId) {
+            $whereClause = [];
+
+            if ($this->search) {
+                $whereClause[] = "(title LIKE :search OR description LIKE :search)";
+            }
+
+            if ($this->categoryId) {
+                $whereClause[] = "category_item_id = :category_item_id";
+            }
+
+            $query .= " WHERE " . join(" AND ", $whereClause);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Create a `ProductSearchTerms` with the parameters passed in the URL.
+     *
+     * @return self
+     */
     public static function fromURLParameters(): self
     {
         $terms = new self();

@@ -31,11 +31,7 @@ class ProductController extends AbstractController
 
         // Get the data from the page
         $productManager = new ProductManager();
-        $pageData = $productManager->selectPageWithUser(
-            $searchTerms->getPage(),
-            search: $searchTerms->getSearch(),
-            categoryId: $searchTerms->getCategoryId()
-        );
+        $pageData = $productManager->selectPageWithUser($searchTerms);
 
         // If there is no pages
         if ($pageData["pagesCount"] <= 0) {
@@ -46,11 +42,7 @@ class ProductController extends AbstractController
         // Else if the requested page is superior to the amount of pages,
         // get the last page available.
         } elseif ($page > $pageData["pagesCount"]) {
-            $pageData = $productManager->selectPageWithUser(
-                $pageData["pagesCount"],
-                search: $searchTerms->getSearch(),
-                categoryId: $searchTerms->getCategoryId()
-            );
+            $pageData = $productManager->selectPageWithUser($searchTerms);
         }
 
         // Render the view
