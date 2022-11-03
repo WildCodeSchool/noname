@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\CategoryItemManager;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
@@ -25,5 +26,9 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+
+        // Adding categories for the carousel
+        $carouselCategorie = (new CategoryItemManager())->selectAllInCarousel();
+        $this->twig->addGlobal("carouselCategories", $carouselCategorie);
     }
 }
