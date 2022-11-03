@@ -18,4 +18,5 @@ return [
   'categories_items/edit' => ['CategoryItemController', 'edit', ['id']],
   'products' => ['ProductController', 'index'],
   'product' => ['ProductController', 'show', ['id']],
+  'user' => ['UserController'],
 ];
