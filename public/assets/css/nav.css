@@ -1,16 +1,7 @@
-/*////// Variables //////*/
-
-:root {
-    --mainColor: #4981a6;
-    --secondaryColor: #f1f1f1;
-    --plainText: black;
-    --buttonsAndBorders: white;
-}
-
 /*////// Main bar //////*/
 
 .top-bar {
-    background-color: var(--mainColor);
+    background-color: var(--blueColor);
     display: flex;
     justify-content: space-between;
     margin-bottom: -14px;
@@ -112,7 +103,7 @@ ul#icons.menu {
 }
 
 .quick-access a:hover {
-    color: var(--mainColor);
+    color: var(--blueColor);
     transition: 1s;
 }
 
@@ -152,7 +143,7 @@ div#search.search-box {
     outline: none;
     border: none;
     color: var(--buttonsAndBorders);
-    background-color: var(--mainColor);
+    background-color: var(--blueColor);
     border-bottom: black solid 1px;
     height: 30px;
     width: 100%;
@@ -163,7 +154,7 @@ div#search.search-box {
 }
 
 .search-box img {
-    background-color: var(--mainColor);
+    background-color: var(--blueColor);
     height: 20px;
     width: 20px;
     margin-top: 8px;
@@ -173,7 +164,7 @@ div#search.search-box {
 
 .submit-search {
     margin: auto;
-    background-color: var(--mainColor);
+    background-color: var(--blueColor);
     border-radius: 5px;
     margin-left: 5px;
     width: auto;
@@ -236,7 +227,7 @@ div#search.search-box {
     width: 250px;
     position: absolute;
     z-index: 98;
-    background-color: var(--mainColor);
+    background-color: var(--blueColor);
     margin-top: 10px;
     transition: 0.4s;
     border: solid 1px var(--buttonsAndBorders);
