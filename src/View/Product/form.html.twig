@@ -6,24 +6,24 @@
 {% endblock %}
 
 {% block content %}
-<form action="" method="POST" enctype="multipart/form-data">
+<form action="" method="POST" enctype="multipart/form-data" class="form">
     <div class="title-form">
         <h1>Ajoute ton offre</h1>
     </div>
-    <h3 class="h3">Titre</h3>
+    <h2 class="h2">Titre</h2>
     <div class="title-offer">
         <label for="title"></label>
         <input id="title" name="title" type="text" placeholder="Choisis ton titre">
     </div>
         <p class="error">{{ errors.title }}</p>
-    <h3 class="h3">Description</h3>
+    <h2 class="h2">Description</h2>
     <div class="description-offer">
         <label for="description"></label>
         <textarea id="description" name="description" placeholder="Descris ton offre"></textarea>
     </div>
         <p class="error">{{ errors.description }}</p>
 
-    <h3 class="h3">Sélectionne tes matières</h3>
+    <h2 class="h2">Sélectionne tes matières</h2>
     <div class="matter_checkbox">
         <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="wood"><span class="label"><img src="/assets/images/icone_bois.png" alt="icone bois"></span></label>
         <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="metal"><span class="label"><img src="/assets/images/icone_metal.png" alt="icone metal"></span></label>
@@ -33,7 +33,7 @@
     </div>
         <p class="error">{{ errors.matter }}</p>
 
-    <h3 class="h3">Sélectionne tes couleurs</h3>
+    <h2 class="h2">Sélectionne tes couleurs</h2>
     <div class="checkbox_color" id="color">
         <div class="palette"><input type="color" id="palette1" name="palette"></div>
         <div id="palette2"><input type="button" value="+" id="add"/></div>
@@ -41,7 +41,7 @@
     </div>
         <p class="error">{{ errors.palette }}</p>
 
-    <h3 class="h3">Choisis ta catégorie</h3>
+    <h2 class="h2">Choisis ta catégorie</h2>
     <div class="category_checkbox">
         <label class="label"><input class="radio" name="category" type="radio" value="furniture"><span class="label"><img src="/assets/images/icone_meuble.png" alt="icone meuble"></span></label>
         <label class="label"><input class="radio" name="category" type="radio" value="lamp"><span class="label"><img src="/assets/images/icone_liminaire.png" alt="icone luminaire"></span></label>
@@ -50,7 +50,7 @@
     </div>
         <p class="error">{{ errors.category }}</p>
 
-    <h3 class="h3">Idéale pour quelles pièces?</h3>
+    <h2 class="h2">Idéale pour quelles pièces?</h2>
     <div class="room_checkbox">
         <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="desk"><span class="label"><img src="/assets/images/icone_bureau.png" alt="icone bureau"></span></label>
         <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="kitchen"><span class="label"><img src="/assets/images/icone_cuisine.png" alt="icone cuisine"></span></label>
@@ -61,7 +61,7 @@
     </div>
         <p class="error">{{ errors.room }}</p>
 
-    <h3 class="h3">Quel est son état?</h3>
+    <h2 class="h2">Quel est son état?</h2>
     <div class="state_checkbox">
         <label class="label"><input class="radio" name="state" type="radio" value="new"><span class="label"><img src="/assets/images/etat_neuf.png" alt="icone état neuf"></span></label>
         <label class="label"><input class="radio" name="state" type="radio" value="correct"><span class="label"><img src="/assets/images/etat_correct.png" alt="icone état correct"></span></label>
@@ -74,7 +74,7 @@
     </div>
         <p class="error">{{ errors.state }}</p>
 
-    <h3 class="h3">Prends des photos et poste les</h3>
+    <h2 class="h2">Prends des photos et poste les</h2>
     <div class="picture">
         <div class="file">
         <label class="label" id="photo1">
@@ -85,34 +85,34 @@
         </div>
         <div>
         <label class="label" id="photo2">
-            <input type="file"  name="file[1]"  value="file2"  accept="image/png, image/jpeg" multiple="multiple"/>
+            <input type="file" name="file[1]"  value="file2" id="file2" accept="image/png, image/jpeg"/>
             <img class="file" src="/assets/images/appareil-photo.png" id="add_file" alt="icone appareil photo">
         </label>
         </div>
         <div>
-        <label class="label" id="photo3>
-            <input type="file"  " name="file[2]" value="file3" id="file3" accept="image/png, image/jpeg">
-            <img class="file"  src="/assets/images/appareil-photo.png" alt="icone appareil photo">
+        <label class="label" id="photo3">
+            <input type="file" name="file[2]" value="file3" id="file3" accept="image/png, image/jpeg">
+            <img class="file" src="/assets/images/appareil-photo.png" alt="icone appareil photo">
         </label>
         </div>
 
     </div>
         <p class="error">{{ errors.file[1] }}</p>
 
-    <h3 class="h3">Quelles infos souhaite-tu partager?</h3>
+    <h2 class="h2">Quelles infos souhaite-tu partager?</h2>
     <div class="info_checkbox">
         <label class="label"><input class="checkbox" type="checkbox" name="info[]" value="telephone"><span class="label"><img src="/assets/images/telephone.png" alt="icone telephone"></span></label>
         <label class="label"><input class="checkbox" type="checkbox" name="info[]" value="email"><span class="label"><img src="/assets/images/email.png" alt="icone email"></span></label>
     </div>
         <p class="error">{{ errors.info }}</p>
 
-    <h3 class="h3">Quel est ton prix ?</h3>
+    <h2 class="h2">Quel est ton prix ?</h2>
     <div class="price-offer">
         <label for="price"></label>
         <input id="price" name="price" type="number">
     </div>
         <p class="error">{{ errors.price }}</p>
-    <button>Valider</button>
+    <button class="button">Valider</button>
 </form>
 
 

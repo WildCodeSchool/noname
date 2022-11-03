@@ -107,8 +107,6 @@ class ProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors["title"] = $this->checkLenghtValue("title");
-            var_dump($_FILES['file']['name'][0]);
-            var_dump($_FILES);
             if (strlen($_POST["title"]) > 20) {
                 $errors["title"] = "Ton titre est bien long (20 caractère max)";
             }
@@ -138,8 +136,7 @@ class ProductController extends AbstractController
         }
 
             return $this->twig->render("Product/form.html.twig", [
-            "errors" => $errors,
-            "post" => $_POST
+            "errors" => $errors
             ]);
     }
 }

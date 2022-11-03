@@ -1,6 +1,6 @@
 
-document.getElementById('add').onclick = remplace_click
-document.getElementById('add2').onclick = remplace_click
+document.getElementById('add').onclick = replace_click
+document.getElementById('add2').onclick = replace_click
 
 
 
@@ -17,7 +17,7 @@ function delete_element(target) {
     parent.removeChild(target);
 }
 
-function remplace_click(event) {
+function replace_click(event) {
     const parent = event.target.parentNode;
     delete_element(event.target);
     fAddInputColor(parent, parent.id);

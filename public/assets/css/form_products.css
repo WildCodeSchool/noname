@@ -3,21 +3,21 @@
     box-sizing: border-box;
 }
 
-form {
+.form {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .title-form {
     height: 50px;
     width: 60%;
-    background-color: #4981A6;
-    color: white;
+    background-color: var(--blueColor);
+    color: var(--productCardBackgroundColor);
     margin: 20px auto;
     display: flex;
     justify-content: center;
@@ -36,7 +36,7 @@ form {
     margin-bottom: 20px;
 }
 
-textarea {
+#description {
     height: 300px;
     resize: none;
 }
@@ -45,14 +45,14 @@ input#title,
 #price,
 #img {
     height: 30px;
-    border: 1px solid black;
+    border: 1px solid var(--textColor);
     border-radius: 5px;
 }
 
 #description {
     height: 100px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid var(--textColor);
 }
 
 .room_checkbox,
@@ -91,13 +91,13 @@ button {
     margin-bottom: 20px;
 }
 
-.h3 {
+.h2 {
     margin-bottom: 20px;
     width: 40%;
     padding: 5px;
-    color: #4981A6;
+    color: var(--blueColor);
     background: rgba(128, 128, 128, 0.102);
-    border-bottom: 2px solid #4981A6;
+    border-bottom: 2px solid var(--blueColor);
     border-radius: 5px 5px 0 0;
 }
 
@@ -110,14 +110,16 @@ button {
     cursor: pointer;
 }
 
-input[type="file"] {
+#file1,
+#file2,
+#file3 {
     display: none;
 }
 
-button {
-    background-color: #4981a6;
-    color: white;
-    border: #4981a6;
+.button {
+    background-color: var(--blueColor);
+    color: var(--productCardBackgroundColor);
+    border: var(--blueColor);
     border-radius: 5px;
     padding: 25px;
     display: flex;
@@ -127,7 +129,7 @@ button {
 }
 
 button:hover {
-    background-color: #4981a68e;
+    background-color: var(--lessblueColor);
     cursor: pointer;
 }
 
@@ -153,8 +155,8 @@ input#file {
     border-radius: 50%;
     overflow: clip;
     font-size: 2rem;
-    background-color: #4981A6;
-    color: white;
+    background-color: var(--blueColor);
+    color: var(--productCardBackgroundColor);
 }
 
 .checkbox,
@@ -187,7 +189,7 @@ input#file {
         width: 90%;
     }
 
-    .h3 {
+    .h2 {
         width: 80%;
     }
 
@@ -205,7 +207,7 @@ input#file {
         width: 80%;
     }
 
-    button {
+    .button {
         width: 40%;
     }
 

@@ -76,7 +76,7 @@ class ProductManager extends AbstractManager
         $statement->bindValue(`description`, $product['description'], PDO::PARAM_STR);
         $statement->bindValue(`material`, $product['matter'], PDO::PARAM_STR);
         $statement->bindValue(`color`, $product['palette'], PDO::PARAM_STR);
-        $statement->bindValue(`category_item_id`, $product['category'], PDO::PARAM_STR);
+        $statement->bindValue(`category_item_id`, $product['category'], PDO::PARAM_INT);
         $statement->bindValue(`category_room`, $product['room'], PDO::PARAM_STR);
         $statement->bindValue(`condition`, $product['state'], PDO::PARAM_STR);
         $statement->bindValue(`photo`, $product['file'], PDO::PARAM_STR);
