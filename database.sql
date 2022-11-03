@@ -53,7 +53,6 @@ CREATE TABLE
         CONSTRAINT fk_product_cart FOREIGN KEY (cart_id) REFERENCES cart(id) ON DELETE NO ACTION ON UPDATE NO ACTION
     );
 
-
 INSERT INTO
     `user`(
         `adress`,
@@ -318,20 +317,24 @@ VALUES (
         "super objet qui a gardé tout son charme"
     );
 
-    ALTER TABLE `category_item` ADD in_carousel BOOL DEFAULT FALSE;
+ALTER TABLE `category_item` ADD in_carousel BOOL DEFAULT FALSE;
 
-    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 1;
-    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 2;
-    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 3;
-    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 4;
-    INSERT INTO
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 1;
+
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 2;
+
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 3;
+
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 4;
+
+INSERT INTO
     `category_item` (
         `title`,
         `description`,
         `photo`,
         `logo`
     )
-    VALUES (
+VALUES (
         "New Catégorie",
         "Votre meuble n'a plus son utilité , Vendez le",
         "https://cdn.pixabay.com/photo/2015/04/10/17/03/pots-716579_960_720.jpg",
