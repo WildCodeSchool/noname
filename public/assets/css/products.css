@@ -1,13 +1,15 @@
+.productListButtons {
+    margin: 1rem;
+}
+
 /* Search Panel Button*/
 #searchPanelButton {
     background-color: #000000;
-    border-radius: 0 10px 10px 0;
+    border-radius: 1rem;
     box-shadow: var(--shadowColor) 0 5px 5px;
+    display: inline;
     color: white;
     padding: 0.5rem;
-    position: fixed;
-    transition: transform 150ms ease-out;
-    top: 1rem;
     z-index: 2;
 }
 
@@ -20,23 +22,6 @@
     width: 1.5rem;
 }
 
-@media screen and (max-width: 768px) {
-    #searchPanelButton {
-        border-right: solid var(--blueColor) 2px;
-        border-bottom: solid var(--blueColor) 2px;
-        border-radius: 0 0 10px 0;
-        top: 0;
-    }
-
-    #searchPanelButton:hover {
-        transform: none;
-    }
-
-    #searchPanelButton img {
-        width: 2rem;
-    }
-}
-
 /* Search Panel */
 #searchPanel {
     background-color: white;
@@ -44,8 +29,8 @@
     box-shadow: var(--shadowColor) 0 5px 5px;
     left: -25rem;
     padding: 0.5rem;
-    position: fixed;
-    top: 0.5rem;
+    position: absolute;
+    top: 6rem;
     transition: left ease-out 200ms;
     width: 20rem;
     z-index: 2;
@@ -81,6 +66,7 @@
         border-radius: 0;
         height: 100vh;
         left: -100%;
+        position: fixed;
         top: 0;
         width: 100%;
     }
