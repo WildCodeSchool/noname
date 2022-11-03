@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     <div class="title-form">
         <h1>Ajoute ton offre</h1>
     </div>
@@ -76,21 +76,28 @@
 
     <h3 class="h3">Prends des photos et poste les</h3>
     <div class="picture">
+        <div class="file">
         <label class="label" id="photo1">
-            <input type="file"  name="file[]" id="file1" accept="image/png, image/jpeg">
+            <input type="file" name="file[0]" value="file1" id="file1" accept="image/png, image/jpeg">
             <img class="file" src="/assets/images/appareil-photo.png" alt="icone appareil photo">
+            
         </label>
+        </div>
+        <div>
         <label class="label" id="photo2">
-            <input type="file"  name="file[]" id="file2" accept="image/png, image/jpeg">
-            <img class="file" src="/assets/images/appareil-photo.png" alt="icone appareil photo">
+            <input type="file"  name="file[1]"  value="file2"  accept="image/png, image/jpeg" multiple="multiple"/>
+            <img class="file" src="/assets/images/appareil-photo.png" id="add_file" alt="icone appareil photo">   
         </label>
-        <label class="label" id="photo3">
-            <input type="file"  name="file[]" id="file3" accept="image/png, image/jpeg">
-            <img class="file" src="/assets/images/appareil-photo.png" alt="icone appareil photo">
+        </div>
+        <div>
+        <label class="label" id="photo3>
+            <input type="file"  " name="file[2]" value="file3" id="file3" accept="image/png, image/jpeg">
+            <img class="file"  src="/assets/images/appareil-photo.png" alt="icone appareil photo">
         </label>
+        </div>
         
     </div>
-        <p class="error">{{ errors.file }}</p>
+        <p class="error">{{ errors.file[1] }}</p>
 
     <h3 class="h3">Quelles infos souhaite-tu partager?</h3>
     <div class="info_checkbox">

@@ -34,7 +34,6 @@ form {
     flex-direction: column;
     width: 40%;
     margin-bottom: 20px;
-
 }
 
 textarea {
@@ -76,7 +75,6 @@ input#title,
 .state {
     display: flex;
     justify-content: space-around;
-
 }
 
 .state {
@@ -144,7 +142,10 @@ button:hover {
 input#add,
 input#add2,
 input.palette,
-input#palette1 {
+input#palette1,
+input#add_file,
+input#add_file2,
+input#file {
     border: none;
     height: 60px;
     width: 60px;

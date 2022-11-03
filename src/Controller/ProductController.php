@@ -58,6 +58,28 @@ class ProductController extends AbstractController
         }
     }
 
+    private function checkFile(string $key): array
+    {
+        $errors = [];
+        $authorizedExtensions = ['jpg', 'jpeg', 'png'];
+        $maxFileSize = 2000000;
+
+        foreach (($_FILES[$key]['name']) as $key2 => $value) {
+            $value = "";
+            $extension = [];
+            $extension[$key2] = pathinfo($_FILES[$key]['name'][$key2], PATHINFO_EXTENSION);
+            if ((!in_array($extension[$key2], $authorizedExtensions))) {
+                $errors[] = 'Séléctionne une image minimum';
+            }
+            if (file_exists($_FILES[$key]['name'][$key2]) && filesize($_FILES[$key]['name'][$key2]) > $maxFileSize) {
+                $errors[] = 'Votre fichier doit faire moins de 2M';
+            }
+        }
+
+        return $errors;
+    }
+
+
     // check if a value of key is empty
     private function checkArrayValue(string $key): string
     {
@@ -68,6 +90,7 @@ class ProductController extends AbstractController
 
         return $errors;
     }
+
 
     private function checkLenghtValue(string $key): string
     {
@@ -84,7 +107,8 @@ class ProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors["title"] = $this->checkLenghtValue("title");
-
+            var_dump($_FILES['file']['name'][0]);
+            var_dump($_FILES);
             if (strlen($_POST["title"]) > 20) {
                 $errors["title"] = "Ton titre est bien long (20 caractère max)";
             }
@@ -109,7 +133,7 @@ class ProductController extends AbstractController
                 $errors["category"] = $this->checkArrayValue("category");
                 $errors["room"] = $this->checkArrayValue("room");
                 $errors["state"] = $this->checkArrayValue("state");
-                $errors["file"] = $this->checkArrayValue("file");
+                $errors["file"] = $this->checkFile("file");
                 $errors["info"] = $this->checkArrayValue("info");
         }
 

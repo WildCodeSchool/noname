@@ -68,8 +68,10 @@ class ProductManager extends AbstractManager
     public function insert(array $product): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-            " (`title`, `description`, `material`, `color`, `category_item_id`, `category_room`, `condition`, `photo`, `user_id`, `price`)
-         VALUES (:title, :description, :material, :color, :category_item_id, :category_room, :condition, :photo, :user_id, :price)");
+            " (`title`, `description`, `material`, `color`, `category_item_id`,
+             `category_room`, `condition`, `photo`, `user_id`, `price`)
+         VALUES (:title, :description, :material, :color, :category_item_id,
+          :category_room, :condition, :photo, :user_id, :price)");
         $statement->bindValue('title', $product['title'], PDO::PARAM_STR);
         $statement->bindValue(`description`, $product['description'], PDO::PARAM_STR);
         $statement->bindValue(`material`, $product['matter'], PDO::PARAM_STR);
@@ -78,7 +80,7 @@ class ProductManager extends AbstractManager
         $statement->bindValue(`category_room`, $product['room'], PDO::PARAM_STR);
         $statement->bindValue(`condition`, $product['state'], PDO::PARAM_STR);
         $statement->bindValue(`photo`, $product['file'], PDO::PARAM_STR);
-        $statement->bindValue(`user_id`, $product['current_id'], PDO::PARAM_STR);
+        $statement->bindValue(`user_id`, $product['current_id'], PDO::PARAM_INT);
         $statement->bindValue(`price`, $product['price'], PDO::PARAM_INT);
 
 
