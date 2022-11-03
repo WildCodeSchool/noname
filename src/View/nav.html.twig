@@ -1,13 +1,15 @@
+{% from "_macros/utils.html.twig" import button %}
+
 <header class='top-bar'>
 	<div class="main">
-		<a href="/" {# Enter link here #}>
+		<a href="/">
 			<img src="../assets/images/logook.png" class="logo" alt="logo"></a>
 	</div>
-	<div class="search-box" id="search">
+	<form class="search-box" id="search" action="/products" method="GET">
 		<img src="../assets/images/magglass.png">
-		<input type="text" class="input-search" placeholder="Type to Search...">
-		<button class="submit-search">Go!</button>
-	</div>
+		<input type="text" class="input-search" placeholder="Type to Search..." name="search" id="search">
+        {{ button("Go!", { submit: true }) }}
+	</form>
 	<ul class="menu" id="icons" onclick="searchHide();">
 		<li>
 			<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
