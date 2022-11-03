@@ -10,11 +10,24 @@ menu_btn.addEventListener("click", function () {
 
 // Login form
 
+const urlParams = new URLSearchParams(window.location.search);
 const loginBtn = document.querySelectorAll(".loginButton");
-const loginForm = document.querySelector(".loginPrompt");
+const loginPrompt = document.querySelector(".loginPrompt");
+const logoutPrompt = document.querySelector(".logoutPrompt");
 
 loginBtn.forEach((node) =>
     node.addEventListener("click", function () {
-        loginForm.classList.toggle("showed");
+        if (loginPrompt !== null) {
+            loginPrompt.classList.toggle("showed");
+        }
+        if (logoutPrompt !== null) {
+            logoutPrompt.classList.toggle("showed");
+        }
     })
 );
+
+if (urlParams.get("loginFailed") === "true") {
+    if (loginPrompt !== null) {
+        loginPrompt.classList.toggle("showed");
+    }
+}

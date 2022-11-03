@@ -32,7 +32,9 @@ abstract class AbstractController
             $this->user = (new UserManager())->selectOneById($_SESSION["user_id"]);
         }
 
+        // Send the connected global
         $this->twig->addGlobal("user", $this->user);
         $this->twig->addGlobal("requestUri", $_SERVER["REQUEST_URI"]);
+        $this->twig->addGlobal("requestParams", $_GET);
     }
 }
