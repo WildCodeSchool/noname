@@ -19,4 +19,5 @@ return [
     'logout' => ['UserController', 'logout'],
     'products' => ['ProductController', 'index'],
     'product' => ['ProductController', 'show', ['id']],
+    'user' => ['UserController'],
 ];
