@@ -1,9 +1,8 @@
 /*////// Variables //////*/
 
-
 :root {
-    --mainColor: #4981A6;
-    --secondaryColor: #F1F1F1;
+    --mainColor: #4981a6;
+    --secondaryColor: #f1f1f1;
     --plainText: black;
     --buttonsAndBorders: white;
 }
@@ -15,6 +14,13 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: -14px;
+}
+
+.menu a {
+    display: block;
+    margin: 0 0.3rem;
+    width: 32px;
+    height: 32px;
 }
 
 .menu a:hover {
@@ -45,7 +51,6 @@ ul#icons.menu {
 #icons img {
     height: 30px;
     width: 30px;
-    margin: 0 10px
 }
 
 .logo {
@@ -65,7 +70,6 @@ ul#icons.menu {
     padding: 10px;
     list-style: none;
 }
-
 
 .line {
     position: relative;
@@ -111,7 +115,6 @@ ul#icons.menu {
     color: var(--mainColor);
     transition: 1s;
 }
-
 
 ul.quick-access {
     display: flex;
@@ -225,12 +228,12 @@ div#search.search-box {
 }
 
 .mobile-nav {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     top: 130px;
     right: 100%;
-    width: 192px;
+    width: 250px;
     position: absolute;
     z-index: 98;
     background-color: var(--mainColor);
@@ -238,7 +241,19 @@ div#search.search-box {
     transition: 0.4s;
     border: solid 1px var(--buttonsAndBorders);
     border-radius: 15px;
+}
+
+.mobile-nav div {
+    width: 3rem;
+    height: 3rem;
+}
+
+.mobile-nav ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
     list-style: none;
+    margin: 0;
 }
 
 .mobile-nav img {
@@ -260,7 +275,7 @@ div#search.search-box {
 
 .mobile-nav a {
     display: block;
-    margin: 12px auto 12px auto;
+    margin: 12px;
     text-align: center;
     padding: 12px 16px;
     width: fit-content;

@@ -39,7 +39,9 @@
 		</button>
 	</li>
 </ul>
-{{ loginPrompt() }}</header><nav><!-- Quick access categories --><ul class="quick-access">
+{{ loginPrompt() }}</header><nav>
+{# Quick access categories #}
+<ul class="quick-access">
 	<li>
 		<a href="" {# Enter link here #}><img src="../assets/images/drawer.png"><p>Meubles</p>
 		</a>
@@ -60,23 +62,25 @@
 		</a>
 	</li>
 </ul>
-<ul class="mobile-nav">
-	<li>
-		<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
-	</li>
-	<li>
-		<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
-	</li>
-	<li>
-		<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
-	</li>
-	{% if user %}
-		<li>
-			<a class="loginButton"><img src="{{ user.photo }}" alt="User avatar"></a>
-		</li>
-	{% else %}
-		<li>
-			<a class="loginButton"><img src="../assets/images/compte.png"></a>
-		</li>
-	{% endif %}
-</ul></nav>
+
+{% if user %}
+	<div class="mobile-nav">
+		<div>
+			{{ userAvatar(user.photo) }}
+		</div>
+		<ul>
+			<li>
+				<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
+			</li>
+			<li>
+				<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
+			</li>
+			<li>
+				<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
+			</li>
+			<li>
+				<a href="/logout"><img src="../assets/svg/logout.svg"></a>
+			</li>
+		</ul>
+	</div>
+{% endif %}</nav>

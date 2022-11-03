@@ -33,10 +33,11 @@
 
 @media screen and (max-width: 767.98px) {
     .loginPrompt {
-        width: 100%;
+        top: 65px;
+        left: -500px;
+        transition: left ease-in-out 250ms;
     }
-
     .loginPrompt.showed {
-        top: 350px;
+        left: calc(50vw - 350px / 2);
     }
 }
