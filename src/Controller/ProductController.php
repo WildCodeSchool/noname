@@ -43,9 +43,12 @@ class ProductController extends AbstractController
     public function show(int $id): string
     {
         $productManager = new productManager();
-        $product = $productManager->selectOneById($id);
+        $product = $productManager->selectOneWithCategoryId($id);
 
         $product['photo'] = json_decode($product['photo'], false);
+        $product['color'] = json_decode($product['color'], false);
+        $product['material'] = json_decode($product['material'], false);
+        $product['category_room'] = json_decode($product['category_room'], false);
 
         return $this->twig->render('Product/show.html.twig', ['product' => $product]);
     }

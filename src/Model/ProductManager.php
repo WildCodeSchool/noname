@@ -62,4 +62,18 @@ class ProductManager extends AbstractManager
             "pagesCount" => $pagesCount
         ];
     }
+
+    public function selectOneWithCategoryId(int $id): array|false
+    {
+        $query = "SELECT p.*, ci.title categoryTitle, ci.logo, u.pseudo, u.adress,";
+        $query .= " u.email, u.phone_number, u.rating FROM " . static::TABLE ;
+        $query .= " p JOIN category_item ci ON p.category_item_id";
+        $query .= " = ci.id JOIN user u ON p.user_id = u.id WHERE p.id=:id";
+        // prepared request
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }
