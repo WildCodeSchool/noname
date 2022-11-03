@@ -69,9 +69,9 @@ class ProductManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
             " (`title`, `description`, `material`, `color`, `category_item_id`,
-             `category_room`, `condition`, `photo`, `user_id`, `price`)
+             `category_room`, `condition`, `photo`, `price`)
          VALUES (:title, :description, :material, :color, :category_item_id,
-          :category_room, :condition, :photo, :user_id, :price)");
+          :category_room, :condition, :photo, :price)");
         $statement->bindValue('title', $product['title'], PDO::PARAM_STR);
         $statement->bindValue(`description`, $product['description'], PDO::PARAM_STR);
         $statement->bindValue(`material`, $product['matter'], PDO::PARAM_STR);
@@ -80,12 +80,25 @@ class ProductManager extends AbstractManager
         $statement->bindValue(`category_room`, $product['room'], PDO::PARAM_STR);
         $statement->bindValue(`condition`, $product['state'], PDO::PARAM_STR);
         $statement->bindValue(`photo`, $product['file'], PDO::PARAM_STR);
-        $statement->bindValue(`user_id`, $product['current_id'], PDO::PARAM_INT);
         $statement->bindValue(`price`, $product['price'], PDO::PARAM_INT);
-
-
-
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
+    }
+
+    public function selectlast(int $limit = 1): array
+    {
+        // Select last products
+        $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
+        $query .= " FROM product p JOIN user u ON p.user_id = u.id ORDER BY p.id DESC";
+        if ($limit) {
+            $query .= ' LIMIT ' . $limit;
+        }
+
+        $products = $this->pdo->query($query)->fetchAll();
+        foreach ($products as &$product) {
+            $product["photo"] = json_decode($product["photo"], false);
+        }
+
+        return $products;
     }
 }
