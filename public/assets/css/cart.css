@@ -1,0 +1,8 @@
+.cart h1 {
+  font-size: 4vw;
+}
+
+.productsCart {
+  display: flex;
+  justify-content: space-around;
+}

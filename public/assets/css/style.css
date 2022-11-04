@@ -5,6 +5,7 @@
 @import url("ratingStars.css");
 @import url("formCategoryItem.css");
 @import url("indexCategoryItems.css");
+@import url("cart.css");
 
 :root {
     --lightGreyContrastColor: #eeeeee;

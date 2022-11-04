@@ -19,4 +19,6 @@ return [
   'products' => ['ProductController', 'index'],
   'product' => ['ProductController', 'show', ['id']],
   'user' => ['UserController'],
+  'cart/show' => ['CartController', 'index', ['id']],
+  'cart/update' => ['CartController', 'deleteOneProduct', ['id']],
 ];

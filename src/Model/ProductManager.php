@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use PDO;
+
 class ProductManager extends AbstractManager
 {
     public const TABLE = "product";
@@ -78,5 +80,26 @@ class ProductManager extends AbstractManager
         }
 
         return $products;
+    }
+
+    public function selectProductInCart(int $id): array
+    {
+        $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
+        $query .= " FROM " . self::TABLE . " p JOIN cart c ON p.cart_id = c.id JOIN user u ON p.user_id = u.id
+     WHERE p.cart_id = $id";
+        $products = $this->pdo->query($query)->fetchAll();
+        foreach ($products as &$product) {
+            $product["photo"] = json_decode($product["photo"], false);
+        }
+
+        return $products;
+    }
+
+    public function deleteProductInCart(array $product): bool
+    {
+        $query = "UPDATE " . self::TABLE . " SET cart_id = null WHERE id=:id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $product['id'], PDO::PARAM_INT);
+        return $statement->execute();
     }
 }
