@@ -1,3 +1,4 @@
 parameters:
 	ignoreErrors:
 		- '#Constant [A-Z_]+ not found.#'
+        - message: 'Offset [A-Z_]+ does not exist on array\{[a-zA-Z]+: [a-zA-Z]+,\s[a-zA-Z]+:\s[a-zA-Z]+\}'

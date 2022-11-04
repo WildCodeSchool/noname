@@ -7,7 +7,16 @@
 {% endblock %}
 
 {% block content %}
-
+<article class="productBigCarousel">
+    <ul class="productBigImages" id="productBigImgs">
+        {% for photo in product.photo %}
+            <li class="bigPhoto" style="background-image:url({{photo}});"></li>
+        {% endfor %}
+    </ul>
+    <button id="bigRight" class="productBigBtn">></button>
+    <button id="bigLeft" class="productBigBtn"><</button>
+    <button id="quitFullscreen">x</button>
+</article>
 <section id="productPage">
         <article class="productCarousel">
             <ul class="productImages" id="productImgs">

@@ -53,8 +53,6 @@ CREATE TABLE
         CONSTRAINT fk_product_cart FOREIGN KEY (cart_id) REFERENCES cart(id) ON DELETE NO ACTION ON UPDATE NO ACTION
     );
 
-
-
 INSERT INTO
     `user`(
         `adress`,
@@ -109,22 +107,22 @@ INSERT INTO
 VALUES (
         "Ameublement",
         "Votre meuble n'a plus son utilité , Vendez le",
-        "../public/assets/images/ameublement1.jpg",
+        "https://cdn.pixabay.com/photo/2014/08/11/21/39/wall-416060_960_720.jpg",
         "../public/assets/images/ameublement2.png"
     ), (
         "Décoration",
         "Vous recherchez une décoration unique .",
-        "../public/assets/images/deco1.jpg",
+        "https://cdn.pixabay.com/photo/2017/09/09/18/25/living-room-2732939_960_720.jpg",
         "../public/assets/images/deco2.png"
     ), (
         "Luminaires",
         "Eclairez votre habitation pour mettre en valeur votre décoration.",
-        "../public/assets/images/luminaire1.jpg",
+        "https://cdn.pixabay.com/photo/2017/08/10/01/45/lights-2616955_960_720.jpg",
         "../public/assets/images/luminaire2.png"
     ), (
         "Electromenager",
         "Un soucis de four. Changez le !",
-        "../public/assets/images/electromenager1.jpg",
+        "https://cdn.pixabay.com/photo/2022/01/04/05/29/kitchen-6914223_960_720.jpg",
         "../public/assets/images/electromenager2.png"
     );
 
@@ -318,3 +316,27 @@ VALUES (
         2,
         "super objet qui a gardé tout son charme"
     );
+
+ALTER TABLE `category_item` ADD in_carousel BOOL DEFAULT FALSE;
+
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 1;
+
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 2;
+
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 3;
+
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 4;
+
+INSERT INTO
+    `category_item` (
+        `title`,
+        `description`,
+        `photo`,
+        `logo`
+    )
+VALUES (
+        "New Catégorie",
+        "Votre meuble n'a plus son utilité , Vendez le",
+        "https://cdn.pixabay.com/photo/2015/04/10/17/03/pots-716579_960_720.jpg",
+        "../public/assets/images/ameublement2.png"
+    )

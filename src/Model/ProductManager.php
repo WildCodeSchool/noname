@@ -63,6 +63,23 @@ class ProductManager extends AbstractManager
         ];
     }
 
+    public function selectlast(int $limit = 1): array
+    {
+        // Select last products
+        $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
+        $query .= " FROM product p JOIN user u ON p.user_id = u.id ORDER BY p.id DESC";
+        if ($limit) {
+            $query .= ' LIMIT ' . $limit;
+        }
+
+        $products = $this->pdo->query($query)->fetchAll();
+        foreach ($products as &$product) {
+            $product["photo"] = json_decode($product["photo"], false);
+        }
+
+        return $products;
+    }
+
     public function selectOneWithCategoryId(int $id): array|false
     {
         $query = "SELECT p.*, ci.title categoryTitle, ci.logo, u.pseudo, u.adress,";

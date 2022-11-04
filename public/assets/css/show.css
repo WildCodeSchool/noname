@@ -8,7 +8,90 @@
 }
 
 
-/* carousel */
+/* Big Carousel */
+.productBigCarousel {
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    position: fixed;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.621);
+    z-index: 10;
+    visibility: hidden;
+}
+
+#productBigImgs {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.productBigImages {
+    height: 100%;
+    width: 100%;
+    list-style-type: none;
+    transition: transform ease-in-out 0.5s;
+}
+
+.bigPhoto {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+}
+
+.productBigBtn {
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    font-size: 3em;
+    color: antiquewhite;
+    cursor: pointer;
+    transition: 0.3s ease;
+    top: 45%;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    z-index: 11;
+    opacity: 0.4
+}
+
+#bigLeft {
+    left: 0%;
+}
+
+#bigRight {
+    right: 0%;
+}
+
+#bigLeft:hover,
+#bigRight:hover,
+#quitFullscreen:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+#quitFullscreen {
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    font-size: 3em;
+    color: antiquewhite;
+    cursor: pointer;
+    transition: 0.3s ease;
+    top: 0%;
+    right: 0%;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    z-index: 11;
+    opacity: 0.4
+}
+
+
+/* Carousel */
 .productCarousel {
     height: 500px;
     width: 600px;
@@ -23,6 +106,7 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .productImages {
@@ -44,12 +128,14 @@
     position: absolute;
     height: 50px;
     width: 50px;
-    font-size: 1em;
+    font-size: 1.5em;
     color: antiquewhite;
     cursor: pointer;
     transition: 0.3s ease;
     top: 225px;
     font-weight: bold;
+    border: none;
+    background-color: transparent;
 }
 
 #left {
@@ -88,7 +174,7 @@
     width: 30px;
     border-radius: 100%;
     margin-left: 10px;
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
 .productMatter {
@@ -134,8 +220,8 @@
 }
 
 .productIconsChild img {
-    height: 5vw;
-    width: 5vw;
+    height: 70px;
+    width: 70px;
 }
 
 .productIconsChild p {
@@ -179,7 +265,7 @@
     background-color: rgb(254, 174, 24);
     border: none;
     border-radius: 4px;
-    transition: 0.5s;
+    transition: 0.3s ease;
 }
 
 .productAddButton:hover {
@@ -188,6 +274,7 @@
     color: rgb(254, 174, 24);
     box-shadow: 0px 8px 10px rgb(254, 174, 24);
     border: none;
+    text-decoration: underline;
 }
 
 
