@@ -1,10 +1,23 @@
 {% extends 'layout.html.twig' %}
+{% from "_macros/ratingStars.html.twig" import ratingStars %}
 
-{% block stylesheet %}<link rel="stylesheet" href="../assets/css/show.css">{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/show.css">
+{% endblock %}
 
 {% block content %}
-
-<section id="productPage">
+<article class="productBigCarousel">
+    <ul class="productBigImages" id="productBigImgs">
+        {% for photo in product.photo %}
+            <li class="bigPhoto" style="background-image:url({{photo}});"></li>
+        {% endfor %}
+    </ul>
+    <button id="bigRight" class="productBigBtn">></button>
+    <button id="bigLeft" class="productBigBtn"><</button>
+    <button id="quitFullscreen">x</button>
+</article>
+<main id="productPage">
         <article class="productCarousel">
             <ul class="productImages" id="productImgs">
                 {% for photo in product.photo %}
@@ -16,35 +29,97 @@
         </article>
 
         <article class="productInfo">
-                <h1>Nom du produit</h1>
+                <h1>{{product.title}}</h1>
                 <ul>
-                    <li class="productColorMatter"><span class="ImportanText">Couleur:</span> <p class="pastilleColor"></p><span>Matière:</span> Bois </br><img src="assets/images/deco2.png" alt=""></li>
-                    <li class="productState"><span class="ImportanText">État:</span> quasi neuf</li>
-                    <li class="productDescription">   blablablablabla blablabla blablablabla blablabla blablabla blabla blablablabla blablabla blablablabla blabla blaElleEstBelleLaChaisebla blabla blabla blabla blablablabla blablabla</li>
-                    <li class="productPrice"><span class="ImportanText">Prix:</span> 8000€</li>
+                    <li class="productColor">
+                        <p class="ImportanText">Couleur: </p>
+                        {% for color in product.color %}
+                            <div class="pastilleColor" style="background-color:{{color}};"></div>
+                        {% endfor %}
+                    </li>
+                    <li class="productMatter">
+                        <p class="ImportanText">Matière: </p>
+                        <div class="productIcons">
+                        {% for material in product.material %}
+                            <div class="productIconsChild">
+                                <img src="assets/images/deco2.png" alt="matter icon">
+                                <p>{{material}}</p>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </li>
+                    <li class="productState">
+                        <p class="ImportanText">État: </p>
+                        <p>{{product.condition}}</p>
+                    </li>
+                    <li class="productDescription">
+                        <p class="ImportanText">Description: </p>
+                        <p>{{product.description}}</p>
+                    </li>
+                    <li class="productPrice">
+                        <p class="ImportanText">Prix: </p>
+                        <p>{{product.price}} €</p>
+                    </li>
                 </ul>
         </article>
 
         <article class="productInfo2">
             <ul>
-                <li class="productType"><span class="ImportanText">Type: </span>meuble</br> <img src="assets/images/ameublement2.png" alt=""></li>
-                <li class="productRoom"><span class="ImportanText">Piece:</span> Salle à manger</br> <img src="assets/images/deco2.png" alt=""></li>
+                <li class="productType">
+                    <p class="ImportanText">Type: </p>
+                    <div class="productIcons">
+                        <div class="productIconsChild">
+                            <img src="{{product.logo}}" alt="type icon">
+                            <p>{{product.categoryTitle}}</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="productRoom">
+                    <p class="ImportanText">Pièce: </p>
+                    <div class="productIcons">
+                        {% for category in product.category_room %}
+                        <!-- Add the correct src when the database has been changed -->
+                        <div class="productIconsChild">
+                            <img src="assets/images/luminaire2.png" alt="room icon">
+                            <p>{{category}}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </li>
             </ul>
         </article>
 
-        <article class="productPricAaddButton">
+        <article class="productAddToCart">
                 <button class="productAddButton">Ajouter au panier</button>
         </article>
 
         <article class="productSeller">
-            <div class="productSellerName"><span class="ImportanText">Vendu par: </span>Michel</div>
-            <div class="productSellerLocation"><span class="ImportanText">Habite:</span> FortFortLointain</div>
+        <!-- Add if conditions to display infos when the database has been changed -->
+            <div class="productSellerPseudo">
+                <p class="ImportanText">Vendu par: </p>
+                <p>{{product.pseudo}}</p>
+            </div>
+            <div class="productSellerAdress">
+                <p class="ImportanText">Habite: </p>
+                <p>{{product.adress}}</p>
+            </div>
+            <div class="productSellerContact">
+                <p class="ImportanText">Contact: </p>
+                <div>
+                    <p>{{product.email}}</p>
+                    <p>{{product.phone_number}}</p>
+                </div>
+            </div>
+            <div class="productSellerRating">
+                <p class="ImportanText">Note: </p>
+                {{ratingStars(product.rating)}}
+            </div>
         </article>
 
         <article class="productMap">
                 <img src="https://www.adslzone.net/app/uploads-adslzone.net/2017/06/google-maps.jpg" alt="map">
         </article>
-    </section>
+    </main>
 
 {% endblock %}
 
