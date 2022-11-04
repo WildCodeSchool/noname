@@ -6,11 +6,13 @@
 {% macro productCardContainer(products) %}
 	<div class="productCardContainer">
 		{% if products|length > 0 %}
-			<div class="products">
+			<ul class="products">
 				{% for product in products %}
-					{{ _self.productCard(product) }}
+					<li class="products">
+						{{ _self.productCard(product) }}
+					</li>
 				{% endfor %}
-			</div>
+			</ul>
 		{% else %}
 			<h3 class="noProducts">Aucun produits trouvé</h3>
 		{% endif %}

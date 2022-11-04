@@ -8,7 +8,7 @@
     padding: 1rem;
 }
 
-.productCardContainer > .noProducts {
+.productCardContainer .noProducts {
     color: var(--blueColor);
     padding: 1rem;
     text-align: center;
