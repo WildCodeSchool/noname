@@ -1,4 +1,5 @@
-{% from "_macros/utils.html.twig" import button %}
+{% from "_macros/loginPrompt.html.twig" import loginPrompt %}
+{% from "_macros/utils.html.twig" import button, userAvatar %}
 
 <header class='top-bar'>
 	<div class="main">
@@ -8,30 +9,38 @@
 	<form class="search-box" id="search" action="/products" method="GET">
 		<img src="../assets/images/magglass.png">
 		<input type="text" class="input-search" placeholder="Type to Search..." name="search" id="search">
-        {{ button("Go!", { submit: true }) }}
+		{{ button("Go!", { submit: true }) }}
 	</form>
 	<ul class="menu" id="icons" onclick="searchHide();">
-		<li>
-			<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
-		</li>
-		<li>
-			<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
-		</li>
-		<li>
-			<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
-		</li>
-		<li>
-			<a href="signup.html.twig" {# Enter link here #}><img src="../assets/images/compte.png"></a>
-		</li>
+		{% if user %}
+			<li>
+				<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
+			</li>
+			<li>
+				<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
+			</li>
+			<li>
+				<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
+			</li>
+			<li>
+				<a class="loginButton">{{ userAvatar(user.photo) }}</a>
+			</li>
+		{% else %}
+			<li>
+				<a class="loginButton"><img src="../assets/images/compte.png"></a>
+			</li>
+		{% endif %}
 	</ul>
-	<!-- Burger Button -->
-	<ul class="burger-button">
-		<li>
-			<button class="hamburger">
-				<div class="bar"></div>
-			</button>
-		</li>
-	</ul>
+	<nav>
+		<ul class="burger-button">
+			<li>
+				<button class="hamburger">
+					<div class="bar"></div>
+				</button>
+			</li>
+		</ul>
+		{{ loginPrompt() }}
+	</nav>
 </header>
 <nav>
 	<!-- Quick access categories -->
@@ -48,18 +57,17 @@
 			{% endif %}
 		{% endfor %}
 	</ul>
-	<ul class="mobile-nav">
-		<li>
-			<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
-		</li>
-		<li>
-			<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
-		</li>
-		<li>
-			<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
-		</li>
-		<li>
-			<a href="" {# Enter link here #}><img src="../assets/images/compte.png"></a>
-		</li>
-	</ul>
+	{% if user %}
+		<div class="mobile-nav">
+			<div>
+				{{ userAvatar(user.photo) }}
+			</div>
+			<ul>
+				<li><a href=""{# Enter link here #}><img src="../assets/images/Vector.png"></a></li>
+				<li><a href=""{# Enter link here #}><img src="../assets/images/carnet.png"></a></li>
+				<li><a href=""{# Enter link here #}><img src="../assets/images/panier.png"></a></li>
+				<li><a href="/logout"><img src="../assets/svg/logout.svg"></a></li>
+			</ul>
+		</div>
+	{% endif %}
 </nav>

@@ -1,23 +1,28 @@
-/*////// Variables //////*/
-
-
-:root {
-    --mainColor: #4981A6;
-    --secondaryColor: #F1F1F1;
-    --plainText: black;
-    --buttonsAndBorders: white;
-}
-
 /*////// Main bar //////*/
 
 .top-bar {
-    background-color: var(--mainColor);
+    background-color: var(--blueColor);
     display: flex;
     justify-content: space-between;
-    margin-bottom: -14px;
+}
+
+.menu a {
+    display: block;
+    margin: 0 0.3rem;
+    width: 32px;
+    height: 32px;
+}
+
+.menu a:hover {
+    cursor: pointer;
+}
+
+.menu .loginButton img {
+    border-radius: 50%;
 }
 
 .main {
+    background-color: #4981a6;
     display: flex;
     list-style: none;
 }
@@ -36,7 +41,6 @@ ul#icons.menu {
 #icons img {
     height: 30px;
     width: 30px;
-    margin: 0 10px
 }
 
 .logo {
@@ -56,7 +60,6 @@ ul#icons.menu {
     padding: 10px;
     list-style: none;
 }
-
 
 .line {
     position: relative;
@@ -99,10 +102,9 @@ ul#icons.menu {
 }
 
 .quick-access a:hover {
-    color: var(--mainColor);
+    color: var(--blueColor);
     transition: 1s;
 }
-
 
 ul.quick-access {
     display: flex;
@@ -114,7 +116,6 @@ ul.quick-access {
 
 li.quick-access {
     box-sizing: border-box;
-
 }
 
 .quick-access li:last-child {
@@ -141,7 +142,7 @@ div#search.search-box {
     outline: none;
     border: none;
     color: var(--buttonsAndBorders);
-    background-color: var(--mainColor);
+    background-color: var(--blueColor);
     border-bottom: black solid 1px;
     height: 30px;
     width: 100%;
@@ -151,9 +152,8 @@ div#search.search-box {
     color: var(--buttonsAndBorders);
 }
 
-
 .search-box img {
-    background-color: var(--mainColor);
+    background-color: var(--blueColor);
     height: 20px;
     width: 20px;
     margin-top: 8px;
@@ -167,7 +167,7 @@ div#search.search-box {
 
 .submit-search {
     margin: auto;
-    background-color: var(--mainColor);
+    background-color: var(--blueColor);
     border-radius: 5px;
     margin-left: 5px;
     width: auto;
@@ -200,7 +200,7 @@ div#search.search-box {
 .hamburger .bar,
 .hamburger:after,
 .hamburger:before {
-    content: '';
+    content: "";
     display: block;
     width: 100%;
     height: 5px;
@@ -222,25 +222,45 @@ div#search.search-box {
 }
 
 .mobile-nav {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     top: 130px;
     right: 100%;
-    width: 192px;
+    width: 250px;
     position: absolute;
     z-index: 98;
-    background-color: var(--mainColor);
+    background-color: var(--blueColor);
     margin-top: 10px;
     transition: 0.4s;
     border: solid 1px var(--buttonsAndBorders);
     border-radius: 15px;
+}
+
+.mobile-nav div {
+    width: 3rem;
+    height: 3rem;
+}
+
+.mobile-nav ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
     list-style: none;
+    margin: 0;
 }
 
 .mobile-nav img {
     height: 30px;
     width: 30px;
+}
+
+.mobile-nav a:hover {
+    cursor: pointer;
+}
+
+.mobile-nav .loginButton img {
+    border-radius: 50%;
 }
 
 .mobile-nav.is-active {
@@ -249,7 +269,7 @@ div#search.search-box {
 
 .mobile-nav a {
     display: block;
-    margin: 12px auto 12px auto;
+    margin: 12px;
     text-align: center;
     padding: 12px 16px;
     width: fit-content;
@@ -259,7 +279,7 @@ div#search.search-box {
 
 /*////// Smartphone //////*/
 
-@media screen and (max-width:767.98px) {
+@media screen and (max-width: 767.98px) {
     .menu {
         visibility: hidden;
     }
@@ -280,7 +300,7 @@ div#search.search-box {
 
 /*////// Desktop //////*/
 
-@media screen and (min-width:767.98px) {
+@media screen and (min-width: 767.98px) {
     button.hamburger {
         visibility: hidden;
     }
