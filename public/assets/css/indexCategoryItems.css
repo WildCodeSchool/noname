@@ -42,6 +42,11 @@
   width: 70%;
 }
 
+.logo-card-category {
+  height: 3vw;
+  width: 3vw;
+}
+
 
 /* formulaire check */
 
@@ -86,11 +91,21 @@
   .categoryContainerEdit h1 {
     font-size: 4vw;
   }
+
+  .logo-card-category {
+    height: 4vw;
+    width: 4vw;
+  }
 }
 
 @media screen and (max-width:768px) {
   .card-category {
     height: 24vw;
+  }
+
+  .logo-card-category {
+    height: 5vw;
+    width: 5vw;
   }
 
 }

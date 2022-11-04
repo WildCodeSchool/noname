@@ -16,10 +16,10 @@ class CategoryItemController extends AbstractController
             $uploadDir = 'uploads/';
             // le nom de fichier sur le serveur est ici généré à partir du nom de fichier sur le poste du client
             //  (mais d'autre stratégies de nommage sont possibles)
-            $uploadFilePhoto = $uploadDir . basename($_FILES['photo']['name']);
-            $uploadFileLogo = $uploadDir . basename($_FILES['logo']['name']);
 
             if ($_POST['type'] === 'add') {
+                $uploadFilePhoto = $uploadDir . basename($_FILES['photo']['name']);
+                $uploadFileLogo = $uploadDir . basename($_FILES['logo']['name']);
                 $_POST['title'] =  ucfirst($_POST['title']);
                 $_POST['description'] = ucfirst($_POST['description']);
                 // clean $_POST data
@@ -121,6 +121,7 @@ class CategoryItemController extends AbstractController
 
         return $this->twig->render('CategoryItem/edit.html.twig', [
             "categoryItem" => $categoryItem
+
         ]);
     }
 
