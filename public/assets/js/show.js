@@ -75,6 +75,7 @@ function showBigCarousel() {
     bigCarousel.style.visibility = "visible";
     bigQuit.style.visibility = "visible";
     bigShowHidden();
+    document.body.style.overflow = "hidden";
 }
 
 function hideBigCarousel() {
@@ -82,4 +83,5 @@ function hideBigCarousel() {
     bigLeft.style.visibility = "hidden";
     bigRight.style.visibility = "hidden";
     bigQuit.style.visibility = "hidden";
+    document.body.style.overflow = "auto";
 }

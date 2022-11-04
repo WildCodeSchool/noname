@@ -38,7 +38,7 @@
     height: 100%;
     width: 100%;
     display: inline-block;
-    background-size: cover;
+    background: no-repeat;
     background-position: center;
 }
 
