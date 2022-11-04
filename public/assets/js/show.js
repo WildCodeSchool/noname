@@ -1,9 +1,9 @@
 //Carousel
-let container = document.getElementById("productImgs");
-let nbrImage = container.querySelectorAll('li').length;
+const container = document.getElementById("productImgs");
+const nbrImage = container.querySelectorAll('li').length;
 let positionImage = 0;
-let left = document.getElementById("left");
-let right = document.getElementById("right");
+const left = document.getElementById("left");
+const right = document.getElementById("right");
 container.style.width = (600 * nbrImage) + "px";
 
 showHidden();
@@ -33,13 +33,13 @@ function showHidden() {
 }
 
 //Big Carousel
-let bigCarousel = document.getElementsByClassName("productBigCarousel")[0];
-let bigContainer = document.getElementById("productBigImgs");
-let bigNbrImage = bigContainer.querySelectorAll('li').length;
+const bigCarousel = document.getElementsByClassName("productBigCarousel")[0];
+const bigContainer = document.getElementById("productBigImgs");
+const bigNbrImage = bigContainer.querySelectorAll('li').length;
 let bigPositionImage = 0;
-let bigLeft = document.getElementById("bigLeft");
-let bigRight = document.getElementById("bigRight");
-let bigQuit = document.getElementById("quitFullscreen");
+const bigLeft = document.getElementById("bigLeft");
+const bigRight = document.getElementById("bigRight");
+const bigQuit = document.getElementById("quitFullscreen");
 
 container.onclick = function () { showBigCarousel() }//("click", showBigCarousel());
 
