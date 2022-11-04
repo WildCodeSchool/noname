@@ -5,11 +5,17 @@
 #}
 {% macro productCardContainer(products) %}
 	<div class="productCardContainer">
-		<div class="products">
-			{% for product in products %}
-				{{ _self.productCard(product) }}
-			{% endfor %}
-		</div>
+		{% if products|length > 0 %}
+			<ul class="products">
+				{% for product in products %}
+					<li class="products">
+						{{ _self.productCard(product) }}
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<h3 class="noProducts">Aucun produits trouvé</h3>
+		{% endif %}
 	</div>
 {% endmacro %}
 
@@ -21,9 +27,11 @@
 {% macro productCard(product) %}
 	{% from "_macros/ratingStars.html.twig" import ratingStars %}
 
-	<article class="productCard">
+	<article class="productCard" onload="productCard.onload(this)">
 		<a href="/product?id={{product.id}}">
-			<div class="image" style="background-image: url({{ product.photo[0] }});"></div>
+			<div class="imageContainer">
+				<div class="image" style="background-image: url({{ product.photo[0] }});"></div>
+			</div>
 			<div class="content">
 				<div>
 					<div>

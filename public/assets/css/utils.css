@@ -46,6 +46,15 @@
     color: var(--lessblueColor);
 }
 
+/* Select */
+.selectInput {
+    background-color: transparent;
+    border: none;
+    border-bottom: #000000 solid 1px;
+    padding: 0.4rem;
+    width: 100%;
+}
+
 /* User avatar */
 .userAvatar {
     background-position: center;
