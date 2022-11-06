@@ -47,7 +47,12 @@ class ProductManager extends AbstractManager
         // Make the query
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
-        $query .= $searchTerms->toSQLWhereClause();
+        $query .= " WHERE";
+        $searchTermsClause = $searchTerms->toSQLWhereClause();
+        if ($searchTermsClause !== "") {
+            $query .= "(" . $searchTermsClause . ") AND";
+        }
+        $query .= " p.cart_id IS NULL";
         if ($orderBy) {
             $query .= " ORDER BY " . $orderBy . " " . $direction;
         }
@@ -80,8 +85,13 @@ class ProductManager extends AbstractManager
      */
     private function countPages(ProductSearchTerms $searchTerms, int $limit): int
     {
-        $query = "SELECT COUNT(*) as count FROM product";
-        $query .= $searchTerms->toSQLWhereClause();
+        $query = "SELECT COUNT(*) as count FROM product p";
+        $query .= " WHERE";
+        $searchTermsClause = $searchTerms->toSQLWhereClause();
+        if ($searchTermsClause !== "") {
+            $query .= "(" . $searchTermsClause . ") AND";
+        }
+        $query .= " p.cart_id IS NULL";
 
         $statement = $this->pdo->prepare($query);
         $statement = $this->bindSearchTerms($statement, $searchTerms);
