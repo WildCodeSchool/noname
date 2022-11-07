@@ -19,6 +19,9 @@ class UserManager extends AbstractManager
         $statement->bindValue('photo', $userData['photo'], PDO::PARAM_STR);
 
         $statement->execute();
+
+        var_dump($userData);
+        exit;
     }
 }
 
