@@ -10,7 +10,8 @@
     } %}
 	{% set options = defaults|merge(options) %}
 
-	<div class="productCardContainer {% if options.horizontal %}horizontal{% endif %}">
+	<div class="productCardContainer {% if options.horizontal %}horizontal {% if products|length > 3 %}overflowing{% endif %}
+    {% endif %}">
 		{% if products|length > 0 %}
 			<ul class="products">
 				{% for product in products %}

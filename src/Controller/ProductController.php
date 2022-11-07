@@ -71,15 +71,16 @@ class ProductController extends AbstractController
 
         $productManager = new ProductManager();
 
-        // In sale product
+        $boughtProducts = $productManager-> selectBoughtUserProduct($this->user["id"]);
         $inSaleProduct = $productManager->selectInSaleUserProduct($this->user["id"]);
-
-        // In cart products
         $inCartProducts = $productManager->selectInCartUserProducts($this->user["id"]);
+        $soldProducts = $productManager->selectSoldUserProduct($this->user["id"]);
 
         return $this->twig->render("Product/book.html.twig", [
+            "boughtProducts" => $boughtProducts,
             "inSaleProducts" => $inSaleProduct,
-            "inCartProducts" => $inCartProducts
+            "inCartProducts" => $inCartProducts,
+            "soldProducts" => $soldProducts
         ]);
     }
 }

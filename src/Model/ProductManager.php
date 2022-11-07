@@ -152,6 +152,30 @@ class ProductManager extends AbstractManager
     }
 
     /**
+     * Get all products buy by a user
+     *
+     * @param integer $userId
+     * @return array
+     */
+    public function selectBoughtUserProduct(int $userId): array
+    {
+        $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
+        $query .= " FROM product p JOIN user u ON p.user_id = u.id JOIN cart c ON p.cart_id = c.id";
+        $query .= " WHERE c.user_id = :userId AND c.status_validation = true";
+        $query .= " AND NOW() < DATE_ADD(DATE(c.date), INTERVAL 7 DAY)";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(":userId", $userId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        $products = $statement->fetchAll();
+        foreach ($products as &$product) {
+            $product["photo"] = json_decode($product["photo"]);
+        }
+        return $products;
+    }
+
+    /**
      * Get product in sale by a user
      *
      * @param integer $userId
@@ -185,6 +209,29 @@ class ProductManager extends AbstractManager
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
         $query .= " WHERE p.cart_id IS NOT NULL AND u.id = :userId";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(":userId", $userId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        $products = $statement->fetchAll();
+        foreach ($products as &$product) {
+            $product["photo"] = json_decode($product["photo"]);
+        }
+        return $products;
+    }
+
+    /**
+     * Get all sold product of a user
+     *
+     * @param integer $userId
+     * @return array
+     */
+    public function selectSoldUserProduct(int $userId): array
+    {
+        $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
+        $query .= " FROM product p JOIN user u ON p.user_id = u.id";
+        $query .= " WHERE p.status = 'vendu' AND u.id = :userId";
 
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(":userId", $userId, \PDO::PARAM_INT);

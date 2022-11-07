@@ -16,7 +16,20 @@
 }
 
 .productCardContainer.horizontal > .products {
+    border-radius: 0.75rem;
+    display: block;
     overflow-x: auto;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.productCardContainer.horizontal.overflowing > .products {
+    border-left: var(--shadowColor) solid 2px;
+    border-right: var(--shadowColor) solid 2px;
+}
+
+.productCardContainer.horizontal > .products > li {
+    display: inline-block;
 }
 
 @media screen and (max-width: 768px) {
