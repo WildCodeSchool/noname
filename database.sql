@@ -354,3 +354,6 @@ UPDATE `product` SET status = "en panier" WHERE id = 3;
 
 ALTER TABLE `product` ADD show_phone_user BOOL DEFAULT FALSE;
 ALTER TABLE `product` ADD show_email_user BOOL DEFAULT FALSE;
+
+UPDATE `product` SET cart_id = 2 WHERE id = 4;
+UPDATE `product` SET status = "en panier" WHERE id = 4;

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\CartManager;
 use App\Model\ProductManager;
 
 class CartController extends AbstractController
@@ -23,5 +24,14 @@ class CartController extends AbstractController
         $product = $productManager->selectOneById($productId);
         $productManager->deleteProductInCart($product);
         header("Location: /cart");
+    }
+
+    public function valideCart(int $cartId)
+    {
+        $productManager = new ProductManager();
+        $productManager->updateProductsFromCartToSold($cartId);
+        $cartManager = new CartManager();
+        $cartManager->updateValidateCart($cartId);
+        header("Location: /book");
     }
 }

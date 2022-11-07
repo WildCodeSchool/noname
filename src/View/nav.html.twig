@@ -21,11 +21,11 @@
 			</li>
 			<li>
 				<a href="/cart" {# Enter link here #}><img src="../assets/images/panier.png">
-					<div class="cartNbr">
-						{% if cart|length > 0 %}
-							{{cart|length}}
-						{% endif %}
-					</div>
+                    {% if cart|length > 0 %}
+                        <div class="cartNbr">
+                            {{cart|length}}
+                        </div>
+                    {% endif %}
 				</a>
 			</li>
 			<li>
@@ -73,11 +73,11 @@
 				<li><a href=""{# Enter link here #}><img src="../assets/images/carnet.png"></a></li>
 				<li>
           <a href="/cart"{# Enter link here #}><img src="../assets/images/panier.png">
-            <div class="cartNbrMobile">
-              {% if cart|length > 0 %}
+            {% if cart|length > 0 %}
+              <div class="cartNbrMobile">
                 {{cart|length}}
-              {% endif %}
-            </div>
+              </div>
+            {% endif %}
           </a>
         </li>
 				<li><a href="/logout"><img src="../assets/svg/logout.svg"></a></li>

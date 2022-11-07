@@ -134,7 +134,7 @@ class ProductManager extends AbstractManager
     {
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM " . self::TABLE . " p JOIN cart c ON p.cart_id = c.id JOIN user u ON p.user_id = u.id
-     WHERE c.user_id = $userId";
+     WHERE c.user_id = $userId AND c.status_validation = False";
         $products = $this->pdo->query($query)->fetchAll();
         foreach ($products as &$product) {
             $product["photo"] = json_decode($product["photo"], false);
@@ -145,7 +145,7 @@ class ProductManager extends AbstractManager
 
     public function deleteProductInCart(array $product): bool
     {
-        $query = "UPDATE " . self::TABLE . " SET cart_id = null WHERE id=:id";
+        $query = "UPDATE " . self::TABLE . " SET cart_id = null, status = 'en vente' WHERE id=:id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('id', $product['id'], PDO::PARAM_INT);
         return $statement->execute();
@@ -154,7 +154,7 @@ class ProductManager extends AbstractManager
     public function selectOneWithCategoryId(int $id): array|false
     {
         $query = "SELECT p.*, ci.title categoryTitle, ci.logo, u.pseudo, u.adress,";
-        $query .= " u.email, u.phone_number, u.rating FROM " . static::TABLE ;
+        $query .= " u.email, u.phone_number, u.rating FROM " . static::TABLE;
         $query .= " p JOIN category_item ci ON p.category_item_id";
         $query .= " = ci.id JOIN user u ON p.user_id = u.id WHERE p.id=:id";
         // prepared request
@@ -163,5 +163,13 @@ class ProductManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function updateProductsFromCartToSold(int $cartId): bool
+    {
+        $query = "UPDATE " . self::TABLE . " SET status = 'vendu' WHERE cart_id = :cart_id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('cart_id', $cartId, PDO::PARAM_INT);
+        return $statement->execute();
     }
 }
