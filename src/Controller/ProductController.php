@@ -71,7 +71,7 @@ class ProductController extends AbstractController
 
         $productManager = new ProductManager();
 
-        $boughtProducts = $productManager-> selectBoughtUserProduct($this->user["id"]);
+        $boughtProducts = $productManager->selectBoughtUserProduct($this->user["id"]);
         $inSaleProduct = $productManager->selectInSaleUserProduct($this->user["id"]);
         $inCartProducts = $productManager->selectInCartUserProducts($this->user["id"]);
         $soldProducts = $productManager->selectSoldUserProduct($this->user["id"]);
@@ -82,5 +82,25 @@ class ProductController extends AbstractController
             "inCartProducts" => $inCartProducts,
             "soldProducts" => $soldProducts
         ]);
+    }
+
+    /**
+     * Delete a product on sale
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function deleteSale(int $id): void
+    {
+        $this->notConnectedRedirection();
+
+        $productManager = new ProductManager();
+        $product = $productManager->selectOneById($id);
+
+        if (isset($product) && ($product["user_id"] === $this->user["id"] || $this->user["isAdmin"] === 1)) {
+            $productManager->deleteInSale($product["id"]);
+        }
+
+        header("Location: /book");
     }
 }

@@ -185,7 +185,7 @@ class ProductManager extends AbstractManager
     {
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
-        $query .= " WHERE u.id = :userId";
+        $query .= " WHERE u.id = :userId AND p.status = 'en vente'";
 
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(":userId", $userId, \PDO::PARAM_INT);
@@ -242,5 +242,19 @@ class ProductManager extends AbstractManager
             $product["photo"] = json_decode($product["photo"]);
         }
         return $products;
+    }
+
+    /**
+     * Delete an article on sale by a user
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function deleteInSale(int $id): void
+    {
+        $query = "DELETE FROM product WHERE id=:id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(":id", $id, \PDO::PARAM_INT);
+        $statement->execute();
     }
 }

@@ -9,6 +9,7 @@
 return [
     '' => ['HomeController', 'index',],
     'book' => ['ProductController', 'book'],
+    'book/deleteSale' => ['ProductController', 'deleteSale', ['id']],
     'categories_items' => ['CategoryItemController', 'index',],
     'categories_items/add' => ['CategoryItemController', 'add',],
     'login' => ['UserController', 'login'],

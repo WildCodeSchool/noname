@@ -6,17 +6,22 @@
 {% macro productCardContainer(products, options = {}) %}
 	{% set defaults = {
         emptyMessage: "Aucun produits trouvé",
-        horizontal: false
+        horizontal: false,
+        undercards: null
     } %}
 	{% set options = defaults|merge(options) %}
 
-	<div class="productCardContainer {% if options.horizontal %}horizontal {% if products|length > 3 %}overflowing{% endif %}
-    {% endif %}">
+	<div class="productCardContainer {% if options.horizontal %}horizontal {% if products|length > 3 %}overflowing{% endif %}{% endif %}">
 		{% if products|length > 0 %}
 			<ul class="products">
 				{% for product in products %}
-					<li class="products">
+					<li>
 						{{ _self.productCard(product) }}
+						{% if options.undercards is null %}
+							<div></div>
+						{% else %}
+							{{ options.undercards|replace({ "%id%": product.id })|raw }}
+						{% endif %}
 					</li>
 				{% endfor %}
 			</ul>

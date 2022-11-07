@@ -4,8 +4,14 @@
 {% from "_macros/utils.html.twig" import boxedTitle %}
 
 {% block content %}
+	{% set deleteFromBookLinks %}
+	<div class="undercardsLinks">
+		<a href="/book/deleteSale?id=%id%">Supprimer</a>
+	</div>
+	{% endset %}
+
 	<main>
-        {{ boxedTitle("Mes produits à aller chercher") }}
+		{{ boxedTitle("Mes produits à aller chercher") }}
 
 		{{ productCardContainer(boughtProducts, {
             horizontal: true,
@@ -16,7 +22,8 @@
 
 		{{ productCardContainer(inSaleProducts, {
             horizontal: true,
-            emptyMessage: "Aucun produits en vente"
+            emptyMessage: "Aucun produits en vente",
+            undercards: deleteFromBookLinks
         }) }}
 
 		{{ boxedTitle('Mes produits en attente de validation') }}

@@ -1,0 +1,12 @@
+.undercardsLinks {
+    padding: 0.5rem 2rem;
+}
+
+.undercardsLinks a {
+    color: black;
+    text-decoration: none;
+}
+
+.undercardsLinks a:hover {
+    color: red;
+}
