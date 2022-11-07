@@ -177,6 +177,10 @@ div#search.search-box {
   margin-left: 5px;
 }
 
+.search-box button {
+    margin-left: 1rem;
+}
+
 .submit-search {
   margin: auto;
   background-color: var(--blueColor);
