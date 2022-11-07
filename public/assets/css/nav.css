@@ -1,10 +1,9 @@
 /*////// Main bar //////*/
 
 .top-bar {
-  background-color: var(--blueColor);
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: -14px;
+    background-color: var(--blueColor);
+    display: flex;
+    justify-content: space-between;
 }
 
 .menu a {
@@ -63,6 +62,19 @@ ul#icons.menu {
   font-size: 0.7rem;
   font-weight: bold;
   text-align: center;
+}
+
+.cartNbrMobile {
+  text-decoration: none;
+  color: black;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -10%;
+  right: 40%;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-align: center;
+
 }
 
 /*////// Quick access bar //////*/
@@ -175,6 +187,10 @@ div#search.search-box {
   margin-top: 8px;
   margin-right: 5px;
   margin-left: 5px;
+}
+
+.search-box button {
+    margin-left: 1rem;
 }
 
 .submit-search {
