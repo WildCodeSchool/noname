@@ -52,7 +52,7 @@ class ProductManager extends AbstractManager
         if ($searchTermsClause !== "") {
             $query .= "(" . $searchTermsClause . ") AND";
         }
-        $query .= " p.cart_id IS NULL";
+        $query .= " p.cart_id IS NULL AND p.status LIKE 'en vente'";
         if ($orderBy) {
             $query .= " ORDER BY " . $orderBy . " " . $direction;
         }
