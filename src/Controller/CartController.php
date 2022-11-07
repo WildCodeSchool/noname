@@ -6,13 +6,15 @@ use App\Model\ProductManager;
 
 class CartController extends AbstractController
 {
-    public function index(int $cartId)
+    public function index()
     {
-        $productManager = new ProductManager();
-        $products = $productManager->selectProductInCart($cartId);
-
-
-        return $this->twig->render('Cart/show.html.twig', ['products' => $products]);
+        if ($_SESSION["user_id"] === $this->user['id']) {
+            $productManager = new ProductManager();
+            $products = $productManager->selectProductInCart($this->user['id']);
+            return $this->twig->render('Cart/index.html.twig', ['products' => $products]);
+        } else {
+            header("Location: /");
+        }
     }
 
     public function deleteOneProduct(int $productId)
@@ -20,11 +22,6 @@ class CartController extends AbstractController
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($productId);
         $productManager->deleteProductInCart($product);
-
-        var_dump($product);
-
-
-        // $this->index()
-        // return null;
+        header("Location: /cart");
     }
 }

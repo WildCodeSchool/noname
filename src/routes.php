@@ -10,11 +10,12 @@ return [
   '' => ['HomeController', 'index',],
   'categories_items' => ['CategoryItemController', 'index',],
   'categories_items/add' => ['CategoryItemController', 'add',],
+  'categories_items/edit' => ['CategoryItemController', 'edit', ['id']],
   'login' => ['UserController', 'login'],
   'logout' => ['UserController', 'logout'],
   'products' => ['ProductController', 'index'],
   'product' => ['ProductController', 'show', ['id']],
   'user' => ['UserController'],
-  'cart/show' => ['CartController', 'index', ['id']],
+  'cart' => ['CartController', 'index', ['id']],
   'cart/update' => ['CartController', 'deleteOneProduct', ['id']],
 ];

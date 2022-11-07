@@ -20,7 +20,13 @@
 			<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
 		</li>
 		<li>
-			<a href="/cart/show?id={{ cart.id }}" {# Enter link here #}><img src="../assets/images/panier.png"></a>
+			<a href="/cart" {# Enter link here #}><img src="../assets/images/panier.png">
+				<div class="cartNbr">
+					{% if cart|length > 0 %}
+						{{cart|length}}
+					{% endif %}
+				</div>
+			</a>
 		</li>
 		<li>
 			<a class="loginButton">{{ userAvatar(user.photo) }}</a>
@@ -69,18 +75,10 @@
 			{{ userAvatar(user.photo) }}
 		</div>
 		<ul>
-			<li>
-				<a href="" {# Enter link here #}><img src="../assets/images/Vector.png"></a>
-			</li>
-			<li>
-				<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
-			</li>
-			<li>
-				<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
-			</li>
-			<li>
-				<a href="/logout"><img src="../assets/svg/logout.svg"></a>
-			</li>
+			<li><a href=""{# Enter link here #}><img src="../assets/images/Vector.png"></a></li>
+			<li><a href=""{# Enter link here #}><img src="../assets/images/carnet.png"></a></li>
+			<li><a href=""{# Enter link here #}><img src="../assets/images/panier.png"></a></li>
+			<li><a href="/logout"><img src="../assets/svg/logout.svg"></a></li>
 		</ul>
 	</div>
 {% endif %}</nav>

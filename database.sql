@@ -335,7 +335,6 @@ VALUES (
         "Votre meuble n'a plus son utilité , Vendez le",
         "https://cdn.pixabay.com/photo/2015/04/10/17/03/pots-716579_960_720.jpg",
         "../public/assets/images/ameublement2.png"
-<<<<<<< HEAD
     );
 
 INSERT INTO
@@ -349,7 +348,3 @@ VALUES (
 UPDATE `product` SET cart_id = 1 WHERE id = 1;
 UPDATE `product` SET cart_id = 1 WHERE id = 2;
 UPDATE `product` SET cart_id = 1 WHERE id = 3;
-=======
-    )
-
->>>>>>> 378ae908e043627f67e01514c3ffec853e306f29

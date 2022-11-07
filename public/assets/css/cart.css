@@ -6,3 +6,46 @@
   display: flex;
   justify-content: space-around;
 }
+
+.deleteFromCart {
+  color: black;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.deleteFromCart:hover {
+  color: red;
+}
+
+.totalCart {
+  text-align: right;
+  margin-top: 16px;
+
+}
+
+.btn-primary-validate-cart {
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 24px 8px 24px;
+  color: black;
+  text-align: center;
+  background: 0 0;
+  border: 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background-color: var(--yellowColor);
+  border-radius: 8px;
+}
+
+.btn-primary-validate-cart:hover {
+  background-color: white;
+    color: var(--yellowColor);
+    box-shadow: var(--yellowColor) 0 8px 10px;
+}
+
+.btn-cart {
+  text-align: right;
+  margin-top: 32px;
+  margin-bottom: 8px;
+}

@@ -82,11 +82,13 @@ class ProductManager extends AbstractManager
         return $products;
     }
 
-    public function selectProductInCart(int $id): array
+    // functions for cart
+
+    public function selectProductInCart(int $userId): array
     {
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM " . self::TABLE . " p JOIN cart c ON p.cart_id = c.id JOIN user u ON p.user_id = u.id
-     WHERE p.cart_id = $id";
+     WHERE c.user_id = $userId";
         $products = $this->pdo->query($query)->fetchAll();
         foreach ($products as &$product) {
             $product["photo"] = json_decode($product["photo"], false);

@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% from "_macros/productCard.html.twig" import productCard %}
+
+{% block content %}
+	<main class="cart container">
+		<h1 class="text-center">Mon Panier</h1>
+		<div class="productsCart">
+			{% if not (products is empty) %}
+
+				{% for product in products %}
+					<div class="products-cart">
+						{{ productCard(product) }}
+						<a href="/cart/update?id={{ product.id }}" class="deleteFromCart">
+							Supprimer
+						</a>
+					</div>
+				{% endfor %}
+
+			{% else %}
+				<li>Il n'y a rien a afficher ou la connection à votre Base de donnée à échouée</li>
+			{% endif %}
+		</div>
+		{% set total = 0  %}
+
+		{% for product in products %}
+			{% set total = total + product.price %}
+		{% endfor %}
+		<h2 class="totalCart">Total du panier:
+			{{total}}
+			€</h2>
+		<div class="btn-cart">
+			<a href="" class="btn-primary-validate-cart">
+				Valider
+			</a>
+		</div>
+	</main>
+{% endblock %}
