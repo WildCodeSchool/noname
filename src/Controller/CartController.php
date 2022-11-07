@@ -9,7 +9,7 @@ class CartController extends AbstractController
 {
     public function index()
     {
-        if ($_SESSION["user_id"] === $this->user['id']) {
+        if (!is_null($this->user)) {
             $productManager = new ProductManager();
             $products = $productManager->selectProductInCart($this->user['id']);
             return $this->twig->render('Cart/index.html.twig', ['products' => $products]);
