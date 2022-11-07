@@ -9,6 +9,7 @@
 @import url("formCategoryItem.css");
 @import url("indexCategoryItems.css");
 @import url("utils.css");
+@import url("form_products.css");
 
 :root {
     --lightGreyContrastColor: #eeeeee;

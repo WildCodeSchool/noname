@@ -130,7 +130,7 @@ class ProductManager extends AbstractManager
     public function selectOneWithCategoryId(int $id): array|false
     {
         $query = "SELECT p.*, ci.title categoryTitle, ci.logo, u.pseudo, u.adress,";
-        $query .= " u.email, u.phone_number, u.rating FROM " . static::TABLE ;
+        $query .= " u.email, u.phone_number, u.rating FROM " . static::TABLE;
         $query .= " p JOIN category_item ci ON p.category_item_id";
         $query .= " = ci.id JOIN user u ON p.user_id = u.id WHERE p.id=:id";
         // prepared request
@@ -139,5 +139,25 @@ class ProductManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function insert(array $product): int
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+            " (`title`, `description`, `material`, `color`, `category_item_id`,
+             `category_room`, `condition`, `photo`, `price`)
+         VALUES (:title, :description, :material, :color, :category_item_id,
+          :category_room, :condition, :photo, :price)");
+        $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
+        $statement->bindValue(`description`, $product['description'], \PDO::PARAM_STR);
+        $statement->bindValue(`material`, $product['matter'], \PDO::PARAM_STR);
+        $statement->bindValue(`color`, $product['palette'], \PDO::PARAM_STR);
+        $statement->bindValue(`category_item_id`, $product['category'], \PDO::PARAM_INT);
+        $statement->bindValue(`category_room`, $product['room'], \PDO::PARAM_STR);
+        $statement->bindValue(`condition`, $product['state'], \PDO::PARAM_STR);
+        $statement->bindValue(`photo`, $product['file'], \PDO::PARAM_STR);
+        $statement->bindValue(`price`, $product['price'], \PDO::PARAM_INT);
+        $statement->execute();
+        return (int)$this->pdo->lastInsertId();
     }
 }

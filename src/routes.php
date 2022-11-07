@@ -15,4 +15,5 @@ return [
     'products' => ['ProductController', 'index'],
     'product' => ['ProductController', 'show', ['id']],
     'user' => ['UserController'],
+    'products/add' => ['ProductController', 'add'],
 ];
