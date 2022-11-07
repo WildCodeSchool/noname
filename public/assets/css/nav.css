@@ -4,7 +4,6 @@
     background-color: var(--blueColor);
     display: flex;
     justify-content: space-between;
-    margin-bottom: -14px;
 }
 
 .menu a {
@@ -160,6 +159,10 @@ div#search.search-box {
     margin-top: 8px;
     margin-right: 5px;
     margin-left: 5px;
+}
+
+.search-box button {
+    margin-left: 1rem;
 }
 
 .submit-search {

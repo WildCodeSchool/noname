@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\CategoryItemManager;
 use App\Model\UserManager;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
@@ -27,6 +28,10 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+
+        // Adding categories for the carousel
+        $carouselCategorie = (new CategoryItemManager())->selectAllInCarousel();
+        $this->twig->addGlobal("carouselCategories", $carouselCategorie);
 
         if (isset($_SESSION["user_id"])) {
             $this->user = (new UserManager())->selectOneById($_SESSION["user_id"]);
