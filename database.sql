@@ -336,4 +336,3 @@ VALUES (
         "https://cdn.pixabay.com/photo/2015/04/10/17/03/pots-716579_960_720.jpg",
         "../public/assets/images/ameublement2.png"
     )
-
