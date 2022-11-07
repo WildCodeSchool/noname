@@ -42,6 +42,10 @@
         justify-content: center;
         width: calc(100% / 2);
     }
+
+    .productCardContainer.horizontal.overflowing > .products {
+        border: none;
+    }
 }
 
 /* Product Card */
@@ -153,6 +157,7 @@
 @media screen and (max-width: 768px) {
     .productCard {
         margin: 0.4rem;
+        width: 100%;
     }
 
     .productCard .imageContainer {
