@@ -59,4 +59,27 @@ class ProductController extends AbstractController
 
         return $this->twig->render('Product/show.html.twig', ['product' => $product]);
     }
+
+    /**
+     * Show the products book of the user
+     *
+     * @return string
+     */
+    public function book(): string
+    {
+        $this->notConnectedRedirection();
+
+        $productManager = new ProductManager();
+
+        // In sale product
+        $inSaleProduct = $productManager->selectInSaleUserProduct($this->user["id"]);
+
+        // In cart products
+        $inCartProducts = $productManager->selectInCartUserProducts($this->user["id"]);
+
+        return $this->twig->render("Product/book.html.twig", [
+            "inSaleProducts" => $inSaleProduct,
+            "inCartProducts" => $inCartProducts
+        ]);
+    }
 }

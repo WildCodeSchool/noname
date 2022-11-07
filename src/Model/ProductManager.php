@@ -140,4 +140,50 @@ class ProductManager extends AbstractManager
 
         return $statement->fetch();
     }
+
+    /**
+     * Get product in sale by a user
+     *
+     * @param integer $userId
+     * @return array
+     */
+    public function selectInSaleUserProduct(int $userId): array
+    {
+        $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
+        $query .= " FROM product p JOIN user u ON p.user_id = u.id";
+        $query .= " WHERE u.id = :userId";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(":userId", $userId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        $products = $statement->fetchAll();
+        foreach ($products as &$product) {
+            $product["photo"] = json_decode($product["photo"]);
+        }
+        return $products;
+    }
+
+    /**
+     * Get all products in a cart of someone
+     *
+     * @param integer $userId
+     * @return array
+     */
+    public function selectInCartUserProducts(int $userId): array
+    {
+        $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
+        $query .= " FROM product p JOIN user u ON p.user_id = u.id";
+        $query .= " WHERE p.cart_id IS NOT NULL AND u.id = :userId";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(":userId", $userId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        $products = $statement->fetchAll();
+        foreach ($products as &$product) {
+            $product["photo"] = json_decode($product["photo"]);
+        }
+        return $products;
+    }
 }

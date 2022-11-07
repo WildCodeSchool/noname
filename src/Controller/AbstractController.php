@@ -42,4 +42,11 @@ abstract class AbstractController
         $this->twig->addGlobal("requestUri", $_SERVER["REQUEST_URI"]);
         $this->twig->addGlobal("requestParams", $_GET);
     }
+
+    protected function notConnectedRedirection(string $path = "/")
+    {
+        if (is_null($this->user)) {
+            header("Location: $path");
+        }
+    }
 }

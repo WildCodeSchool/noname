@@ -1,0 +1,15 @@
+{% extends "layout.html.twig" %}
+
+{% from "_macros/productCard.html.twig" import productCardContainer %}
+
+{% block content %}
+	{{ productCardContainer(inSaleProducts, {
+        horizontal: true,
+        emptyMessage: "Aucun produits en vente"
+    }) }}
+
+	{{ productCardContainer(inCartProducts, {
+        horizontal: true,
+        emptyMessage: "Vos produit en vente ne sont dans aucun panier"
+    }) }}
+{% endblock %}

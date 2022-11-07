@@ -3,8 +3,14 @@
 
     products: Array of products data
 #}
-{% macro productCardContainer(products) %}
-	<div class="productCardContainer">
+{% macro productCardContainer(products, options = {}) %}
+	{% set defaults = {
+        emptyMessage: "Aucun produits trouvé",
+        horizontal: false
+    } %}
+	{% set options = defaults|merge(options) %}
+
+	<div class="productCardContainer {% if options.horizontal %}horizontal{% endif %}">
 		{% if products|length > 0 %}
 			<ul class="products">
 				{% for product in products %}
@@ -14,7 +20,7 @@
 				{% endfor %}
 			</ul>
 		{% else %}
-			<h3 class="noProducts">Aucun produits trouvé</h3>
+			<h3 class="noProducts">{{ options.emptyMessage }}</h3>
 		{% endif %}
 	</div>
 {% endmacro %}

@@ -15,6 +15,10 @@
     text-align: center;
 }
 
+.productCardContainer.horizontal > .products {
+    overflow-x: auto;
+}
+
 @media screen and (max-width: 768px) {
     .productCardContainer > .products {
         padding: 0.25rem;
