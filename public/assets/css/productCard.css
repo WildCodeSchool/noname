@@ -23,6 +23,12 @@
     .productCardContainer > .products {
         padding: 0.25rem;
     }
+
+    .productCardContainer > .products > li {
+        display: flex;
+        justify-content: center;
+        width: calc(100% / 2);
+    }
 }
 
 /* Product Card */
@@ -134,7 +140,6 @@
 @media screen and (max-width: 768px) {
     .productCard {
         margin: 0.4rem;
-        width: calc(50% - 1rem);
     }
 
     .productCard .imageContainer {
