@@ -69,18 +69,7 @@ class ProductController extends AbstractController
     {
         if ($this->isConnectedElseRedirection()) {
             $productManager = new ProductManager();
-
-            $boughtProducts = $productManager->selectBoughtUserProduct($this->user["id"]);
-            $inSaleProduct = $productManager->selectInSaleUserProduct($this->user["id"]);
-            $inCartProducts = $productManager->selectInCartUserProducts($this->user["id"]);
-            $soldProducts = $productManager->selectSoldUserProduct($this->user["id"]);
-
-            return $this->twig->render("Product/book.html.twig", [
-                "boughtProducts" => $boughtProducts,
-                "inSaleProducts" => $inSaleProduct,
-                "inCartProducts" => $inCartProducts,
-                "soldProducts" => $soldProducts
-            ]);
+            return $this->twig->render("Product/book.html.twig", $productManager->selectForBook($this->user["id"]));
         }
 
         return "";

@@ -176,96 +176,54 @@ class ProductManager extends AbstractManager
     }
 
     /**
-     * Get all products buy by a user
+     * Select all product for the book
      *
      * @param integer $userId
      * @return array
      */
-    public function selectBoughtUserProduct(int $userId): array
+    public function selectForBook(int $userId): array
     {
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id JOIN cart c ON p.cart_id = c.id";
         $query .= " WHERE c.user_id = :userId AND c.status_validation = true";
-        $query .= " AND NOW() < DATE_ADD(DATE(c.date), INTERVAL 7 DAY)";
+        $query .= " AND NOW() < DATE_ADD(DATE(c.date), INTERVAL 7 DAY);";
 
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(":userId", $userId, \PDO::PARAM_INT);
-        $statement->execute();
-
-        $products = $statement->fetchAll();
-        foreach ($products as &$product) {
-            $product["photo"] = json_decode($product["photo"]);
-        }
-        return $products;
-    }
-
-    /**
-     * Get product in sale by a user
-     *
-     * @param integer $userId
-     * @return array
-     */
-    public function selectInSaleUserProduct(int $userId): array
-    {
-        $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
+        $query .= "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
-        $query .= " WHERE u.id = :userId AND p.status = 'en vente'";
+        $query .= " WHERE u.id = :userId AND p.status = 'en vente';";
 
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(":userId", $userId, \PDO::PARAM_INT);
-        $statement->execute();
-
-        $products = $statement->fetchAll();
-        foreach ($products as &$product) {
-            $product["photo"] = json_decode($product["photo"]);
-        }
-        return $products;
-    }
-
-    /**
-     * Get all products in a cart of someone
-     *
-     * @param integer $userId
-     * @return array
-     */
-    public function selectInCartUserProducts(int $userId): array
-    {
-        $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
+        $query .= "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
-        $query .= " WHERE p.cart_id IS NOT NULL AND u.id = :userId";
+        $query .= " WHERE p.cart_id IS NOT NULL AND u.id = :userId;";
 
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(":userId", $userId, \PDO::PARAM_INT);
-        $statement->execute();
-
-        $products = $statement->fetchAll();
-        foreach ($products as &$product) {
-            $product["photo"] = json_decode($product["photo"]);
-        }
-        return $products;
-    }
-
-    /**
-     * Get all sold product of a user
-     *
-     * @param integer $userId
-     * @return array
-     */
-    public function selectSoldUserProduct(int $userId): array
-    {
-        $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
+        $query .= "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
-        $query .= " WHERE p.status = 'vendu' AND u.id = :userId";
+        $query .= " WHERE p.status = 'vendu' AND u.id = :userId;";
 
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(":userId", $userId, \PDO::PARAM_INT);
         $statement->execute();
 
-        $products = $statement->fetchAll();
-        foreach ($products as &$product) {
-            $product["photo"] = json_decode($product["photo"]);
+        $boughtProducts = $statement->fetchAll();
+        $statement->nextRowset();
+        $inSaleProducts = $statement->fetchAll();
+        $statement->nextRowset();
+        $inCartProducts = $statement->fetchAll();
+        $statement->nextRowset();
+        $soldProducts = $statement->fetchAll();
+
+        foreach ([&$boughtProducts, &$inSaleProducts, &$inCartProducts, &$soldProducts] as &$products) {
+            foreach ($products as &$product) {
+                $product["photo"] = json_decode($product["photo"]);
+            }
         }
-        return $products;
+
+        return [
+            "boughtProducts" => $boughtProducts,
+            "inSaleProducts" => $inSaleProducts,
+            "inCartProducts" => $inCartProducts,
+            "soldProducts" => $soldProducts
+        ];
     }
 
     /**
