@@ -67,21 +67,23 @@ class ProductController extends AbstractController
      */
     public function book(): string
     {
-        $this->notConnectedRedirection();
+        if ($this->isConnectedElseRedirection()) {
+            $productManager = new ProductManager();
 
-        $productManager = new ProductManager();
+            $boughtProducts = $productManager->selectBoughtUserProduct($this->user["id"]);
+            $inSaleProduct = $productManager->selectInSaleUserProduct($this->user["id"]);
+            $inCartProducts = $productManager->selectInCartUserProducts($this->user["id"]);
+            $soldProducts = $productManager->selectSoldUserProduct($this->user["id"]);
 
-        $boughtProducts = $productManager->selectBoughtUserProduct($this->user["id"]);
-        $inSaleProduct = $productManager->selectInSaleUserProduct($this->user["id"]);
-        $inCartProducts = $productManager->selectInCartUserProducts($this->user["id"]);
-        $soldProducts = $productManager->selectSoldUserProduct($this->user["id"]);
+            return $this->twig->render("Product/book.html.twig", [
+                "boughtProducts" => $boughtProducts,
+                "inSaleProducts" => $inSaleProduct,
+                "inCartProducts" => $inCartProducts,
+                "soldProducts" => $soldProducts
+            ]);
+        }
 
-        return $this->twig->render("Product/book.html.twig", [
-            "boughtProducts" => $boughtProducts,
-            "inSaleProducts" => $inSaleProduct,
-            "inCartProducts" => $inCartProducts,
-            "soldProducts" => $soldProducts
-        ]);
+        return "";
     }
 
     /**
@@ -92,15 +94,15 @@ class ProductController extends AbstractController
      */
     public function deleteSale(int $id): void
     {
-        $this->notConnectedRedirection();
+        if ($this->isConnectedElseRedirection()) {
+            $productManager = new ProductManager();
+            $product = $productManager->selectOneById($id);
 
-        $productManager = new ProductManager();
-        $product = $productManager->selectOneById($id);
+            if (isset($product) && ($product["user_id"] === $this->user["id"] || $this->user["isAdmin"] === 1)) {
+                $productManager->deleteInSale($product["id"]);
+            }
 
-        if (isset($product) && ($product["user_id"] === $this->user["id"] || $this->user["isAdmin"] === 1)) {
-            $productManager->deleteInSale($product["id"]);
+            header("Location: /book");
         }
-
-        header("Location: /book");
     }
 }

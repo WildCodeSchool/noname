@@ -30,8 +30,8 @@ abstract class AbstractController
         $this->twig->addExtension(new DebugExtension());
 
         // Adding categories for the carousel
-        $carouselCategorie = (new CategoryItemManager())->selectAllInCarousel();
-        $this->twig->addGlobal("carouselCategories", $carouselCategorie);
+        $carouselCategories = (new CategoryItemManager())->selectAllInCarousel();
+        $this->twig->addGlobal("carouselCategories", $carouselCategories);
 
         if (isset($_SESSION["user_id"])) {
             $this->user = (new UserManager())->selectOneById($_SESSION["user_id"]);
@@ -43,10 +43,18 @@ abstract class AbstractController
         $this->twig->addGlobal("requestParams", $_GET);
     }
 
-    protected function notConnectedRedirection(string $path = "/")
+    /**
+     * Return if the user is connected and add a `Location` header if not.
+     *
+     * @param string $redirectionPath
+     * @return boolean
+     */
+    protected function isConnectedElseRedirection(string $redirectionPath = "/"): bool
     {
-        if (is_null($this->user)) {
-            header("Location: $path");
+        $isConnected = !is_null($this->user);
+        if (!$isConnected) {
+            header("Location: $redirectionPath");
         }
+        return $isConnected;
     }
 }
