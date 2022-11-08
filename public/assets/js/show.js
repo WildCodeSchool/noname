@@ -4,21 +4,31 @@ const nbrImage = container.querySelectorAll('li').length;
 let positionImage = 0;
 const left = document.getElementById("left");
 const right = document.getElementById("right");
-container.style.width = (600 * nbrImage) + "px";
+let widthCarousel;
+let unitCarousel;
+if (window.width > 768) {
+    widthCarousel = 600;
+    unitCarousel = "px";
+    container.style.width = (widthCarousel * nbrImage) + unitCarousel;
+} else {
+    widthCarousel = 100 / nbrImage;
+    unitCarousel = "%";
+    container.style.width = (100 * nbrImage) + unitCarousel;
+}
 
 showHidden();
 
 left.onclick = function () {
     if (positionImage > 0)
         positionImage--;
-    container.style.transform = "translateX(" + positionImage * -600 + "px)";
+    container.style.transform = "translateX(" + positionImage * -widthCarousel + unitCarousel + ")";
     showHidden();
 }
 
 right.onclick = function () {
     if (positionImage < nbrImage - 1)
         positionImage++;
-    container.style.transform = "translateX(" + positionImage * -600 + "px)";
+    container.style.transform = "translateX(" + positionImage * -widthCarousel + unitCarousel + ")";
     showHidden();
 }
 
@@ -41,23 +51,22 @@ const bigLeft = document.getElementById("bigLeft");
 const bigRight = document.getElementById("bigRight");
 const bigQuit = document.getElementById("quitFullscreen");
 
-container.onclick = function () { showBigCarousel() }//("click", showBigCarousel());
-
+container.onclick = function () { showBigCarousel() }
 bigQuit.onclick = function () { hideBigCarousel() }
 
-bigContainer.style.width = (100 * nbrImage) + "vw";
+bigContainer.style.width = (100 * nbrImage) + "%";
 
 bigLeft.onclick = function () {
     if (bigPositionImage > 0)
         bigPositionImage--;
-    bigContainer.style.transform = "translateX(" + bigPositionImage * -100 + "vw)";
+    bigContainer.style.transform = "translateX(" + bigPositionImage * (-100 / bigNbrImage) + "%)";
     bigShowHidden();
 }
 
 bigRight.onclick = function () {
     if (bigPositionImage < bigNbrImage - 1)
         bigPositionImage++;
-    bigContainer.style.transform = "translateX(" + bigPositionImage * -100 + "vw)";
+    bigContainer.style.transform = "translateX(" + bigPositionImage * (-100 / bigNbrImage) + "%)";
     bigShowHidden();
 }
 
