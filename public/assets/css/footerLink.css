@@ -1,0 +1,71 @@
+.iconlink{
+  color: var(--blueColor);
+  font-size: 2vw;
+}
+
+.wilders {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.wilderPhoto {
+  height: 400px;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.photoInfo h2 {
+  text-align: center;
+}
+
+.photoInfo {
+  margin-bottom: 4px;
+}
+
+.wilder {
+  margin: 8px;
+  border: 0.4px solid var(--lessblueColor);
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.footerMembers h1{
+  font-size: 3vw;
+  text-align: center;
+}
+
+@media screen and (max-width:920px) {
+
+  .wilders {
+    grid-template-columns: 1fr 1fr;
+  }
+  .iconlink{
+    font-size: 5vw;
+  }
+  .wilderPhoto{
+    height: 300px;
+  }
+
+  .footerMembers h1 {
+    font-size: 5vw;
+}
+
+}
+
+@media screen and (max-width:768px) {
+
+  .wilders {
+    grid-template-columns: 1fr;
+  }
+  .iconlink{
+    font-size: 10vw;
+  }
+  .wilderPhoto{
+    height: 300px;
+  }
+
+  .footerMembers h1 {
+    font-size: 7vw;
+}
+}

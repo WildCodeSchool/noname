@@ -19,4 +19,6 @@ return [
   'cart' => ['CartController', 'index', ['id']],
   'cart/update' => ['CartController', 'deleteOneProduct', ['id']],
   'cart/valide' => ['CartController', 'valideCart', ['id']],
+  'about' => ['FooterController', 'about'],
+  'CGV' => ['FooterController', 'Cgv'],
 ];
