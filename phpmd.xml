@@ -10,9 +10,7 @@
         <exclude name="ElseExpression" />
         <exclude name="StaticAccess" />
     </rule>
-    <rule ref="rulesets/codesize.xml">
-        <exclude name="TooManyPublicMethods" />
-    </rule>
+    <rule ref="rulesets/codesize.xml" />
     <rule ref="rulesets/controversial.xml" >
         <exclude name="Superglobals" />
     </rule>
@@ -22,6 +20,11 @@
     <rule ref="rulesets/design.xml/CouplingBetweenObjects">
         <properties>
             <property name="minimum" value="20" />
+        </properties>
+    </rule>
+    <rule ref="rulesets/codesize.xml/TooManyPublicMethods">
+        <properties>
+            <property name="maxmethods" value="20" />
         </properties>
     </rule>
     <rule ref="rulesets/naming.xml" >
