@@ -21,12 +21,18 @@ public function signUp(): string {
             }
         }
 
+    $uploadDir = 'uploads/';
+    $uploadFilePhoto = $uploadDir . basename($_FILES['photo']['name']);
+    $user = $_POST;
+    $user['photo'] = $uploadFilePhoto;
 
-    $userManager->createUser($_POST);
+    move_uploaded_file($_FILES['photo']['tmp_name'], $uploadFilePhoto);
+
+
+    $userManager->createUser($user);
     }
     //header();
     
-    var_dump($_POST);
 
     return $this->twig->render('signup.html.twig', [
         'errors' => $errors
