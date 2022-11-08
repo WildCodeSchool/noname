@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use App\Utils\ProductSearchTerms;
+
 class ProductManager extends AbstractManager
 {
     public const TABLE = "product";
@@ -26,41 +28,96 @@ class ProductManager extends AbstractManager
      * ]
      * ```
      *
-     * @param integer $page
+     * @param ProductSearchTerms $searchTerms
      * @param integer $limit
      * @param string $orderBy
      * @param string $direction
      * @return array
      */
     public function selectPageWithUser(
-        $page = 1,
-        $limit = self::PER_PAGE,
-        $orderBy = 'date',
-        $direction = "DESC"
+        ProductSearchTerms $searchTerms,
+        int $limit = self::PER_PAGE,
+        string $orderBy = 'date',
+        string $direction = "DESC"
     ): array {
         // Get the offset & count pages
-        $offset = ($page - 1) * $limit;
-        $pagesCount = ceil($this->pdo->query("SELECT COUNT(*) as count FROM product")->fetch()["count"] / $limit);
+        $offset = ($searchTerms->getPage() - 1) * $limit;
+        $pagesCount = $this->countPages($searchTerms, $limit);
 
-        // Select products
+        // Make the query
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
+        $query .= " WHERE";
+        $searchTermsClause = $searchTerms->toSQLWhereClause();
+        if ($searchTermsClause !== "") {
+            $query .= "(" . $searchTermsClause . ") AND";
+        }
+        $query .= " p.cart_id IS NULL AND p.status LIKE 'en vente'";
         if ($orderBy) {
             $query .= " ORDER BY " . $orderBy . " " . $direction;
         }
         $query .= " LIMIT " . $offset . ", " . $limit;
 
-        $products = $this->pdo->query($query)->fetchAll();
+        // Prepare the query
+        $statement = $this->pdo->prepare($query);
+        $statement = $this->bindSearchTerms($statement, $searchTerms);
+        $statement->execute();
+        $products = $statement->fetchAll();
 
+        // Decode JSON
         foreach ($products as &$product) {
             $product["photo"] = json_decode($product["photo"], false);
         }
 
         return [
             "products" => $products,
-            "currentPage" => $page,
+            "currentPage" => $searchTerms->getPage(),
             "pagesCount" => $pagesCount
         ];
+    }
+
+    /**
+     * Count the amount of pages
+     *
+     * @param ProductSearchTerms $searchTerms
+     * @param integer $limit
+     * @return integer
+     */
+    private function countPages(ProductSearchTerms $searchTerms, int $limit): int
+    {
+        $query = "SELECT COUNT(*) as count FROM product p";
+        $query .= " WHERE";
+        $searchTermsClause = $searchTerms->toSQLWhereClause();
+        if ($searchTermsClause !== "") {
+            $query .= "(" . $searchTermsClause . ") AND";
+        }
+        $query .= " p.cart_id IS NULL";
+
+        $statement = $this->pdo->prepare($query);
+        $statement = $this->bindSearchTerms($statement, $searchTerms);
+        $statement->execute();
+
+        return (int) ceil($statement->fetch()["count"] / $limit);
+    }
+
+    /**
+     * Bind a `ProductSearchTerms` in a `PDOStatement`.
+     *
+     * @param \PDOStatement $statement
+     * @param ProductSearchTerms $searchTerms
+     * @return \PDOStatement
+     */
+    private function bindSearchTerms(\PDOStatement $statement, ProductSearchTerms $searchTerms): \PDOStatement
+    {
+        if ($searchTerms->getSearch()) {
+            $searchPlaceholder = "%" . $searchTerms->getSearch() . "%";
+            $statement->bindParam(":search", $searchPlaceholder, \PDO::PARAM_STR);
+        }
+        if ($searchTerms->getCategoryId()) {
+            $categoryId = $searchTerms->getCategoryId();
+            $statement->bindParam(":category_item_id", $categoryId, \PDO::PARAM_INT);
+        }
+        return $statement;
     }
 
     public function selectlast(int $limit = 1): array
