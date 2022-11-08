@@ -20,7 +20,13 @@
 				<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
 			</li>
 			<li>
-				<a href="" {# Enter link here #}><img src="../assets/images/panier.png"></a>
+				<a href="/cart" {# Enter link here #}><img src="../assets/images/panier.png">
+                    {% if cart|length > 0 %}
+                        <div class="cartNbr">
+                            {{cart|length}}
+                        </div>
+                    {% endif %}
+				</a>
 			</li>
 			<li>
 				<a class="loginButton">{{ userAvatar(user.photo) }}</a>
@@ -65,7 +71,15 @@
 			<ul>
 				<li><a href=""{# Enter link here #}><img src="../assets/images/Vector.png"></a></li>
 				<li><a href=""{# Enter link here #}><img src="../assets/images/carnet.png"></a></li>
-				<li><a href=""{# Enter link here #}><img src="../assets/images/panier.png"></a></li>
+				<li>
+          <a href="/cart"{# Enter link here #}><img src="../assets/images/panier.png">
+            {% if cart|length > 0 %}
+              <div class="cartNbrMobile">
+                {{cart|length}}
+              </div>
+            {% endif %}
+          </a>
+        </li>
 				<li><a href="/logout"><img src="../assets/svg/logout.svg"></a></li>
 			</ul>
 		</div>
