@@ -9,25 +9,35 @@ class UserController extends AbstractController
 //---------------Signup---------------------------------------
 
     //Connection to twig template
-public function signup(): string {
+public function signUp(): string {
 
     $errors = [];
 
-
     if ($_POST) {
-    $newUser = new UserManager();
+        $userManager = new UserManager();
+        foreach ($_POST as $key => $value) {
+            if (!isset($value) || htmlentities($value) === '') {
+                $errors[$key] = "Le champ est obligatoire et dois être valide.";
+            }
+        }
 
-    $newUser->createUser($_POST);
+
+    $userManager->createUser($_POST);
     }
+    //header();
+    
+    var_dump($_POST);
 
     return $this->twig->render('signup.html.twig', [
         'errors' => $errors
     ]);
 }
 
+
+
 //create subscribe method, which leads to the form (signup.html)
 
-    //If you have a $_POST
+    //If you have a $_POST DONE
 
     //if form isn't clean -> send back to the page with errors
 

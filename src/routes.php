@@ -19,5 +19,5 @@ return [
   'cart' => ['CartController', 'index', ['id']],
   'cart/update' => ['CartController', 'deleteOneProduct', ['id']],
   'cart/valide' => ['CartController', 'valideCart', ['id']],
-  'signup' => ['UserController', 'signup'],
+  'signup' => ['UserController', 'signUp'],
 ];
