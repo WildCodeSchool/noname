@@ -188,18 +188,18 @@ class ProductController extends AbstractController
 
                 $errors = $this->processFormErrors();
 
-                $product['matter'] = json_encode($product['matter']);
-                $product['room'] = json_encode($product['room']);
-                $product['palette'] = json_encode($product['palette']);
-                $product['photo'] = json_encode($uploadFilePhoto);
-                $product["user_id"] = $this->user["id"];
-
                 if ($this->hasFormErrors($errors)) {
                     return $this->twig->render("Product/form.html.twig", [
                         "errors" => $errors,
                         "categories" => $categories
                     ]);
                 } else {
+                    $product['matter'] = json_encode($product['matter']);
+                    $product['room'] = json_encode($product['room']);
+                    $product['palette'] = json_encode($product['palette']);
+                    $product['photo'] = json_encode($uploadFilePhoto);
+                    $product["user_id"] = $this->user["id"];
+
                     foreach ($uploadFilePhoto as $index => $fileName) {
                         move_uploaded_file($_FILES['file']['tmp_name'][$index], $uploadFilePhoto[$index]);
                     }
