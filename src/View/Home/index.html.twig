@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% from "_macros/productCard.html.twig" import productCardContainer %}
+{% from "_macros/productCard.html.twig" import productCard %}
 
 
 {% block content %}
@@ -63,22 +63,26 @@
 					<div class="visually-hidden">Next</div>
 				</button>
 			</div>
-			<a href="/categories_items" class="btn btn-primary-categorie">
+			<a href="/categories_items" class="btn-primary-categorie">
 				Modifiez vos catégories
 			</a>
 		</section>
 
 		<article>
-			<div class="container">
-				<h1 class="text-center">Les Derniers Articles Ajoutés</h1>
-
+			<h1 class="text-center">Les Derniers Articles Ajoutés</h1>
+			<div class="productsHome">
 				{% if not (products is empty) %}
-					{{ productCardContainer(products) }}
+					<div class="products">
+						{% for product in products %}
+							{{ productCard(product) }}
+						{% endfor %}
+					</div>
 				{% else %}
 					<li>Il n'y a rien a afficher ou la connection à votre Base de donnée à échouée</li>
 				{% endif %}
-
 			</div>
+
+
 		</article>
 	</main>
 {% endblock %}

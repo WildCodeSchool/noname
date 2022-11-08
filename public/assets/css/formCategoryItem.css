@@ -1,6 +1,7 @@
 .form-control {
   margin: 1%;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  margin-top: 0px;
   border: solid 0.5px var(--lessblueColor);
 }
 
@@ -11,6 +12,7 @@
 
 .form-label {
   font-weight: 600;
+  margin-bottom: 4px;
 }
 
 .buttons-form {
@@ -27,6 +29,7 @@
   background-color: var(--blueColor);
   color: #fff;
   margin-top: 32px;
+  margin-bottom: 4px;
 }
 
 .buttons-form .btn:hover {
@@ -37,9 +40,4 @@
 
 .border-new {
   border: solid 0.5px var(--lessblueColor);
-}
-
-.retour {
-  position: relative;
-  top: 15px;
 }

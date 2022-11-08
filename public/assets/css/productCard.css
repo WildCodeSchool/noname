@@ -3,14 +3,27 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    list-style: none;
     margin: auto;
-    max-width: 1110px;
+    max-width: 1140px;
     padding: 1rem;
+}
+
+.productCardContainer .noProducts {
+    color: var(--blueColor);
+    padding: 1rem;
+    text-align: center;
 }
 
 @media screen and (max-width: 768px) {
     .productCardContainer > .products {
         padding: 0.25rem;
+    }
+
+    .productCardContainer > .products > li {
+        display: flex;
+        justify-content: center;
+        width: calc(100% / 2);
     }
 }
 
@@ -20,7 +33,7 @@
     border-radius: 3px;
     box-shadow: var(--shadowColor) 0 5px 5px;
     display: flex;
-    margin: 1rem;
+    margin: 1.5rem;
     transition: box-shadow ease-out 250ms, transform ease-out 250ms;
     flex-flow: column nowrap;
     overflow: clip;
@@ -44,38 +57,32 @@
     text-decoration: none;
 }
 
-.productCard .image {
-    background-size: 100%;
+.productCard .imageContainer {
+    overflow: clip;
+}
+
+.productCard .imageContainer > .image {
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 15rem;
-    transition: background-size ease-out 250ms;
+    transition: transform ease-out 250ms;
     width: 100%;
 }
 
-.productCard:hover .image {
-    background-size: 110%;
-}
-
-.productCard .image::before {
-    background-color: var(--lightGreyContrastColor);
-    content: "";
-    display: inline-block;
-    height: 15rem;
-    position: relative;
-    width: 100%;
-    z-index: -1;
+.productCard:hover .imageContainer > .image {
+    transform: scale(110%);
 }
 
 .productCard .content {
-    padding: 0.5rem;
+    padding: 1.25rem;
 }
 
 .productCard .content > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .productCard .content > div > *:last-child {
@@ -93,7 +100,7 @@
 .productCard .content .seller > .label {
     font-size: 0.75rem;
     font-style: italic;
-    text-align: center;
+    margin-bottom: 0.5rem;
 }
 
 .productCard .content .seller > .user {
@@ -129,12 +136,14 @@
 @media screen and (max-width: 768px) {
     .productCard {
         margin: 0.4rem;
-        width: calc(50% - 1rem);
     }
 
-    .productCard .image,
-    .productCard .image::before {
+    .productCard .imageContainer {
         height: calc(100vw / 3);
+    }
+
+    .productCard .imageContainer > .image {
+        height: 100%;
     }
 
     .productCard .content > div {

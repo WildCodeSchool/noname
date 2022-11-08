@@ -1,0 +1,78 @@
+.productListButtons {
+    margin: 1rem;
+}
+
+/* Search Panel Button*/
+#searchPanelButton {
+    background-color: #000000;
+    border-radius: 1rem;
+    box-shadow: var(--shadowColor) 0 5px 5px;
+    display: inline;
+    color: white;
+    padding: 0.5rem;
+    z-index: 2;
+}
+
+#searchPanelButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#searchPanelButton img {
+    width: 1.5rem;
+}
+
+/* Search Panel */
+#searchPanel {
+    background-color: white;
+    border-radius: 0 10px 10px 0;
+    box-shadow: var(--shadowColor) 0 5px 5px;
+    left: -25rem;
+    padding: 0.5rem;
+    position: absolute;
+    top: 6rem;
+    transition: left ease-out 200ms;
+    width: 20rem;
+    z-index: 2;
+}
+
+#searchPanel.isOpen {
+    left: 0;
+}
+
+#searchPanel label,
+#searchPanel input,
+#searchPanel button {
+    display: block;
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
+#closeSearchPanelButton {
+    display: block;
+    left: calc(20rem - 25px);
+    position: absolute;
+    transition: transform ease-in-out 200ms;
+    width: 18px;
+}
+
+#closeSearchPanelButton:hover {
+    cursor: pointer;
+    transform: scale(1.25);
+}
+
+@media screen and (max-width: 768px) {
+    #searchPanel {
+        border-radius: 0;
+        height: 100vh;
+        left: -100%;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    #closeSearchPanelButton {
+        left: calc(100% - 50px);
+        width: 28px;
+    }
+}

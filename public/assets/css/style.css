@@ -1,18 +1,28 @@
 @import url("button.css");
 @import url("home.css");
+@import url("login.css");
 @import url("pageSwitcher.css");
+@import url("products.css");
 @import url("productCard.css");
 @import url("ratingStars.css");
+@import url("show.css");
 @import url("formCategoryItem.css");
 @import url("indexCategoryItems.css");
+@import url("cart.css");
+@import url("utils.css");
 
 :root {
   --lightGreyContrastColor: #eeeeee;
   --productCardBackgroundColor: white;
   --shadowColor: rgba(0, 0, 0, 0.25);
   --textColor: black;
-  --blueColor: #4981A6;
+  --blueColor: #4981a6;
   --lessblueColor: #4981a663;
+  --pCarousel: #fbfbfb;
+  --secondaryColor: #f1f1f1;
+  --plainText: black;
+  --buttonsAndBorders: white;
+  --yellowColor: rgb(254, 174, 24);
 }
 
 * {
@@ -23,6 +33,7 @@
 
 body {
   color: #000000;
+  font-family: "Roboto", sans-serif;
 }
 
 p,

@@ -1,0 +1,43 @@
+.loginPrompt,
+.logoutPrompt {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: var(--shadowColor) 0 5px 5px;
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+    padding: 10px;
+    position: absolute;
+    right: 5px;
+    top: -250px;
+    transition: top ease-in-out 250ms;
+    width: 350px;
+    z-index: 10;
+}
+
+.loginPrompt.showed,
+.logoutPrompt.showed {
+    top: 65px;
+}
+
+.loginPrompt form {
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+}
+
+.loginPrompt form * {
+    margin: 5px;
+    width: 100%;
+}
+
+@media screen and (max-width: 767.98px) {
+    .loginPrompt {
+        top: 65px;
+        left: -500px;
+        transition: left ease-in-out 250ms;
+    }
+    .loginPrompt.showed {
+        left: calc(50vw - 350px / 2);
+    }
+}

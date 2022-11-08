@@ -1,3 +1,5 @@
 parameters:
-	ignoreErrors:
-		- '#Constant [A-Z_]+ not found.#'
+    ignoreErrors:
+        - '#Constant [A-Z_]+ not found.#'
+    excludePaths:
+        - src/Controller/ProductController.php
