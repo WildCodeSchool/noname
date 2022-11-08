@@ -110,7 +110,7 @@ button {
     cursor: pointer;
 }
 
-#file1,
+#file,
 #file2,
 #file3 {
     display: none;
@@ -146,8 +146,7 @@ input#add2,
 input.palette,
 input#palette1,
 input#add_file,
-input#add_file2,
-input#file {
+input#add_file2 {
     border: none;
     height: 60px;
     width: 60px;
@@ -158,6 +157,7 @@ input#file {
     background-color: var(--blueColor);
     color: var(--productCardBackgroundColor);
 }
+
 
 .checkbox,
 .radio {

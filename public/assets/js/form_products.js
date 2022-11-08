@@ -1,7 +1,7 @@
 document.getElementById('add').onclick = replace_click
 document.getElementById('add2').onclick = replace_click
 
-
+let colorNameId = 1;
 
 function fAddInputColor(contenu, name) {
     const element_create = document.createElement("input");
@@ -19,5 +19,6 @@ function delete_element(target) {
 function replace_click(event) {
     const parent = event.target.parentNode;
     delete_element(event.target);
-    fAddInputColor(parent, parent.id);
+    fAddInputColor(parent, "palette[" + colorNameId + "]");
+    colorNameId++;
 }
