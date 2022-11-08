@@ -2,20 +2,40 @@
 
 namespace App\Controller;
 
-//use App\Model\UserManager;
-
-class UserController extends AbstractController {
-
-public function index(): string {
-
-    return $this->twig->render('signup.html.twig');
-
-}
-
 use App\Model\UserManager;
 
 class UserController extends AbstractController
 {
+//---------------Signup---------------------------------------
+
+    //Connection to twig template
+public function signup(): string {
+
+    $errors = [];
+
+
+    if ($_POST) {
+    $newUser = new UserManager();
+
+    $newUser->createUser($_POST);
+    }
+
+    return $this->twig->render('signup.html.twig', [
+        'errors' => $errors
+    ]);
+}
+
+//create subscribe method, which leads to the form (signup.html)
+
+    //If you have a $_POST
+
+    //if form isn't clean -> send back to the page with errors
+
+    // else use the UserManager with its insert method to prepare query, bind values and execute
+
+    // then you can use a header(location : homepage)
+
+//---------------Connections---------------------------------------
     public function login(): void
     {
         $loginSuccess = false;
@@ -44,4 +64,5 @@ class UserController extends AbstractController
         session_destroy();
         header("Location: /");
     }
+
 }
