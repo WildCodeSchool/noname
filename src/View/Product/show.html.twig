@@ -127,7 +127,13 @@
         </article>
 
         <article class="productAddToCart">
-                <button class="productAddButton">Ajouter au panier</button>
+            {% if user is null %}
+            <!--Add a condition to render visible the error message only when the button iś clicked-->
+                <a class="productAddButton">Ajouter au panier</a>
+                <p>Veuillez d'abord vous connecter</p>
+            {% elseif product.user_id != user.id %}
+                <a class="productAddButton" href="/cart/add?id={{product.id}}">Ajouter au panier</a>
+            {% endif %}
         </article>
 
         <article class="productSeller">
