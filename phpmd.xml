@@ -10,7 +10,9 @@
         <exclude name="ElseExpression" />
         <exclude name="StaticAccess" />
     </rule>
-    <rule ref="rulesets/codesize.xml" />
+    <rule ref="rulesets/codesize.xml">
+        <exclude name="TooManyPublicMethods" />
+    </rule>
     <rule ref="rulesets/controversial.xml" >
         <exclude name="Superglobals" />
     </rule>

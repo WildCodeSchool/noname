@@ -9,6 +9,7 @@
 @import url("show.css");
 @import url("formCategoryItem.css");
 @import url("indexCategoryItems.css");
+@import url("cart.css");
 @import url("utils.css");
 
 :root {
@@ -22,6 +23,7 @@
     --secondaryColor: #f1f1f1;
     --plainText: black;
     --buttonsAndBorders: white;
+    --yellowColor:rgb(254, 174, 24);
 }
 
 * {

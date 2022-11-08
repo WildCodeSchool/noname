@@ -12,9 +12,13 @@ return [
     'book/deleteSale' => ['ProductController', 'deleteSale', ['id']],
     'categories_items' => ['CategoryItemController', 'index',],
     'categories_items/add' => ['CategoryItemController', 'add',],
+    'categories_items/edit' => ['CategoryItemController', 'edit', ['id']],
     'login' => ['UserController', 'login'],
     'logout' => ['UserController', 'logout'],
     'products' => ['ProductController', 'index'],
     'product' => ['ProductController', 'show', ['id']],
     'user' => ['UserController'],
+    'cart' => ['CartController', 'index', ['id']],
+    'cart/update' => ['CartController', 'deleteOneProduct', ['id']],
+    'cart/valide' => ['CartController', 'valideCart', ['id']],
 ];
