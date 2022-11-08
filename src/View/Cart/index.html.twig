@@ -5,22 +5,22 @@
 {% block content %}
 	<main class="cart container">
 		<h1 class="text-center">Mon Panier</h1>
-		<div class="productsCart">
+		<ul class="productsCart">
 			{% if not (products is empty) %}
 
 				{% for product in products %}
-					<div class="products-cart">
+					<li class="products-cart">
 						{{ productCard(product) }}
 						<a href="/cart/update?id={{ product.id }}" class="deleteFromCart">
 							Supprimer
 						</a>
-					</div>
+					</li>
 				{% endfor %}
 
 			{% else %}
 				<h2>--Votre Panier est vide--</h2>
 			{% endif %}
-		</div>
+		</ul>
 		{% set total = 0  %}
 
 		{% for product in products %}
