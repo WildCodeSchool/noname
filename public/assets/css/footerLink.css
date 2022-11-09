@@ -68,4 +68,7 @@
   .footerMembers h1 {
     font-size: 7vw;
 }
+  .linkFooter a {
+    font-size: 3vw;
+  }
 }
