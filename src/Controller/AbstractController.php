@@ -20,6 +20,7 @@ abstract class AbstractController
     protected array|null $cart = null;
 
 
+
     public function __construct()
     {
         $loader = new FilesystemLoader(APP_VIEW_PATH);

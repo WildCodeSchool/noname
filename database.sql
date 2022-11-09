@@ -322,43 +322,48 @@ VALUES (
         "Super objet qui a gardé tout son charme"
     );
 
-    ALTER TABLE `category_item` ADD in_carousel BOOL DEFAULT FALSE;
+ALTER TABLE `category_item` ADD in_carousel BOOL DEFAULT FALSE;
 
-    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 1;
-    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 2;
-    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 3;
-    UPDATE `category_item` SET in_carousel = TRUE WHERE id = 4;
-    INSERT INTO
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 1;
+
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 2;
+
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 3;
+
+UPDATE `category_item` SET in_carousel = TRUE WHERE id = 4;
+
+INSERT INTO
     `category_item` (
         `title`,
         `description`,
         `photo`,
         `logo`
     )
-    VALUES (
+VALUES (
         "New Catégorie",
         "Votre meuble n'a plus son utilité , Vendez le",
         "https://cdn.pixabay.com/photo/2015/04/10/17/03/pots-716579_960_720.jpg",
         "/assets/images/ameublement2.png"
     );
 
-INSERT INTO
-     `cart` (
-       `user_id`
-     )
-VALUES (
-      4
-);
+INSERT INTO `cart` ( `user_id` ) VALUES ( 4 );
 
 UPDATE `product` SET cart_id = 1 WHERE id = 1;
+
 UPDATE `product` SET cart_id = 1 WHERE id = 2;
+
 UPDATE `product` SET cart_id = 1 WHERE id = 3;
+
 UPDATE `product` SET status = "en panier" WHERE id = 1;
+
 UPDATE `product` SET status = "en panier" WHERE id = 2;
+
 UPDATE `product` SET status = "en panier" WHERE id = 3;
 
 ALTER TABLE `product` ADD show_phone_user BOOL DEFAULT FALSE;
+
 ALTER TABLE `product` ADD show_email_user BOOL DEFAULT FALSE;
 
 UPDATE `product` SET cart_id = 2 WHERE id = 4;
+
 UPDATE `product` SET status = "en panier" WHERE id = 4;

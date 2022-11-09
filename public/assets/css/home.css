@@ -1,5 +1,3 @@
-
-
 .carouselContainer {
   position: relative;
 
@@ -28,7 +26,7 @@ ul {
   color: var(--pCarousel);
 }
 
-.productsHome > .products {
+.productsHome>.products {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -38,10 +36,11 @@ ul {
 }
 
 @media screen and (max-width: 912px) {
-  .productsHome > .products {
+  .productsHome>.products {
     padding: 0.25rem;
   }
-  .productsHome > .products {
+
+  .productsHome>.products {
     width: 100%;
   }
 }

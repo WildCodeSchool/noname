@@ -22,20 +22,20 @@
 
 }
 
-.linkFooter{
-  margin: 0 2vw 0 2vw;
-  list-style: none;
+.linkFooter {
+    margin: 0 2vw 0 2vw;
+    list-style: none;
 }
 
 .linkFooter p {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 
 .linkFooter a {
-  color: var(--secondaryColor);
+    color: var(--secondaryColor);
 }
 
 .footerAll {
-  display: flex;
-  justify-content: right;
+    display: flex;
+    justify-content: right;
 }
