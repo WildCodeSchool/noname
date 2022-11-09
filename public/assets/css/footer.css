@@ -9,7 +9,7 @@
 .footer-bar {
     background-color: var(--mainColor);
     padding: 18px;
-    height: 7vh;
+    height: 65px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
