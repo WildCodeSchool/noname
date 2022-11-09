@@ -22,6 +22,7 @@ return [
     'cart' => ['CartController', 'index', ['id']],
     'cart/update' => ['CartController', 'deleteOneProduct', ['id']],
     'cart/valide' => ['CartController', 'valideCart', ['id']],
+    'products/add' => ['ProductController', 'add'],
     'cart/add' => ['CartController', 'addProductToCart', ['id']],
     'about' => ['FooterController', 'about'],
     'CGV' => ['FooterController', 'Cgv'],

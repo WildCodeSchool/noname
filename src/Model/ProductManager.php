@@ -175,6 +175,26 @@ class ProductManager extends AbstractManager
         return $statement->fetch();
     }
 
+    public function insert(array $product): int
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+            " (`title`, `description`, `material`, `color`, `category_item_id`,
+             `category_room`, `condition`, `photo`, `price`, `user_id`)
+         VALUES (:title, :description, :material, :color, :category_item_id,
+          :category_room, :condition, :photo, :price, :user_id)");
+        $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
+        $statement->bindValue('material', $product['matter'], \PDO::PARAM_STR);
+        $statement->bindValue('color', $product['palette'], \PDO::PARAM_STR);
+        $statement->bindValue('category_item_id', $product['category'], \PDO::PARAM_INT);
+        $statement->bindValue('category_room', $product['room'], \PDO::PARAM_STR);
+        $statement->bindValue('condition', $product['state'], \PDO::PARAM_STR);
+        $statement->bindValue('photo', $product['photo'], \PDO::PARAM_STR);
+        $statement->bindValue('price', $product['price'], \PDO::PARAM_INT);
+        $statement->bindValue('user_id', $product['user_id'], \PDO::PARAM_INT);
+        $statement->execute();
+        return (int)$this->pdo->lastInsertId();
+    }
     /**
      * Select all product for the book
      *
