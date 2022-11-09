@@ -13,16 +13,16 @@
 						<input class="checkbox-category" type="checkbox" name="category[]" value="{{categoryItem.title}}">
 						<div class="label-category">
 							<div class="card-category" style="background-image: url('{{categoryItem.photo}}');">
-                <img src="{{categoryItem.logo}}" alt="logo of {{categoryItem.title}}" class="logo-card-category" style="background-color: white">
+								<img src="{{categoryItem.logo}}" alt="logo of {{categoryItem.title}}" class="logo-card-category" style="background-color: white">
 								<div class="text-card">
 									<h3>{{ categoryItem.title }}</h3>
 									<p>{{ categoryItem.description}}</p>
 								</div>
 							</div>
 						</div>
-					<a href="/categories_items/edit?id={{ categoryItem.id }}">
-						<div class="penEditCategory" style="background-image: url(assets/images/pen_icon.png);"></div>
-					</a>
+						<a href="/categories_items/edit?id={{ categoryItem.id }}">
+							<div class="penEditCategory" style="background-image: url(assets/images/pen_icon.png);"></div>
+						</a>
 					</label>
 				{% else %}
 					<li>Nothing to display</li>

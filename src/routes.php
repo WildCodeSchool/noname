@@ -26,5 +26,5 @@ return [
     'cart/add' => ['CartController', 'addProductToCart', ['id']],
     'about' => ['FooterController', 'about'],
     'CGV' => ['FooterController', 'Cgv'],
-
+    'signup' => ['UserController', 'signUp'],
 ];
