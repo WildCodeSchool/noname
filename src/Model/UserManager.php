@@ -9,10 +9,11 @@ class UserManager extends AbstractManager
     public const TABLE = 'user';
 
     //---------------Signup---------------------------------------
-    
-        public function createUser(array $newUser): int
+
+    public function createUser(array $newUser): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`pseudo`, `adress`, `email`, `firstname`, `lastname`, `phone_number`, `photo`)
+        $statement = $this->pdo->prepare("INSERT INTO " .
+        self::TABLE . " (`pseudo`, `adress`, `email`, `firstname`, `lastname`, `phone_number`, `photo`)
                                       VALUES (:pseudo, :adress, :email, :firstname, :lastname, :phone_number, :photo)");
         $statement->bindValue('pseudo', $newUser['pseudo'], PDO::PARAM_STR);
         $statement->bindValue('adress', $newUser['adress'], PDO::PARAM_STR);
@@ -45,6 +46,4 @@ class UserManager extends AbstractManager
 
         return $user ? $user : null;
     }
-
 }
-
