@@ -287,12 +287,12 @@
     justify-content: center;
 }
 
-.productAddToCart p {
+.productAddToCart p,
+.productAddButtonSignUp {
     width: 100%;
     color: red;
     font-size: 0.5em;
     text-align: start;
-    padding-left: 110px;
 }
 
 .productAddButton {
@@ -480,10 +480,6 @@
 
     .productAddButton {
         width: 500px;
-    }
-
-    .productAddToCart p {
-        padding-left: 150px;
     }
 
 
