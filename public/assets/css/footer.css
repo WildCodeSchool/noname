@@ -9,13 +9,33 @@
 .footer-bar {
     background-color: var(--mainColor);
     padding: 18px;
-    height: 50px;
+    height: 7vh;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 .design {
     color: var(--secondaryColor);
     font-size: var(--smallFont);
     text-align: right;
-    margin-right: 5%;
+
+}
+
+.linkFooter{
+  margin: 0 2vw 0 2vw;
+  list-style: none;
+}
+
+.linkFooter p {
+  font-size: 1rem;
+}
+
+.linkFooter a {
+  color: var(--secondaryColor);
+}
+
+.footerAll {
+  display: flex;
+  justify-content: right;
 }
