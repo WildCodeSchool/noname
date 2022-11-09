@@ -61,8 +61,8 @@ class CategoryItemManager extends AbstractManager
         $statement->bindValue('id', $categoryItem['id'], PDO::PARAM_INT);
         $statement->bindValue('title', $categoryItem['title'], PDO::PARAM_STR);
         $statement->bindValue('description', $categoryItem['description'], PDO::PARAM_STR);
-        $statement->bindValue('photo', $categoryItem['photo'], PDO::PARAM_STR);
-        $statement->bindValue('logo', $categoryItem['logo'], PDO::PARAM_STR);
+        $statement->bindValue('photo', '/' . $categoryItem['photo'], PDO::PARAM_STR);
+        $statement->bindValue('logo', '/' . $categoryItem['logo'], PDO::PARAM_STR);
 
         return $statement->execute();
     }
