@@ -21,7 +21,7 @@ class UserManager extends AbstractManager
         $statement->bindValue('firstname', $newUser['firstname'], PDO::PARAM_STR);
         $statement->bindValue('lastname', $newUser['lastname'], PDO::PARAM_STR);
         $statement->bindValue('phone_number', $newUser['phone_number'], PDO::PARAM_INT);
-        $statement->bindValue('photo', "/" . $newUser['photo'], PDO::PARAM_STR);
+        $statement->bindValue('photo', $newUser['photo'], PDO::PARAM_STR);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
