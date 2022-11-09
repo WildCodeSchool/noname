@@ -114,7 +114,13 @@ class ProductSearchTerms
 
     public function setSearch(?string $search): self
     {
-        if (trim($search) !== "") {
+        if (is_null($search)) {
+            $search = null;
+        } else {
+            $search = trim($search);
+        }
+
+        if ($search !== "") {
             $this->search = $search;
         } else {
             $this->search = null;

@@ -59,4 +59,39 @@ class ProductController extends AbstractController
 
         return $this->twig->render('Product/show.html.twig', ['product' => $product]);
     }
+
+    /**
+     * Show the products book of the user
+     *
+     * @return string
+     */
+    public function book(): string
+    {
+        if ($this->isConnectedElseRedirection()) {
+            $productManager = new ProductManager();
+            return $this->twig->render("Product/book.html.twig", $productManager->selectForBook($this->user["id"]));
+        }
+
+        return "";
+    }
+
+    /**
+     * Delete a product on sale
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function deleteSale(int $id): void
+    {
+        if ($this->isConnectedElseRedirection()) {
+            $productManager = new ProductManager();
+            $product = $productManager->selectOneById($id);
+
+            if (isset($product) && ($product["user_id"] === $this->user["id"] || $this->user["isAdmin"] === 1)) {
+                $productManager->deleteInSale($product["id"]);
+            }
+
+            header("Location: /book");
+        }
+    }
 }
