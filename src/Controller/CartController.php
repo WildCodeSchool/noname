@@ -34,4 +34,16 @@ class CartController extends AbstractController
         $cartManager->updateValidateCart($cartId);
         header("Location: /book");
     }
+
+    public function addProductToCart(int $id): void
+    {
+        if (!is_null($this->user)) {
+            $cartManager = new CartManager();
+            $cartId = $cartManager->getCartId($this->user["id"]);
+            $cartManager->addProductToCart($cartId, $id);
+            header("Location: /cart");
+        } else {
+            header("Location: /");
+        }
+    }
 }

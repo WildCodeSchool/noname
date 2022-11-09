@@ -21,4 +21,5 @@ return [
     'cart' => ['CartController', 'index', ['id']],
     'cart/update' => ['CartController', 'deleteOneProduct', ['id']],
     'cart/valide' => ['CartController', 'valideCart', ['id']],
+    'cart/add' => ['CartController', 'addProductToCart', ['id']],
 ];
