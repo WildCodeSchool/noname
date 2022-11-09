@@ -137,7 +137,7 @@ class CategoryItemController extends AbstractController
         if (strlen($_POST['title']) < 4 || strlen($_POST['title']) > 20) {
             $errors['title'] .= "Le titre doit comporter un minimum de 4 caractères et ne pas dépasser 20 caractères";
         }
-        if (strlen($_POST['description']) < 4 || strlen($_POST['description']) > 100) {
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $errors['description'] .=
                 "La description doit comporter un minimum de 4 caractères et ne pas dépasser 100 caractères";
         }
