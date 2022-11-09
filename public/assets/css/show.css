@@ -74,6 +74,7 @@
     display: inline-block;
     background: no-repeat;
     background-position: center;
+    background-size: contain;
 }
 
 .productBigBtn {
