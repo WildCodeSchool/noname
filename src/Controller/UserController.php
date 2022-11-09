@@ -37,7 +37,9 @@ class UserController extends AbstractController
                 ]);
             }
 
-            $userManager->createUser($user);
+            $userId = $userManager->createUser($user);
+            $_SESSION["user_id"] = $userId;
+            header("Location: /");
         }
 
         return $this->twig->render('signup.html.twig', [

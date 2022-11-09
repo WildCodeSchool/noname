@@ -125,7 +125,9 @@ class ProductManager extends AbstractManager
     {
         // Select last products
         $query = "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
-        $query .= " FROM product p JOIN user u ON p.user_id = u.id ORDER BY p.id DESC";
+        $query .= " FROM product p JOIN user u ON p.user_id = u.id";
+        $query .= " WHERE p.status = 'en vente'";
+        $query .= " ORDER BY p.id DESC";
         if ($limit) {
             $query .= ' LIMIT ' . $limit;
         }
@@ -214,7 +216,7 @@ class ProductManager extends AbstractManager
 
         $query .= "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";
-        $query .= " WHERE p.cart_id IS NOT NULL AND u.id = :userId;";
+        $query .= " WHERE p.cart_id IS NOT NULL AND u.id = :userId AND p.status = 'en panier';";
 
         $query .= "SELECT p.*, u.pseudo as user_pseudo, u.photo as user_photo, u.rating as user_rating";
         $query .= " FROM product p JOIN user u ON p.user_id = u.id";

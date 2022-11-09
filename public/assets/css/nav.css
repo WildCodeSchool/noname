@@ -304,7 +304,7 @@ div#search.search-box {
 }
 
 .mobile-nav.is-active {
-  right: calc(50% - 96px);
+  right: calc(50% - 124px);
 }
 
 .mobile-nav a {
