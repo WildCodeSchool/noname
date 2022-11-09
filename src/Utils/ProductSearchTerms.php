@@ -66,7 +66,7 @@ class ProductSearchTerms
                 $whereClause[] = "category_item_id = :category_item_id";
             }
 
-            $query .= " WHERE " . join(" AND ", $whereClause);
+            $query .= join(" AND ", $whereClause);
         }
 
         return $query;
