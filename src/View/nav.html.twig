@@ -17,15 +17,15 @@
 				<a href="/products/add"><img src="../assets/images/Vector.png"></a>
 			</li>
 			<li>
-				<a href="" {# Enter link here #}><img src="../assets/images/carnet.png"></a>
+				<a href="/book"><img src="../assets/images/carnet.png"></a>
 			</li>
 			<li>
 				<a href="/cart" {# Enter link here #}><img src="../assets/images/panier.png">
-                    {% if cart|length > 0 %}
-                        <div class="cartNbr">
-                            {{cart|length}}
-                        </div>
-                    {% endif %}
+					{% if cart|length > 0 %}
+						<div class="cartNbr">
+							{{cart|length}}
+						</div>
+					{% endif %}
 				</a>
 			</li>
 			<li>
@@ -69,18 +69,10 @@
 				{{ userAvatar(user.photo) }}
 			</div>
 			<ul>
-				<li><a href="/products/add"><img src="../assets/images/Vector.png"></a></li>
-				<li><a href=""{# Enter link here #}><img src="../assets/images/carnet.png"></a></li>
-				<li>
-          <a href="/cart"{# Enter link here #}><img src="../assets/images/panier.png">
-            {% if cart|length > 0 %}
-              <div class="cartNbrMobile">
-                {{cart|length}}
-              </div>
-            {% endif %}
-          </a>
-        </li>
-				<li><a href="/logout"><img src="../assets/svg/logout.svg"></a></li>
+				<li><a href="/products/add"><img src="../assets/images/Vector.png" alt="add logo"></a></li>
+				<li><a href="/book"><img src="../assets/images/carnet.png" alt="book logo"></a></li>
+				<li><a href="/cart"{# Enter link here #}><img src="../assets/images/panier.png" alt="cart logo">{% if cart|length > 0 %}<div class="cartNbrMobile">{{cart|length}}</div>{% endif %}</a></li>
+				<li><a href="/logout"><img src="../assets/svg/logout.svg" alt="logout logo"></a></li>
 			</ul>
 		</div>
 	{% endif %}
