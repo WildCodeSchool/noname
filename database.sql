@@ -61,7 +61,8 @@ INSERT INTO
         `photo`,
         `lastname`,
         `firstname`,
-        `phone_number`
+        `phone_number`,
+        `is_admin`
     )
 VALUES (
         '10 rue nationale 59000 lille',
@@ -70,7 +71,8 @@ VALUES (
         'https://cdn.pixabay.com/photo/2022/10/15/21/23/cat-7523894_960_720.jpg',
         'Gorgio',
         'Steeve',
-        '0608070908'
+        '0608070908',
+        true
     ), (
         '21 rue faidherbe 59120 loos',
         'pierre@gmail.com',
@@ -78,7 +80,8 @@ VALUES (
         'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80',
         'Pif',
         'Pierre',
-        '0608070909'
+        '0608070909',
+        false
     ), (
         '10 avenue de dunkerque 59160 lomme',
         'jean@gmail.com',
@@ -86,7 +89,8 @@ VALUES (
         'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cG9ydHJhaXR8ZW58MHx8MHx8&auto=format&fit=crop&w=800',
         'touf',
         'Jean',
-        '0608070909'
+        '0608070909',
+        false
     ), (
         '10 rue de la clé 59000 lille',
         'marie@gmail.com',
@@ -94,7 +98,8 @@ VALUES (
         'https://images.unsplash.com/photo-1563132337-f159f484226c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
         'good',
         'Marie',
-        '0608070910'
+        '0608070910',
+        false
     );
 
 INSERT INTO

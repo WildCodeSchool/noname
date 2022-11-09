@@ -59,3 +59,9 @@
 {% macro userAvatar(link) %}
 	<div class="userAvatar" style="background-image: url({{ link }})"></div>
 {% endmacro %}
+
+{% macro boxedTitle(content) %}
+    <div class="boxedTitle">
+        <h2>{{ content }}</h2>
+    </div>
+{% endmacro %}

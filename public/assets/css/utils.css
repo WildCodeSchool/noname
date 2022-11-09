@@ -63,3 +63,12 @@
     height: 100%;
     width: 100%;
 }
+
+/* Boxed Title */
+.boxedTitle {
+    margin: 3rem;
+}
+
+.boxedTitle h2 {
+    text-align: center;
+}

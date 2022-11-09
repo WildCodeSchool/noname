@@ -63,9 +63,11 @@
 					<div class="visually-hidden">Next</div>
 				</button>
 			</div>
-			<a href="/categories_items" class="btn-primary-categorie">
-				Modifiez vos catégories
-			</a>
+			{% if user and user.is_admin %}
+				<a href="/categories_items" class="btn-primary-categorie">
+					Modifiez vos catégories
+				</a>
+			{% endif %}
 		</section>
 
 		<article>

@@ -5,3 +5,16 @@
 db.php
 .idea
 .vscode
+
+public/uploads/*
+
+!public/uploads/2080133.png
+!public/uploads/baby-boy-g0f68c3d55_1920.jpg
+!public/uploads/deco.jpg
+!public/uploads/electro.jpg
+!public/uploads/electromenager.jpg
+!public/uploads/home-decor-black-glyph-icon-2320812.png
+!public/uploads/lights-g333fda485_1920.jpg
+!public/uploads/living-room-g81308bec7_1920.jpg
+!public/uploads/luminaires.png
+!public/uploads/meubles.png
