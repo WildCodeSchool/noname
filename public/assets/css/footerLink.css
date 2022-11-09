@@ -10,7 +10,7 @@
 }
 
 .wilderPhoto {
-  height: 400px;
+  height: 100%;
   width: 100%;
   border-radius: 50%;
 }
@@ -43,9 +43,6 @@
   .iconlink{
     font-size: 5vw;
   }
-  .wilderPhoto{
-    height: 300px;
-  }
 
   .footerMembers h1 {
     font-size: 5vw;
@@ -60,9 +57,6 @@
   }
   .iconlink{
     font-size: 10vw;
-  }
-  .wilderPhoto{
-    height: 300px;
   }
 
   .footerMembers h1 {

@@ -1,15 +1,15 @@
 /*////// Main bar //////*/
 
 header {
-  height: 8vh;
+  height: 69px;
 }
 
 .header2 {
-  height: 6vh;
+  height: 60px;
 }
 
 main {
-  min-height: calc( 100vh - 8vh - 6vh - 7vh);
+  min-height: calc( 100vh - 69px - 60px - 65px);
 }
 
 .top-bar {
@@ -330,13 +330,7 @@ div#search.search-box {
   }
 }
 
-@media screen and (max-width:920px) {
 
-  header {
-    height: 7vh;
-  }
-
-}
 
 /*////// Smartphone //////*/
 
