@@ -11,6 +11,7 @@
 @import url("indexCategoryItems.css");
 @import url("cart.css");
 @import url("utils.css");
+@import url("footerLink.css");
 
 :root {
     --lightGreyContrastColor: #eeeeee;
