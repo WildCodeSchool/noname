@@ -17,8 +17,8 @@ class CategoryItemManager extends AbstractManager
                                       VALUES (:title, :description, :photo, :logo)");
         $statement->bindValue('title', $categoryItem['title'], PDO::PARAM_STR);
         $statement->bindValue('description', $categoryItem['description'], PDO::PARAM_STR);
-        $statement->bindValue('photo', $categoryItem['photo'], PDO::PARAM_STR);
-        $statement->bindValue('logo', $categoryItem['logo'], PDO::PARAM_STR);
+        $statement->bindValue('photo', "/" . $categoryItem['photo'], PDO::PARAM_STR);
+        $statement->bindValue('logo', "/" . $categoryItem['logo'], PDO::PARAM_STR);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();

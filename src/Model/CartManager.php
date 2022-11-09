@@ -39,7 +39,7 @@ class CartManager extends AbstractManager
 
     public function addProductToCart(int $cartId, int $productId): void
     {
-        $query = "UPDATE product SET cart_id = :cartId WHERE id = :productId";
+        $query = "UPDATE product SET cart_id = :cartId, `status` = 'en panier' WHERE id = :productId";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('cartId', $cartId, \PDO::PARAM_INT);
         $statement->bindValue('productId', $productId, \PDO::PARAM_INT);

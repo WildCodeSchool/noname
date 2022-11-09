@@ -131,7 +131,7 @@
             <!--Add a condition to render visible the error message only when the button iś clicked-->
                 <a class="productAddButton" href="/signup">Créer un compte</a>
                 <p>Veuillez d'abord vous connecter ou vous créer un compte pour avoir accès à votre panier</p>
-            {% elseif product.user_id != user.id %}
+            {% elseif product.user_id != user.id and product.status != 'en panier' %}
                 <a class="productAddButton" href="/cart/add?id={{product.id}}">Ajouter au panier</a>
             {% endif %}
         </article>

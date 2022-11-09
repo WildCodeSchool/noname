@@ -6,9 +6,11 @@
 {% block content %}
 	<main class="home">
 		<section class="carouselContainer">
-			<a href="/signup" class="btn btn-primary-banner">
-				Créer un compte
-			</a>
+			{% if user is null %}
+				<a href="/signup" class="btn btn-primary-banner">
+					Créer un compte
+				</a>
+			{% endif %}
 			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
 				<ul class="carousel-indicators">
 					<li>

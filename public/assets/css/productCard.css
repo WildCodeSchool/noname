@@ -173,6 +173,10 @@
         height: 100%;
     }
 
+    .productCard .content {
+        padding: 4vw;
+    }
+
     .productCard .content > div {
         margin-bottom: 0.2rem;
     }
@@ -182,8 +186,10 @@
     }
 
     .productCard .content .seller > .label {
-        margin-right: 0.5rem;
+        margin-right: 1vw;
+        margin-bottom: 1vw;
         font-size: calc(100vw / 50);
+        white-space: nowrap;
     }
 
     .productCard .content .seller > .user > .avatar,

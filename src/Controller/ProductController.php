@@ -134,12 +134,12 @@ class ProductController extends AbstractController
 
         $errors["title"] = $this->checkLenghtValue("title");
         if (strlen($_POST["title"]) > 20) {
-            $errors["title"] = "Ton titre est bien long (20 caractère max)";
+            $errors["title"] = "Ton titre est bien trop long (20 caractères max)";
         }
 
         $errors["description"] = $this->checkLenghtValue("description");
-        if (strlen($_POST["description"]) > 155) {
-            $errors["description"] = "Ton titre est bien long (20 caractère max)";
+        if (strlen($_POST["description"]) > 255) {
+            $errors["description"] = "Ta description est bien trop longue (255 caractères max)";
         }
         if (
             empty($_POST["price"]) ||
