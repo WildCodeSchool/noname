@@ -9,66 +9,60 @@ class UserController extends AbstractController
 //---------------Signup---------------------------------------
 
     //Connection to twig template
-public function signUp(): string {
+    public function signUp(): string
+    {
 
-    $errors = [];
+        $errors = [];
 
-    $user = $_POST;
-    $userManager = new UserManager();
+        $user = $_POST;
+        $userManager = new UserManager();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //Photo uploading
-    $uploadDir = 'uploads/';
-    $uploadFilePhoto = $uploadDir . basename($_FILES['photo']['name']);
-    $user['photo'] = $uploadFilePhoto;
-    move_uploaded_file($_FILES['photo']['tmp_name'], $uploadFilePhoto);
-    //Making sure certain fields start with capital letter
-    $user['firstname'] =  ucfirst($user['firstname']);
-    $user['lastname'] = ucfirst($user['lastname']);
-    //Cleaning $_POST data
-    $user  = array_map('trim', $user);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //Photo uploading
+            $uploadDir = 'uploads/';
+            $uploadFilePhoto = $uploadDir . basename($_FILES['photo']['name']);
+            $user['photo'] = $uploadFilePhoto;
+            move_uploaded_file($_FILES['photo']['tmp_name'], $uploadFilePhoto);
+        //Making sure certain fields start with capital letter
+            $user['firstname'] =  ucfirst($user['firstname']);
+            $user['lastname'] = ucfirst($user['lastname']);
+        //Cleaning $_POST data
+            $user  = array_map('trim', $user);
 
-    $errors = $this->verifyData($user);
+            $errors = $this->verifyData($user);
 
-    $userManager->createUser($user);
-    }
+            if (!empty($errors)) {
+                return $this->twig->render('signup.html.twig', [
+                "errors" => $errors,
+                ]);
+            }
 
-    return $this->twig->render('signup.html.twig', [
-        'errors' => $errors
-    ]);
-}
-
-private function verifyData($user):array {
-    $errors = [];
-
-    foreach ($user as $key => $value) {
-        if (!isset($value) || htmlentities($value) === '') {
-            $errors[$key] = $key . " est obligatoire et dois être valide. ";
+            $userManager->createUser($user);
         }
-    } if (strlen($_POST['pseudo']) < 4 || strlen($_POST['pseudo']) > 20) {
-        $errors['pseudo'] = "Le titre doit comporter un minimum de 4 caractères et ne pas dépasser 20 caractères";
+
+        return $this->twig->render('signup.html.twig', [
+        'errors' => $errors
+        ]);
     }
-    if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] =
+
+    private function verifyData($user): array
+    {
+        $errors = [];
+
+        foreach ($user as $key => $value) {
+            if (!isset($value) || htmlentities($value) === '') {
+                $errors[$key] = $key . " est obligatoire et dois être valide. ";
+            }
+        } if (strlen($_POST['pseudo']) < 4 || strlen($_POST['pseudo']) > 20) {
+            $errors['pseudo'] = "Le titre doit comporter un minimum de 4 caractères et ne pas dépasser 20 caractères";
+        }
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] =
             "L'email doit être valide";
+        }
+
+        return $errors;
     }
-
-return $errors;
-
-}
-
-
-
-
-//create subscribe method, which leads to the form (signup.html)
-
-    //If you have a $_POST DONE
-
-    //if form isn't clean -> send back to the page with errors
-
-    // else use the UserManager with its insert method to prepare query, bind values and execute
-
-    // then you can use a header(location : homepage)
 
 //---------------Connections---------------------------------------
     public function login(): void
@@ -99,5 +93,4 @@ return $errors;
         session_destroy();
         header("Location: /");
     }
-
 }
