@@ -344,10 +344,6 @@
     flex-direction: column;
 }
 
-.ratingStars {
-    width: 200px;
-}
-
 /* Map */
 .productMap {
     display: flex;

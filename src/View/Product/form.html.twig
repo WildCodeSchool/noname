@@ -14,13 +14,13 @@
     <h2 class="h2">Titre</h2>
     <div class="title-offer">
         <label for="title"></label>
-        <input id="title" name="title" type="text" placeholder="Choisis ton titre">
+        <input id="title" name="title" type="text" placeholder="Choisis ton titre" maxlength="19">
     </div>
         <p class="error">{{ errors.title }}</p>
     <h2 class="h2">Description</h2>
     <div class="description-offer">
         <label for="description"></label>
-        <textarea id="description" name="description" placeholder="Descris ton offre"></textarea>
+        <textarea id="description" name="description" placeholder="Descris ton offre" maxlength="254"></textarea>
     </div>
         <p class="error">{{ errors.description }}</p>
 
@@ -57,7 +57,7 @@
         <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="Chambre"><span class="label"><img src="/assets/images/bed.png" alt="icone chambre"></span></label>
         <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="Salle à manger"><span class="label"><img src="/assets/images/dining.png" alt="icone salle a manger"></span></label>
         <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="Salon"><span class="label"><img src="/assets/images/sofa.png" alt="icone salon"></span></label>
-        <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="salle de bains"><span class="label"><img src="/assets/images/tub.png" alt="icone salle de bain"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="Salle de bains"><span class="label"><img src="/assets/images/tub.png" alt="icone salle de bain"></span></label>
     </div>
         <p class="error">{{ errors.room }}</p>
 
