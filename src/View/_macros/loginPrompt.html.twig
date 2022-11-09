@@ -1,0 +1,30 @@
+{% macro loginPrompt() %}
+	{% from "_macros/utils.html.twig" import button, link, textInput %}
+
+	{% if user %}
+		<div class="logoutPrompt">
+			{{ link("Se déconnecter", { href: "/logout" }) }}
+		</div>
+	{% else %}
+		<div class="loginPrompt">
+			<h2>Connexion</h2>
+
+			{% if requestParams.loginFailed == "true" %}
+				<p class="errors">
+					Nom d'utilisateur invalide.
+				</p>
+			{% endif %}
+
+			<form action="/login?from={{ requestUri }}" method="POST">
+				<div>
+					{{ textInput({ name: "pseudo", placeholder: "Nom d'utilisateur" }) }}
+				</div>
+				<div>
+					{{ button("Connexion", { submit: true }) }}
+				</div>
+			</form>
+			{{ link("Je n'ai pas de compte.", { href: "/signup" }) }}
+		</div>
+	{% endif %}
+
+{% endmacro %}

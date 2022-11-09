@@ -1,0 +1,120 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block title %}
+    Ajoutez un produit - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<main>
+<form action="" method="POST" enctype="multipart/form-data" class="form">
+    <div class="title-form">
+        <h1>Ajoute ton offre</h1>
+    </div>
+    <h2 class="h2">Titre</h2>
+    <div class="title-offer">
+        <label for="title"></label>
+        <input id="title" name="title" type="text" placeholder="Choisis ton titre" maxlength="19">
+    </div>
+        <p class="error">{{ errors.title }}</p>
+    <h2 class="h2">Description</h2>
+    <div class="description-offer">
+        <label for="description"></label>
+        <textarea id="description" name="description" placeholder="Descris ton offre" maxlength="254"></textarea>
+    </div>
+        <p class="error">{{ errors.description }}</p>
+
+    <h2 class="h2">Sélectionne tes matières</h2>
+    <div class="matter_checkbox">
+        <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="Bois"><span class="label"><img src="/assets/images/bois.png" alt="icone bois"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="Métal"><span class="label"><img src="/assets/images/hammer.png" alt="icone metal"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="PVC"><span class="label"><img src="/assets/images/recycle.png" alt="icone pvc"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="Tissu"><span class="label"><img src="/assets/images/swatch.png" alt="icone tissu"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="matter[]" value="Verre"><span class="label"><img src="/assets/images/glass.png" alt="icone verre"></span></label>
+    </div>
+        <p class="error">{{ errors.matter }}</p>
+
+    <h2 class="h2">Sélectionne tes couleurs</h2>
+    <div class="checkbox_color" id="color">
+        <div class="palette"><input type="color" id="palette1" name="palette[0]"></div>
+        <div id="palette2"><input type="button" value="+" id="add"/></div>
+        <div id="palette3"><input type="button" value="+" id="add2"/></div>
+    </div>
+        <p class="error">{{ errors.palette }}</p>
+
+    <h2 class="h2">Choisis ta catégorie</h2>
+    <div class="category_checkbox">
+        {% for category in categories %}
+        <label class="label"><input class="radio" name="category" type="radio" value="{{ category.id }}"><span class="label"><img src="{{ category.logo }}" alt="icone"></span></label>
+        {% endfor %}
+    </div>
+        <p class="error">{{ errors.category }}</p>
+
+    <h2 class="h2">Idéale pour quelles pièces?</h2>
+    <div class="room_checkbox">
+        <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="Bureau"><span class="label"><img src="/assets/images/desk.png" alt="icone bureau"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="Cuisine"><span class="label"><img src="/assets/images/glove.png" alt="icone cuisine"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="Chambre"><span class="label"><img src="/assets/images/bed.png" alt="icone chambre"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="Salle à manger"><span class="label"><img src="/assets/images/dining.png" alt="icone salle a manger"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="Salon"><span class="label"><img src="/assets/images/sofa.png" alt="icone salon"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="room[]" value="Salle de bains"><span class="label"><img src="/assets/images/tub.png" alt="icone salle de bain"></span></label>
+    </div>
+        <p class="error">{{ errors.room }}</p>
+
+    <h2 class="h2">Quel est son état?</h2>
+    <div class="state_checkbox">
+        <label class="label"><input class="radio" name="state" type="radio" value="Nouveau"><span class="label"><img src="/assets/images/new_condition.png" alt="icone état neuf"></span></label>
+        <label class="label"><input class="radio" name="state" type="radio" value="Correct"><span class="label"><img src="/assets/images/good_condition.png" alt="icone état correct"></span></label>
+        <label class="label"><input class="radio" name="state" type="radio" value="Usagé"><span class="label"><img src="/assets/images/used_condition.png" alt="icone état usagé"></span></label>
+    </div>
+    <div class="state">
+        <p> Neuf </p>
+        <p> Correct</p>
+        <p> Usagé</p>
+    </div>
+        <p class="error">{{ errors.state }}</p>
+
+    <h2 class="h2">Prends des photos et poste les</h2>
+    <div class="picture">
+        <div class="file">
+        <label class="label" for="file" id="photo1">
+            <input type="file" name="file[0]" value="file" id="file"   accept="image/png, image/jpeg">
+            <img class="file" src="/assets/images/camera.png" alt="icone appareil photo">
+        </label>
+        </div>
+        <div>
+        <label class="label" id="photo2">
+            <input type="file" name="file[1]"  value="file2" id="file2" accept="image/png, image/jpeg"/>
+            <img class="file" src="/assets/images/camera.png"  alt="icone appareil photo">
+        </label>
+        </div>
+        <div>
+        <label class="label" id="photo3">
+            <input type="file" name="file[2]" value="file3" id="file3" accept="image/png, image/jpeg">
+            <img class="file" src="/assets/images/camera.png" alt="icone appareil photo">
+        </label>
+        </div>
+
+    </div>
+        <p class="error">{{ errors.file }}</p>
+
+    <h2 class="h2">Quelles infos souhaite-tu partager?</h2>
+    <div class="info_checkbox">
+        <label class="label"><input class="checkbox" type="checkbox" name="info[]" value="Téléphone"><span class="label"><img src="/assets/images/phone.png" alt="icone telephone"></span></label>
+        <label class="label"><input class="checkbox" type="checkbox" name="info[]" value="Email"><span class="label"><img src="/assets/images/email.png" alt="icone email"></span></label>
+    </div>
+        <p class="error">{{ errors.info }}</p>
+
+    <h2 class="h2">Quel est ton prix ?</h2>
+    <div class="price-offer">
+        <label for="price"></label>
+        <input id="price" name="price" type="number">
+    </div>
+        <p class="error">{{ errors.price }}</p>
+    <button class="button">Valider</button>
+</form>
+</main>
+
+
+{% endblock content %}
+{% block javascript %}<script src="/assets/js/form_products.js"></script>{% endblock %}

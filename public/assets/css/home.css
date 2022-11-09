@@ -1,0 +1,69 @@
+.carouselContainer {
+    position: relative;
+}
+
+ul {
+    padding: 0;
+}
+
+.img-home {
+    max-height: 43vw;
+    width: 100%;
+}
+
+.home h1 {
+    font-size: 4vw;
+}
+
+.carousel-item h2 {
+    font-size: 4vw;
+}
+
+.carousel-item p {
+    font-size: 2vw;
+    font-weight: bold;
+    color: var(--pCarousel);
+}
+
+.productsHome > .products {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: auto;
+    width: 80%;
+    padding: 1rem;
+}
+
+.productsHome > .products > .productCard {
+    max-width: 300px;
+}
+
+@media screen and (max-width: 912px) {
+    .productsHome > .products {
+        padding: 0.25rem;
+    }
+
+    .productsHome > .products {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .carousel-item h2 {
+        font-size: 64px;
+    }
+
+    .carousel-item p {
+        font-size: 32px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .productsHome > .products > .productCard {
+        max-width: 75vw;
+    }
+
+    .carouselContainer a {
+        font-size: 10px;
+    }
+}

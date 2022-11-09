@@ -1,0 +1,28 @@
+<form method="post" class="bg-light border-new rounded p-4" action="#here" enctype="multipart/form-data">
+	<h2 class="mb-2" id="here">Ajoute une nouvelle catégorie</h2>
+	<input type="hidden" name="type" value="add">
+	<div class="row">
+		<label for="title" class="form-label">Titre</label>
+		<input type="text" name="title" id="title" class="form-control" minlength="4" maxlength="20" placeholder="Choisi ton titre de catégorie">
+		<p class="errors">{{errors.title}}</p>
+	</div>
+	<div class="row">
+		<label for="description" class="form-label">Description</label>
+		<input type="text" name="description" id="description" class="form-control" minlength="4" maxlength="100" placeholder="Donnes un Slogan qui claque">
+		<p class="errors">{{errors.description}}</p>
+	</div>
+	<div class="row">
+		<label for="photo" class="form-label">Photo de fond de carrousel</label>
+		<input type="file" name="photo" id="photo" class="form-control">
+		<p class="errors">{{errors.photo}}</p>
+	</div>
+	<div class="row">
+		<label for="logo" class="form-label">Le logo de la barre d'accès rapide</label>
+		<input type="file" name="logo" id="logo" class="form-control">
+		<p class="errors">{{errors.logo}}</p>
+	</div>
+
+	<section class="buttons-form">
+		<button type="submit" class="btn">Valider</button>
+	</section>
+</form>

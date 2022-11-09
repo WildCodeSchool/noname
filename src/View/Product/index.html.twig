@@ -1,0 +1,50 @@
+{% extends "layout.html.twig" %}
+{% from "_macros/productCard.html.twig" import productCardContainer %}
+{% from "_macros/pageSwitcher.html.twig" import pageSwitcher %}
+{% from "_macros/utils.html.twig" import button, textInput, link %}
+
+{% block title %}
+	Page produits -
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+	<main>
+		<div class="productListButtons">
+			<div id="searchPanelButton">
+				<img src="/assets/svg/magnifying-glass.svg"/>
+			</div>
+		</div>
+		<div id="searchPanel">
+			<img id="closeSearchPanelButton" src="/assets/svg/xmark.svg"/>
+			<form action="/products" method="GET">
+				<div>
+					<label for="search">Recherche</label>
+					{{ textInput({ name: "search", required: false, value: searchTerms.getSearch(), placeholder: "Nom du produit" }) }}
+				</div>
+				<div>
+					<label for="category">Catégories</label>
+					{% if categories|length > 0 %}
+						<select class="selectInput" name="category" id="category" name="category">
+							<option value="">-- AUCUNE --</option>
+							{% for category in categories %}
+								<option value="{{ category.id }}" {% if searchTerms.getCategoryId() == category.id %} selected {% endif %}>{{ category.title }}</option>
+							{% endfor %}
+						</select>
+					{% endif %}
+
+				</div>
+				<div>
+					{{ button("Rechercher un produit", { submit: true }) }}
+				</div>
+			</form>
+		</div>
+
+		{{ productCardContainer(products) }}
+		{{ pageSwitcher(pagesURL, currentPage, pagesCount) }}
+	</main>
+{% endblock %}
+
+{% block javascript %}
+	<script src="/assets/js/products.js"></script>
+{% endblock %}

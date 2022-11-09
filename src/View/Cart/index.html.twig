@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% from "_macros/productCard.html.twig" import productCard %}
+
+{% block content %}
+	<main class="cart container">
+		<h1 class="text-center">Mon Panier</h1>
+		<ul class="productsCart">
+			{% if not (products is empty) %}
+
+				{% for product in products %}
+					<li class="products-cart">
+						{{ productCard(product) }}
+						<a href="/cart/update?id={{ product.id }}" class="deleteFromCart">
+							Supprimer
+						</a>
+					</li>
+				{% endfor %}
+
+			{% else %}
+				<h2>--Votre Panier est vide--</h2>
+			{% endif %}
+		</ul>
+		{% set total = 0  %}
+
+		{% for product in products %}
+			{% set total = total + product.price %}
+		{% endfor %}
+		<h2 class="totalCart">Total du panier:
+			{{total}}
+			€</h2>
+		<div class="btn-cart">
+			<a href="/cart/valide?id={{cart[0].cart_id}}" class="btn-primary-validate-cart">
+				Valider
+			</a>
+		</div>
+	</main>
+{% endblock %}

@@ -1,3 +1,57 @@
+@import url("book.css");
+@import url("button.css");
+@import url("home.css");
+@import url("login.css");
+@import url("pageSwitcher.css");
+@import url("products.css");
+@import url("productCard.css");
+@import url("ratingStars.css");
+@import url("show.css");
+@import url("formCategoryItem.css");
+@import url("indexCategoryItems.css");
+@import url("cart.css");
+@import url("utils.css");
+@import url("form_products.css");
+@import url("footerLink.css");
+
+:root {
+  --lightGreyContrastColor: #eeeeee;
+  --productCardBackgroundColor: white;
+  --shadowColor: rgba(0, 0, 0, 0.25);
+  --textColor: black;
+  --blueColor: #4981a6;
+  --lessblueColor: #4981a663;
+  --pCarousel: #fbfbfb;
+  --secondaryColor: #f1f1f1;
+  --plainText: black;
+  --buttonsAndBorders: white;
+  --yellowColor: rgb(254, 174, 24);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    color: #f76c6c;
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+}
+
+p,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h1 {
+  margin: 16px 0px;
+}
+
+.errors {
+  color: red;
 }

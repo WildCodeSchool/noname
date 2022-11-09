@@ -1,0 +1,212 @@
+/* Product Card Container */
+.productCardContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.productCardContainer > .products {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    list-style: none;
+    margin: auto;
+    max-width: 1140px;
+    padding: 0.5rem;
+}
+
+.productCardContainer .noProducts {
+    color: var(--blueColor);
+    padding: 1rem;
+    text-align: center;
+}
+
+.productCardContainer.horizontal > .products {
+    border-radius: 0.75rem;
+    display: block;
+    overflow-x: auto;
+    margin: 0 0.5rem;
+    white-space: nowrap;
+}
+
+.productCardContainer.horizontal.overflowing > .products {
+    border-left: var(--shadowColor) solid 2px;
+    border-right: var(--shadowColor) solid 2px;
+}
+
+.productCardContainer.horizontal > .products > li {
+    display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+    .productCardContainer > .products {
+        padding: 0.25rem;
+    }
+
+    .productCardContainer > .products > li {
+        display: flex;
+        justify-content: center;
+        width: calc(100% / 2);
+    }
+
+    .productCardContainer.horizontal.overflowing > .products {
+        border: none;
+    }
+}
+
+/* Product Card */
+.productCard {
+    background-color: var(--productCardBackgroundColor);
+    border-radius: 3px;
+    box-shadow: var(--shadowColor) 0 5px 5px;
+    display: flex;
+    margin: 1.5rem;
+    transition: box-shadow ease-out 250ms, transform ease-out 250ms;
+    flex-flow: column nowrap;
+    overflow: clip;
+    width: 20rem;
+    z-index: 1;
+}
+
+.productCard:hover {
+    box-shadow: var(--blueColor) 0 8px 10px;
+    cursor: pointer;
+    transform: scale(1.025);
+}
+
+.productCard:active {
+    box-shadow: var(--shadowColor) 0 2px 2px;
+    transform: scale(0.975);
+}
+
+.productCard a {
+    color: var(--textColor);
+    text-decoration: none;
+}
+
+.productCard .imageContainer {
+    overflow: clip;
+}
+
+.productCard .imageContainer > .image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 15rem;
+    transition: transform ease-out 250ms;
+    width: 100%;
+}
+
+.productCard:hover .imageContainer > .image {
+    transform: scale(110%);
+}
+
+.productCard .content {
+    padding: 1.25rem;
+}
+
+.productCard .content > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.productCard .content > div > *:last-child {
+    flex-shrink: 1;
+}
+
+.productCard .content > div:last-child {
+    margin-bottom: 0;
+}
+
+.productCard .content .seller {
+    margin-right: 1rem;
+}
+
+.productCard .content .seller > .label {
+    font-size: 0.75rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.productCard .content .seller > .user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.productCard .content .seller > .user > .avatar {
+    background-size: cover;
+    border-radius: 100%;
+    height: 32px;
+    width: 32px;
+}
+
+.productCard .content .seller > .user > .avatar::before {
+    background-color: var(--lightGreyContrastColor);
+    border-radius: 100%;
+    content: "";
+    display: inline-block;
+    height: 32px;
+    position: relative;
+    transform: scale(0.9);
+    width: 32px;
+    z-index: -1;
+}
+
+.productCard .content .title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .productCard {
+        margin: 0.4rem;
+        width: 100%;
+    }
+
+    .productCard .imageContainer {
+        height: calc(100vw / 3);
+    }
+
+    .productCard .imageContainer > .image {
+        height: 100%;
+    }
+
+    .productCard .content {
+        padding: 4vw;
+    }
+
+    .productCard .content > div {
+        margin-bottom: 0.2rem;
+    }
+
+    .productCard .content > div:last-child {
+        display: initial;
+    }
+
+    .productCard .content .seller > .label {
+        margin-right: 1vw;
+        margin-bottom: 1vw;
+        font-size: calc(100vw / 50);
+        white-space: nowrap;
+    }
+
+    .productCard .content .seller > .user > .avatar,
+    .productCard .content .seller > .user > .avatar::before {
+        height: calc(100vw / 20);
+        width: calc(100vw / 20);
+    }
+
+    .productCard .content .seller > .user > .pseudo {
+        font-size: calc(100vw / 35);
+    }
+
+    .productCard .content .title {
+        font-size: calc(100vw / 30);
+    }
+
+    .productCard .content .price {
+        font-size: calc(100vw / 35);
+    }
+}

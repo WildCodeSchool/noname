@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<main class="container index-category">
+		<h1 class="text-center">Toutes les Catégories</h1>
+
+		<form method="post" class="bg-light border rounded p-4 mb-3">
+			<h2 class="mb-2">Sélectionnes 4 Catégories à mettre en avant !</h2>
+			<input type="hidden" name="type" value="select">
+			<div class="cardsCarousel">
+				{% for categoryItem in categoriesItems %}
+					<label class="label-cat">
+						<input class="checkbox-category" type="checkbox" name="category[]" value="{{categoryItem.title}}">
+						<div class="label-category">
+							<div class="card-category" style="background-image: url('{{categoryItem.photo}}');">
+								<img src="{{categoryItem.logo}}" alt="logo of {{categoryItem.title}}" class="logo-card-category" style="background-color: white">
+								<div class="text-card">
+									<h3>{{ categoryItem.title }}</h3>
+									<p>{{ categoryItem.description}}</p>
+								</div>
+							</div>
+						</div>
+						<a href="/categories_items/edit?id={{ categoryItem.id }}">
+							<div class="penEditCategory" style="background-image: url(assets/images/pen_icon.png);"></div>
+						</a>
+					</label>
+				{% else %}
+					<li>Nothing to display</li>
+				{% endfor %}
+			</div>
+			<section class="buttons-form">
+				<button type="submit" class="btn">Valider</button>
+			</section>
+			<p class="errors text-center">{{errors2[0]}}</p>
+		</form>
+		{% include 'CategoryItem/add.html.twig' %}
+	</main>
+{% endblock %}

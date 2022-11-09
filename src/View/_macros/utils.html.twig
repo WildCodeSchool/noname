@@ -1,0 +1,67 @@
+{#
+    Macro for create a button
+#}
+{% macro button(content, options = {}) %}
+	{% set defaults = {
+        class: "btn btn-primary",
+        href: null,
+        submit: false,
+    } %}
+	{% set options = defaults|merge(options) %}
+
+	<button class="{{ options.class }}" {% if href is not null %} href="{{ options.href }}" {% endif %} {% if options.submit %} type="submit" {% endif %}>
+		{{ content }}
+	</button>
+{% endmacro %}
+
+{#
+    Macro for create a link
+#}
+{% macro link(content, options = {}) %}
+	{% set defaults = {
+        class: "link",
+        href: "#",
+        id: null,
+    } %}
+	{% set options = defaults|merge(options) %}
+
+	<a class="{{ options.class }}" href="{{ options.href }}" {% if options.id is not null %} id="{{ options.id }}" {% endif %}>
+		{{ content }}
+	</a>
+{% endmacro %}
+
+{#
+    Macro for create a text input
+#}
+{% macro textInput(options = {}) %}
+	{% set defaults = {
+        class: "textInput",
+        name: null,
+        placeholder: null,
+        required: true,
+        value: null
+    } %}
+	{% set options = defaults|merge(options) %}
+
+	{# Aliases #}
+	{% set cls = options.class %}
+	{% set ph = options.placeholder ?? null %}
+	{% set nm = options.name ?? null %}
+	{% set req = options.required %}
+	{% set v = options.value %}
+
+	<input class="{{ cls }}" {% if ph is not null %} placeholder="{{ ph }}" {% endif %} type="text" {% if nm is not null %} name="{{ nm }}" id="{{ nm }}" {% endif %} {% if req %} required {% endif %} {% if v is not null %} value="{{v}}" {% endif %}/>
+{% endmacro %}
+
+{#
+    Macro for creating a user avatar
+#}
+{% macro userAvatar(link) %}
+	<div class="userAvatar" style="background-image: url({{ link }})"></div>
+{% endmacro %}
+
+{% macro boxedTitle(content) %}
+    <div class="boxedTitle">
+        <h2>{{ content }}</h2>
+    </div>
+{% endmacro %}

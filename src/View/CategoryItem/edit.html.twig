@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+	<main class="container categoryContainerEdit">
+		<div class="label-category mb-2 p-4">
+			<div class="card-category" id="card-category-edit"style="background-image: url('{{categoryItem.photo}}');">
+        <img src="{{categoryItem.logo}}" alt="" class="logo-card-category" style="background-color: white">
+				<div class="text-card">
+					<h3>{{ categoryItem.title }}</h3>
+					<p>{{ categoryItem.description}}</p>
+				</div>
+			</div>
+		</div>
+
+		<h1>Modifie ta Catégorie
+			{{ categoryItem.title }}</h1>
+		{% include 'CategoryItem/_form.html.twig' %}
+		<a href="/categories_items" class="btn btn-primary-categorie">Retour</a>
+	</main>
+{% endblock %}

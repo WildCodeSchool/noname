@@ -1,0 +1,171 @@
+{% extends 'layout.html.twig' %}
+{% from "_macros/ratingStars.html.twig" import ratingStars %}
+
+{% block content %}
+<article class="productBigCarousel">
+    <ul class="productBigImages" id="productBigImgs">
+        {% for photo in product.photo %}
+            <li class="bigPhoto" style="background-image:url({{photo}});"></li>
+        {% endfor %}
+    </ul>
+    <button id="bigRight" class="productBigBtn">></button>
+    <button id="bigLeft" class="productBigBtn"><</button>
+    <button id="quitFullscreen">x</button>
+</article>
+<main id="productPage">
+    <h1 id="smallTitle">{{product.title}}</h1>
+        <article class="productCarousel">
+            <ul class="productImages" id="productImgs">
+                {% for photo in product.photo %}
+                    <li class="photo" style="background-image:url({{photo}});"></li>
+                {% endfor %}
+            </ul>
+                <button id="right" class="productBtn">></button>
+                <button id="left" class="productBtn"><</button>
+        </article>
+
+        <article class="productInfo">
+                <h1>{{product.title}}</h1>
+                <ul>
+                    <li class="productColor">
+                        <p class="ImportanText">Couleur: </p>
+                        {% for color in product.color %}
+                            <div class="pastilleColor" style="background-color:{{color}};"></div>
+                        {% endfor %}
+                    </li>
+                    <li class="productMatter">
+                        <p class="ImportanText">Matière: </p>
+                        <div class="productIcons">
+                        {% for material in product.material %}
+                        <!--Optimisation: nouvelle table dans bdd-->
+                            <div class="productIconsChild">
+                            {% if (material is same as("Bois")) %}
+                                <img src="assets/images/bois.png" alt="matter icon">
+                                <p>{{material}}</p>
+                            {% endif %}
+                            {% if (material is same as("PVC")) %}
+                                <img src="assets/images/recycle.png" alt="matter icon">
+                                <p>{{material}}</p>
+                            {% endif %}
+                            {% if (material is same as("Métal")) %}
+                                <img src="assets/images/hammer.png" alt="matter icon">
+                                <p>{{material}}</p>
+                            {% endif %}
+                            {% if (material is same as("Tissu")) %}
+                                <img src="assets/images/swatch.png" alt="matter icon">
+                                <p>{{material}}</p>
+                            {% endif %}
+                            {% if (material is same as("Verre")) %}
+                                <img src="assets/images/glass.png" alt="matter icon">
+                                <p>{{material}}</p>
+                            {% endif %}
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </li>
+                    <li class="productState">
+                        <p class="ImportanText">État: </p>
+                        <p>{{product.condition}}</p>
+                    </li>
+                    <li class="productDescription">
+                        <p class="ImportanText">Description: </p>
+                        <p>{{product.description}}</p>
+                    </li>
+                    <li class="productPrice">
+                        <p class="ImportanText">Prix: </p>
+                        <p>{{product.price}} €</p>
+                    </li>
+                </ul>
+        </article>
+
+        <article class="productInfo2">
+            <ul>
+                <li class="productType">
+                    <p class="ImportanText">Catégorie: </p>
+                    <div class="productIcons">
+                        <div class="productIconsChild">
+                            <img src="{{product.logo}}" alt="type icon">
+                            <p>{{product.categoryTitle}}</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="productRoom">
+                    <p class="ImportanText">Pièce: </p>
+                    <div class="productIcons">
+                        {% for category in product.category_room %}
+                        <!--Optimisation: nouvelle table dans bdd-->
+                        <div class="productIconsChild">
+                            {% if (category is same as("Bureau")) %}
+                                <img src="assets/images/desk.png" alt="room icon">
+                                <p>{{category}}</p>
+                            {% endif %}
+                            {% if (category is same as("Cuisine")) %}
+                                <img src="assets/images/glove.png" alt="room icon">
+                                <p>{{category}}</p>
+                            {% endif %}
+                            {% if (category is same as("Chambre")) %}
+                                <img src="assets/images/bed.png" alt="room icon">
+                                <p>{{category}}</p>
+                            {% endif %}
+                            {% if (category is same as("Salle à manger")) %}
+                                <img src="assets/images/dining.png" alt="room icon">
+                                <p>{{category}}</p>
+                            {% endif %}
+                            {% if (category is same as("Salon")) %}
+                                <img src="assets/images/sofa.png" alt="room icon">
+                                <p>{{category}}</p>
+                            {% endif %}
+                            {% if (category is same as("Salle de bains")) %}
+                                <img src="assets/images/tub.png" alt="room icon">
+                                <p>{{category}}</p>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </article>
+
+        <article class="productAddToCart">
+            {% if user is null %}
+            <!--Add a condition to render visible the error message only when the button iś clicked-->
+                <a class="productAddButton" href="/signup">Créer un compte</a>
+                <p>Veuillez d'abord vous connecter ou vous créer un compte pour avoir accès à votre panier</p>
+            {% elseif product.user_id != user.id and product.status != 'en panier' %}
+                <a class="productAddButton" href="/cart/add?id={{product.id}}">Ajouter au panier</a>
+            {% endif %}
+        </article>
+
+        <article class="productSeller">
+        <!-- Add if conditions to display infos when the database has been changed -->
+            <div class="productSellerPseudo">
+                <p class="ImportanText">Vendu par: </p>
+                <p>{{product.pseudo}}</p>
+            </div>
+            <div class="productSellerAdress">
+                <p class="ImportanText">Habite: </p>
+                <p>{{product.adress}}</p>
+            </div>
+            <div class="productSellerContact">
+                <p class="ImportanText">Contact: </p>
+                <div>
+                    <p>{{product.email}}</p>
+                    <p>{{product.phone_number}}</p>
+                </div>
+            </div>
+            <div class="productSellerRating">
+                <p class="ImportanText">Note: </p>
+                {{ratingStars(product.rating)}}
+            </div>
+        </article>
+
+        <article class="productMap">
+                <img src="assets/images/google-maps.jpg" alt="map">
+        </article>
+    </main>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="assets/js/show.js"></script>
+{% endblock %}

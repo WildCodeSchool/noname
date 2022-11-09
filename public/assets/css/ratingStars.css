@@ -1,0 +1,10 @@
+.ratingStars {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.ratingStars > .star {
+    display: block;
+    width: calc(100% / 5);
+}

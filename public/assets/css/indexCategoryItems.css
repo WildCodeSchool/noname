@@ -1,0 +1,128 @@
+.card-category {
+  height: 15vw;
+  width: 100%;
+  background: center/cover;
+  color: #fff;
+  position: relative;
+  margin: auto;
+}
+
+.card-category:hover {
+  box-shadow: black 4px 4px 4px;
+}
+
+.text-card {
+  position: absolute;
+  bottom: 8%;
+  width: 100%;
+}
+
+.text-card>* {
+  text-align: center;
+}
+
+.cardsCarousel {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  gap: 15px;
+}
+
+.penEditCategory {
+
+
+  height: 22px;
+  width: 22px;
+  background: center/cover;
+
+  margin: 4px;
+}
+
+#card-category-edit {
+  height: 28vw;
+  width: 70%;
+}
+
+.logo-card-category {
+  height: 3vw;
+  width: 3vw;
+}
+
+
+/* formulaire check */
+
+.checkbox-category:checked+.label-category {
+  filter: grayscale(100%);
+}
+
+.checkbox-category {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .text-card h3 {
+    font-size: 2vw;
+  }
+
+  .text-card p {
+    font-size: 1.2vw;
+  }
+
+  .index-category h1 {
+    font-size: 4vw;
+  }
+
+  .index-category h2 {
+    font-size: 3.0vw;
+  }
+
+  .form-label {
+    font-size: 2vw;
+  }
+
+  .form-control,
+  .errors {
+    font-size: 2vw;
+  }
+
+  .cardsCarousel {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  .categoryContainerEdit h1 {
+    font-size: 4vw;
+  }
+
+  .logo-card-category {
+    height: 4vw;
+    width: 4vw;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .card-category {
+    height: 24vw;
+  }
+
+  .logo-card-category {
+    height: 5vw;
+    width: 5vw;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .cardsCarousel {
+    grid-template-columns: 2fr;
+    width: 70%;
+    margin: auto;
+  }
+
+  .card-category {
+    height: 22vw;
+  }
+
+  .penEditCategory {
+    height: 15px;
+    width: 15px;
+  }
+}

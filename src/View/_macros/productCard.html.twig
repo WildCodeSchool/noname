@@ -1,0 +1,69 @@
+{#
+    Macro for create a container of product cards
+
+    products: Array of products data
+#}
+{% macro productCardContainer(products, options = {}) %}
+	{% set defaults = {
+        emptyMessage: "Aucun produits trouvé",
+        horizontal: false,
+        undercards: null
+    } %}
+	{% set options = defaults|merge(options) %}
+
+	<div class="productCardContainer {% if options.horizontal %}horizontal {% if products|length > 3 %}overflowing{% endif %}{% endif %}">
+		{% if products|length > 0 %}
+			<ul class="products">
+				{% for product in products %}
+					<li>
+						{{ _self.productCard(product) }}
+						{% if options.undercards is null %}
+							<div></div>
+						{% else %}
+							{{ options.undercards|replace({ "%id%": product.id })|raw }}
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<h3 class="noProducts">{{ options.emptyMessage }}</h3>
+		{% endif %}
+	</div>
+{% endmacro %}
+
+{#
+    Macro to create a product card
+
+    product: Product data
+#}
+{% macro productCard(product) %}
+	{% from "_macros/ratingStars.html.twig" import ratingStars %}
+
+	<article class="productCard" onload="productCard.onload(this)">
+		<a href="/product?id={{product.id}}">
+			<div class="imageContainer">
+				<div class="image" style="background-image: url({{ product.photo[0] }});"></div>
+			</div>
+			<div class="content">
+				<div>
+					<div>
+						<div class="seller">
+							<p class="label">Vendu par</p>
+							<div class="user">
+								<div class="avatar" style="background-image: url({{ product.user_photo }});"></div>
+								<p class="pseudo">
+									{{ product.user_pseudo }}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div>{{ ratingStars(product.user_rating) }}</div>
+				</div>
+				<div>
+					<h2 class="title">{{ product.title }}</h2>
+					<p class="price">{{ product.price ~ " €" }}</p>
+				</div>
+			</div>
+		</a>
+	</article>
+{% endmacro %}

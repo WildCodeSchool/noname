@@ -1,0 +1,47 @@
+.form-control {
+    margin: 1%;
+    margin-bottom: 12px;
+    margin-top: 0px;
+    border: solid 0.5px var(--lessblueColor);
+}
+
+.form-control:hover {
+    box-shadow: var(--blueColor) 0 4px 4px;
+    transition: box-shadow ease-out 0.3s;
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.buttons-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-form>* {
+    margin: 0 8px;
+}
+
+.buttons-form .btn {
+    background-color: var(--blueColor);
+    color: #fff;
+    margin-top: 32px;
+    margin-bottom: 4px;
+}
+
+.buttons-form .btn:hover {
+    background-color: #fff;
+    color: var(--blueColor);
+    border: solid 1px var(--blueColor);
+}
+
+.border-new {
+    border: solid 0.5px var(--lessblueColor);
+}
+
+.retour {
+    margin-top: 30px;
+}

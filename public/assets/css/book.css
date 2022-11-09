@@ -1,0 +1,23 @@
+.undercardsLinks {
+    padding: 0.5rem 2rem;
+}
+
+.undercardsLinks a {
+    color: black;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+.undercardsLinks a.edit:hover {
+    color: var(--blueColor);
+}
+
+.undercardsLinks a.delete:hover {
+    color: red;
+}
+
+@media screen and (max-width: 768px) {
+    .undercardsLinks a {
+        font-size: 3vw;
+    }
+}

@@ -1,0 +1,41 @@
+:root {
+    --mainColor: #4981A6;
+    --secondaryColor: #F1F1F1;
+    --plainText: black;
+    --buttonsAndBorders: white;
+    --smallFont: 10px;
+}
+
+.footer-bar {
+    background-color: var(--mainColor);
+    padding: 18px;
+    height: 65px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.design {
+    color: var(--secondaryColor);
+    font-size: var(--smallFont);
+    text-align: right;
+
+}
+
+.linkFooter {
+    margin: 0 2vw 0 2vw;
+    list-style: none;
+}
+
+.linkFooter p {
+    font-size: 1rem;
+}
+
+.linkFooter a {
+    color: var(--secondaryColor);
+}
+
+.footerAll {
+    display: flex;
+    justify-content: right;
+}

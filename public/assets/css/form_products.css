@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.title-form {
+    height: 50px;
+    width: 60%;
+    background-color: var(--blueColor);
+    color: var(--productCardBackgroundColor);
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+}
+
+.title-offer,
+.price-offer,
+.description-offer,
+.img {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+#description {
+    height: 300px;
+    resize: none;
+}
+
+input#title,
+#price,
+#img {
+    height: 30px;
+    border: 1px solid var(--textColor);
+    border-radius: 5px;
+}
+
+#description {
+    height: 100px;
+    border-radius: 5px;
+    border: 1px solid var(--textColor);
+}
+
+.room_checkbox,
+.matter_checkbox,
+.category_checkbox,
+.state_checkbox,
+.state,
+.picture,
+.info_checkbox {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: space-around;
+    width: 40%;
+    margin-bottom: 20px;
+
+}
+
+.info_checkbox,
+.state {
+    display: flex;
+    justify-content: space-around;
+}
+
+.state {
+    align-items: center;
+}
+
+.h2 {
+    margin-bottom: 20px;
+    width: 40%;
+    padding: 5px;
+    color: var(--blueColor);
+    background: rgba(128, 128, 128, 0.102);
+    border-bottom: 2px solid var(--blueColor);
+    border-radius: 5px 5px 0 0;
+}
+
+.picture {
+    display: flex;
+    justify-content: space-around;
+}
+
+.file:hover {
+    cursor: pointer;
+}
+
+#file,
+#file2,
+#file3 {
+    display: none;
+}
+
+.button {
+    background-color: var(--blueColor);
+    color: var(--productCardBackgroundColor);
+    border: var(--blueColor);
+    border-radius: 5px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    height: 30px;
+    width: 20%;
+    margin-bottom: 20px;
+}
+
+.button:hover {
+    background-color: var(--lessblueColor);
+    cursor: pointer;
+}
+
+.checkbox_color {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+input#add,
+input#add2,
+input.palette,
+input#palette1,
+input#add_file,
+input#add_file2 {
+    border: none;
+    height: 60px;
+    width: 60px;
+    display: block;
+    border-radius: 50%;
+    overflow: clip;
+    font-size: 2rem;
+    background-color: var(--blueColor);
+    color: var(--productCardBackgroundColor);
+}
+
+
+.checkbox,
+.radio {
+    display: none;
+}
+
+.label {
+    border: none;
+    display: inline-block;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox:checked+.label,
+.radio:checked+.label {
+    background: #4981a689;
+
+}
+
+.error {
+    color: rgba(255, 0, 0, 0.602);
+    font-size: 1rem;
+}
+
+@media screen and (max-width:800px) {
+
+    .title-form {
+        width: 90%;
+    }
+
+    .h2 {
+        width: 80%;
+    }
+
+    .title-offer,
+    .price-offer,
+    .description-offer,
+    .room_checkbox,
+    .matter_checkbox,
+    .category_checkbox,
+    .state_checkbox,
+    .state,
+    .picture,
+    .info_checkbox,
+    .checkbox_color {
+        width: 80%;
+    }
+
+    .button {
+        width: 40%;
+    }
+
+}

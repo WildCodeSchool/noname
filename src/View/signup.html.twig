@@ -1,0 +1,54 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+	<main class="container">
+		<form method="POST" class="bg-light border rounded p-5" enctype="multipart/form-data">
+			<h1>Créer un compte</h1>
+
+			<div class="row">
+				<label for="pseudo" class="form-label">Utilisateur</label>
+				<input type="text" name="pseudo" id="pseudo" class="form-control" minlength="4" maxlength="20" placeholder="Écrivez votre nom de utilisateur...">
+				<p class="errors">{{ errors.pseudo }}</p>
+			</div>
+			<div class="row">
+				<label for="adress" class="form-label">Adresse</label>
+				<input type="text" name="adress" id="adress" class="form-control" minlength="4" maxlength="100" placeholder="Écrivez votre adresse...">
+				<p class="errors">{{ errors.adress }}</p>
+			</div>
+			<div class="row">
+				<label for="email" class="form-label">Email</label>
+				<input type="text" name="email" id="email" class="form-control" minlength="4" maxlength="100" placeholder="Écrivez votre email...">
+				<p class="errors">{{ errors.email }}</p>
+			</div>
+			<div class="row">
+				<label for="firstname" class="form-label">Prénom</label>
+				<input type="text" name="firstname" id="firstname" class="form-control" minlength="4" maxlength="100" placeholder="Écrivez votre prénom...">
+				<p class="errors">{{ errors.firstname }}</p>
+			</div>
+			<div class="row">
+				<label for="lastname" class="form-label">Nom</label>
+				<input type="text" name="lastname" id="lastname" class="form-control" minlength="4" maxlength="100" placeholder="Écrivez votre nom...">
+				<p class="errors">{{ errors.lastname }}</p>
+			</div>
+			<div class="row">
+				<label for="phone_number" class="form-label">Téléphone</label>
+				<input type="text" name="phone_number" id="phone_number" class="form-control" minlength="4" maxlength="100" placeholder="Écrivez votre numero de téléphone...">
+				<p class="errors">{{ errors.phone_number }}</p>
+			</div>
+			<div class="row">
+				<label for="photo" class="form-label">Photo de profil</label>
+				<input type="file" name="photo" id="photo" class="form-control">
+				<p class="errors">{{ errors.photo }}</p>
+			</div>
+
+			<section class="buttons-form">
+				<div>
+					<button type="submit" class="btn">Valider</button>
+				</div>
+				<a class="retour" href="/">Retour</a>
+			</section>
+		</form>
+	</main>
+{% endblock %}
